@@ -1,0 +1,10 @@
+
+// http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+// don't forget to put -webkit-transform-style: preserve-3d; on the parent element.
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

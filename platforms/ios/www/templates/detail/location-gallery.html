@@ -1,0 +1,16 @@
+<ion-view title="{{navTitle}}">
+  <ion-content has-header="true" class="detail-view gallery" zooming="true" ng-class="{fade:fade}" on-scroll="checkScroll()">
+  <div id="photo-gallery" class="clearfix">
+      <div class="photo" ng-repeat="photo in location.photos">
+        <a class="photo-spacing" href="#/app/loc/{{location.id}}/photo/v/{{photo.id}}">
+          <div ng-if="photo == photo.thumbnail">
+            <img ng-src="{{ photo.thumbnail }}">
+          </div>
+          <div ng-if="photo != photo.thumbnail">
+            <img ng-src="{{ photo.url }}">
+          </div>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

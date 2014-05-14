@@ -1,0 +1,183 @@
+
+.fade-bar {
+  height: 20px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  opacity: 0;
+  background-color: #000;
+}
+
+.ionic-contrib-blur {
+  overflow: hidden;
+	position:absolute;
+  width: 100%;
+	top:0;
+	left:0;
+	right:0;
+	-webkit-filter:blur(20px);
+	opacity:.25;
+  z-index: 1;
+}
+
+.bar-frosted {
+  background-color: $bg; // was #f7f7f7
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.no-header {
+  top: 0;
+}
+
+.bar .button {
+  z-index: 2;
+}
+
+body, .pane, .view {
+	background-color: $bg;
+  overflow: hidden;
+}
+
+
+.bar .button.button-icon .icon:before,
+.bar .button.button-icon:before,
+.bar .button.button-icon.icon-left:before,
+.bar .button.button-icon.icon-right:before {
+	font-size: 24px;
+}
+
+.bar.bar-dark {
+  background-color: $bg;
+  @include clearfix();
+
+  &.bar-header {
+    border-bottom: 1px solid $border-color;
+  }
+
+  .button.right {
+    position: absolute;
+    right: 0;
+  }
+  .button.button-clear {
+    color: $header-button-color;
+  }
+  .button.button-icon {
+    border: 0 none;
+    padding: 0 5px;
+    line-height: 32px;
+  }
+  button.no-padding {
+    padding: 0;
+    border: 0 none;
+  }
+  .button.button-smaller .icon:before,
+  .button.button-smaller:before,
+  .button.button-smaller.icon-left:before,
+  .button.button-smaller.icon-right:before {
+    font-size: 21px;
+  }
+  .button-toggle-deselected {
+    opacity: 0.5;
+  }
+}
+
+.tabs-dark > .tabs, .tabs.tabs-dark {
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  border-top-color: $border-color !important;
+  border-color: $border-color;
+  background-color: $bg;
+  background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%);
+  color: #fff;
+}
+
+
+.item-input-wrapper {
+  background-color: $input-bg;
+}
+.item-input-inset .item-input-wrapper input {
+  background-color: transparent;
+}
+.placeholder-icon {
+  color: $input-text-color;
+}
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  color: $input-text-color;
+}
+
+.item {
+  background-color: transparent;
+  border-color: $border-color;
+  color: $list-item-text-color;
+
+  a {
+    color: $list-item-text-color;
+  }
+}
+
+
+.item-divider {
+  @extend .caps;
+  font-weight: normal;
+  font-size: 14px;
+  color: $list-item-divider-text-color;
+}
+
+.item-complex .item-content,
+.item-radio .item-content {
+  background-color: $list-item-bg;
+}
+.item-radio input:checked ~ .item-content {
+  background-color: $list-item-bg;
+}
+
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content {
+  background-color: lighten($list-item-bg, 5%);
+  border-color: lighten($border-color, 5%);
+}
+
+
+.about-app {
+	text-align: center;
+	color: #fff;
+	font-size: 13px;
+}
+.about-logo {
+	padding: 25px 0 20px;
+}
+.handcrafted-by-maven {
+	line-height: 25px;
+	opacity: 0.5;
+	border-top: 1px solid rgba(255, 255, 255, 0.4);
+	margin: 15px 35px;
+
+	hr {
+		opacity: 0.4;
+		border-color: #fff;
+		margin: 0;
+	}
+	img {
+		margin-left: 2px;
+		vertical-align: middle;
+	}
+}

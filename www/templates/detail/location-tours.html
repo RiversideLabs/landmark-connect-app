@@ -1,0 +1,27 @@
+<ion-view title="{{navTitle}}">
+  <ion-content has-header="true" class="detail-view tours" ng-class="{fade:fade}" on-scroll="checkScroll()">
+    <ion-list>
+      <div class="item item-divider" ng-hide="(location.tours | filter:{type:'video'}).length == 0">
+        Video Tours
+      </div>
+<!--       <ion-item  ng-repeat="tour in location.tours | filter:{type:'video'}" type="item-text-wrap" href="#/app/loc/{{location.id}}/tour/v/{{tour.id}}">
+        {{tour.title}}
+      </ion-item> -->
+      <ion-item  ng-repeat="tour in location.tours | filter:{type:'video'}" type="item-text-wrap" href="{{trustSrc(tour.url)}}">
+        {{tour.title}}
+      </ion-item>
+      <div class="item item-divider" ng-hide="(location.tours | filter:{type:'audio'}).length == 0">
+        Audio Tours
+      </div>
+<!--       <ion-item ng-repeat="tour in location.tours | filter:{type:'audio'}" type="item-text-wrap" href="#/app/loc/{{location.id}}/tour/a/{{tour.id}}">
+        {{tour.title}}
+      </ion-item> -->
+      <ion-item ng-repeat="tour in location.tours | filter:{type:'audio'}" type="item-text-wrap" href="{{trustSrc(tour.url)}}">
+        {{tour.title}}
+      </ion-item>
+      <div class="item item-divider" ng-show="(location.tours).length == 0">
+        No tours currently available
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

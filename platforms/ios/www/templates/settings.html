@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-content has-header="true">
+    <div class="list">
+      <div class="item item-divider">
+        Sort Options:
+      </div>
+      <ion-radio ng-repeat="item in sortLocList"
+                 ng-value="item.value"
+                 ng-model="$storage.sortLoc">
+        {{ item.text }}
+      </ion-radio>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view title="{{navTitle}}">
+  <ion-content has-header="true" scroll="false" class="detail-view audio-player" ng-class="{fade:fade}" on-scroll="checkScroll()">
+    <p style="color:#ffffff;">AUDIO PLAYER</p>
+    <p style="color:#ffffff;">Title: {{tour.title}}</p>
+    <button class="btn large" ng-click="aPlayer.playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');">Play Audio</button>
+    <button class="btn large" ng-click="aPlayer.pauseAudio();">Pause Playing Audio</button>
+    <button class="btn large" ng-click="aPlayer.stopAudio();">Stop Playing Audio</button>
+    <p id="audio_position"></p>
+  </ion-content>
+</ion-view>
