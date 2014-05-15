@@ -156,6 +156,17 @@ input[type="color"] {
   border-color: lighten($border-color, 5%);
 }
 
+.favorite-result-item,
+.visited-result-item {
+  .button .icon:before,
+  .button.icon:before,
+  .button.icon-left:before,
+  .button.icon-right:before {
+    line-height: 50px;
+  }
+}
+
+
 
 .about-app {
 	text-align: center;

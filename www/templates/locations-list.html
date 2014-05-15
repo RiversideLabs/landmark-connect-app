@@ -15,7 +15,7 @@
       <div class="item item-divider">
         YOUR LOC: {{$storage.currentLocation}}
       </div><!--href="#/location/{{loc.id}}/details"-->
-      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc" type="item-text-wrap" href="#/app/loc/{{loc.id}}/detail" style="background-image:url('{{loc.photos.0.url}}');">
+      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc" type="item-text-wrap" ng-href="#/app/loc/{{loc.id}}/detail" style="background-image:url('{{loc.photos.0.url}}');">
         <div class="location-title">
           <p>{{loc.name}}<br>(LocID: {{loc.id}})</p>
           <span class="distance-indicator" ng-show="locations.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
@@ -24,7 +24,7 @@
         <ion-option-button ng-click="unFavorite(loc)" ng-show="isFavorite(loc)" class="button-favorite active"><i class="icon ion-ios7-star"></i></ion-option-button>
         <ion-option-button ng-click="makeVisited(loc)" ng-hide="isVisited(loc)" class="button-visited"><i class="icon ion-ios7-checkmark-outline"></i></ion-option-button>
         <ion-option-button ng-click="unVisit(loc)" ng-show="isVisited(loc)" class="button-visited active"><i class="icon ion-ios7-checkmark"></i></ion-option-button>
-        <ion-option-button ng-click="#">
+        <ion-option-button ng-click="getDirections(loc)">
           Directions
         </ion-option-button>
       </ion-item>

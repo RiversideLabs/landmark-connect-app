@@ -17,7 +17,7 @@
       <ion-item class="item-divider">
         Search Results:
       </ion-item>
-      <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:name" ng-show="([loc] | filter:search).length > 0" type="item-text-wrap" href="#/location/{{loc.id}}/details">
+      <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:name" ng-show="([loc] | filter:search).length > 0" type="item-text-wrap" href="#/app/loc/{{loc.id}}/detail">
         {{loc.name}}
       </ion-item>
       <p class="no-results" ng-hide="([loc] | filter:search).length">Nothing here!</p>

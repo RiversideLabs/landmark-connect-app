@@ -7555,6 +7555,16 @@ input[type="color"] {
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2); }
 
+.favorite-result-item .button .icon:before,
+.favorite-result-item .button.icon:before,
+.favorite-result-item .button.icon-left:before,
+.favorite-result-item .button.icon-right:before,
+.visited-result-item .button .icon:before,
+.visited-result-item .button.icon:before,
+.visited-result-item .button.icon-left:before,
+.visited-result-item .button.icon-right:before {
+  line-height: 50px; }
+
 .about-app {
   text-align: center;
   color: #fff;

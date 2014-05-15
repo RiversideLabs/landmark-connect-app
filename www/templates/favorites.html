@@ -1,5 +1,10 @@
 <ion-view>
   <ion-content>
-    <p style="color:white">placeholder: FAVORITES</p>
+    <ion-list class="favorites-list">
+      <ion-item class="favorite-result-item" ng-repeat="loc in locations" type="item-text-wrap" ng-show="isFavorite(loc)" ng-href="#/app/loc/{{loc.id}}/detail">
+        {{loc.name}}
+        <ion-option-button ng-click="unFavorite(loc)" ng-show="isFavorite(loc)" class="button-assertive button-favorite"><i class="icon ion-minus-circled"></i></ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

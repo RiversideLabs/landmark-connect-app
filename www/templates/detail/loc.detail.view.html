@@ -1,5 +1,12 @@
 <ion-view hide-nav-bar='false' hide-back-button='false'>
-  <ion-nav-bar class='nav-title-slide-ios7 bar-dark'>
+  <ion-nav-bar class='nav-title-slide-ios7 bar-dark' ng-controller='MainCtrl'>
+    <!-- <ion-nav-back-button class='button-icon ion-ios7-arrow-left'>
+    </ion-nav-back-button> -->
+    <ion-nav-buttons side="left">
+      <button class="button-clear no-padding">
+        <a class="button button-icon icon ion-ios7-arrow-left" href="#/app/loc/all"></a>
+      </button>
+    </ion-nav-buttons>
     <ion-nav-buttons side="right">
       <button ng-click="makeFavorite(location)" ng-hide="isFavorite(location)" class="button-clear no-padding button-favorite">
         <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-star-outline"></i>

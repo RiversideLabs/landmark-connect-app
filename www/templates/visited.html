@@ -1,5 +1,10 @@
 <ion-view>
   <ion-content>
-    <p style="color:white">placeholder: VISITED</p>
+    <ion-list class="visited-list">
+      <ion-item class="visited-result-item" ng-repeat="loc in locations" type="item-text-wrap" ng-show="isVisited(loc)" ng-href="#/app/loc/{{loc.id}}/detail">
+        {{loc.name}}
+        <ion-option-button ng-click="unVisit(loc)" ng-show="isVisited(loc)" class="button-assertive button-visited"><i class="icon ion-minus-circled"></i></ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

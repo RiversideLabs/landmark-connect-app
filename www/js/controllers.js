@@ -1,7 +1,7 @@
 angular.module('landmarkConnect.controllers', [])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService) {
   $scope.$storage = $localStorage.$default({
     sortLoc: "name",
     favorites: [],
@@ -42,6 +42,7 @@ angular.module('landmarkConnect.controllers', [])
   }
   // --- END Set / Unset / Check Visited & Favorites ---
 
+
   ionic.Platform.ready(function(){
     console.log("Cordova is ready");
     // Add device specific stuff here
@@ -57,13 +58,22 @@ angular.module('landmarkConnect.controllers', [])
   }
 })
 
-.controller('SettingsCtrl', function ($scope, $localStorage, $ionicNavBarDelegate) {
+.controller('SettingsCtrl', function ($scope, $localStorage, $ionicNavBarDelegate, LocationsService) {
   $scope.navTitle = "Settings";
   $scope.$storage = $localStorage;
 
   $scope.goBack = function() {
     $ionicNavBarDelegate.back();
   };
+
+  $scope.locations = [];
+  $scope.locations = LocationsService.all();
+
+  $scope.favorites = $scope.$storage.favorites;
+  $scope.visited = $scope.$storage.visited;
+
+  console.log("favs: " + $scope.favorites);
+  console.log("vis: " + $scope.visited);
 
   $scope.sortLocList = [
     { text: "Sort By Name", value: "name" },
@@ -74,15 +84,15 @@ angular.module('landmarkConnect.controllers', [])
 
 .controller('LocationsCtrl', function($scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, cordovaGeolocationService, LocationsService, $localStorage, geomath) {
   $scope.$storage = $localStorage;
-  $scope.locations = {};
+  $scope.locations = [];
   $scope.locations = LocationsService.all();
   $scope.locations.showDistance = false;
 
   // Method called on infinite scroll
+  // Saving this for later
   // Receives a "done" callback to inform the infinite scroll that we are done
   $scope.loadMore = function() {
     $timeout(function() {
-      // Placeholder for later
       $scope.$broadcast('scroll.infiniteScrollComplete');
     }, 1000);
   };
@@ -171,8 +181,6 @@ angular.module('landmarkConnect.controllers', [])
 
   $scope.distanceFromHere = function (_location, _startPoint) {
     var start = [33.9833,-117.3728];
-    console.log("startPoint: " + _startPoint);
-    console.log("currentLoc: " + $scope.$storage.currentLocation);
 
     if ($scope.$storage.currentLocation) {
       start = {
@@ -180,9 +188,8 @@ angular.module('landmarkConnect.controllers', [])
         longitude: $scope.$storage.currentLocation[1]
       };
     }
-    console.log("start: " + start);
+
     start = _startPoint || start;
-    console.log("start2: " + start);
 
     var end = {
       latitude: _location.location.lat,
@@ -203,12 +210,9 @@ angular.module('landmarkConnect.controllers', [])
 
   var pinImage = {
     url: 'assets/img/map-pin.png',
-    // This marker is 27 pixels wide by 80 pixels tall.
     size: new google.maps.Size(27, 80),
     scaledSize: new google.maps.Size(13.5, 40),
-    // The origin for this image is 0,0.
     origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
     anchor: new google.maps.Point(0, 40)
   };
 
@@ -277,12 +281,9 @@ angular.module('landmarkConnect.controllers', [])
 
     var currentLocImage = {
       url: 'assets/img/map-bluedot.png',
-      // This marker is 27 pixels wide by 80 pixels tall.
       size: new google.maps.Size(44, 44),
       scaledSize: new google.maps.Size(22, 22),
-      // The origin for this image is 0,0.
       origin: new google.maps.Point(0,0),
-      // The anchor for this image is the base of the flagpole at 0,32.
       anchor: new google.maps.Point(0, 22)
     };
 
@@ -334,12 +335,17 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.name;
 
   $scope.fade = true;
   $scope.$storage = $localStorage;
+
+  //$ionicNavBarDelegate.showBackButton(show); // seems to produce a blank screen
+  $scope.goBack = function() {
+    $ionicNavBarDelegate.back();
+  };
 
   $scope.checkScroll = function() {
     $timeout( function() {
