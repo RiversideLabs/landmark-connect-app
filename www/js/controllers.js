@@ -18,6 +18,30 @@ angular.module('landmarkConnect.controllers', [])
     return $sce.trustAsResourceUrl(src);
   }
 
+  // --- Set / Unset / Check Visited & Favorites ---
+  $scope.makeFavorite = function(loc) {
+    $scope.$storage.favorites.push(loc.id);
+  }
+  $scope.unFavorite = function(loc) {
+    var index = $scope.$storage.favorites.indexOf(loc.id);
+    $scope.$storage.favorites.splice(index,1);
+  }
+  $scope.isFavorite = function(loc) {
+    return $scope.$storage.favorites.indexOf(loc.id) >= 0;
+  }
+
+  $scope.makeVisited = function(loc) {
+    $scope.$storage.visited.push(loc.id);
+  }
+  $scope.unVisit = function(loc) {
+    var index = $scope.$storage.visited.indexOf(loc.id);
+    $scope.$storage.visited.splice(index,1);
+  }
+  $scope.isVisited = function(loc) {
+    return $scope.$storage.visited.indexOf(loc.id) >= 0;
+  }
+  // --- END Set / Unset / Check Visited & Favorites ---
+
   ionic.Platform.ready(function(){
     console.log("Cordova is ready");
     // Add device specific stuff here
@@ -82,10 +106,10 @@ angular.module('landmarkConnect.controllers', [])
 
       if(scrollPos.top > r) {
         $scope.showscrollbtn = true;
-        console.log("show it");
+        console.log("show scroll to top btn");
       } else {
         $scope.showscrollbtn = false;
-        console.log("don't show it");
+        console.log("don't show scroll to top btn");
       }
       $scope.$apply();
     });
@@ -145,9 +169,10 @@ angular.module('landmarkConnect.controllers', [])
   }, 500);
 
 
-
-  $scope.distanceFromHere = function (_item, _startPoint) {
-    var start = null;
+  $scope.distanceFromHere = function (_location, _startPoint) {
+    var start = [33.9833,-117.3728];
+    console.log("startPoint: " + _startPoint);
+    console.log("currentLoc: " + $scope.$storage.currentLocation);
 
     if ($scope.$storage.currentLocation) {
       start = {
@@ -155,11 +180,13 @@ angular.module('landmarkConnect.controllers', [])
         longitude: $scope.$storage.currentLocation[1]
       };
     }
+    console.log("start: " + start);
     start = _startPoint || start;
+    console.log("start2: " + start);
 
     var end = {
-    latitude: _item.location.lat,
-    longitude: _item.location.lng
+      latitude: _location.location.lat,
+      longitude: _location.location.lng
     };
 
     var num = geomath.calculateDistance(start, end);
@@ -307,11 +334,13 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, AudioService, $ionicLoading, $ionicPopup, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.name;
 
   $scope.fade = true;
+  $scope.$storage = $localStorage;
+
   $scope.checkScroll = function() {
     $timeout( function() {
       var scrollView = $ionicScrollDelegate.getScrollView();
@@ -333,6 +362,30 @@ angular.module('landmarkConnect.controllers', [])
       $scope.$apply();
     });
   };
+
+  // --- Set / Unset / Check Visited & Favorites ---
+  $scope.makeFavorite = function(loc) {
+    $scope.$storage.favorites.push(loc.id);
+  }
+  $scope.unFavorite = function(loc) {
+    var index = $scope.$storage.favorites.indexOf(loc.id);
+    $scope.$storage.favorites.splice(index,1);
+  }
+  $scope.isFavorite = function(loc) {
+    return $scope.$storage.favorites.indexOf(loc.id) >= 0;
+  }
+
+  $scope.makeVisited = function(loc) {
+    $scope.$storage.visited.push(loc.id);
+  }
+  $scope.unVisit = function(loc) {
+    var index = $scope.$storage.visited.indexOf(loc.id);
+    $scope.$storage.visited.splice(index,1);
+  }
+  $scope.isVisited = function(loc) {
+    return $scope.$storage.visited.indexOf(loc.id) >= 0;
+  }
+  // --- END Set / Unset / Check Visited & Favorites ---
 
 
   // --- TOURS -----
