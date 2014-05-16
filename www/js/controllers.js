@@ -140,7 +140,7 @@ angular.module('landmarkConnect.controllers', [])
   };
 
   $timeout( function() {
-
+    console.log($scope.$storage.currentLocation);
     if ($scope.$storage.currentLocation) {
       $scope.locations.showDistance=true;
       $scope.locations = LocationsService.all();

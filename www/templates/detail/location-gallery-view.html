@@ -2,13 +2,24 @@
   <ion-content zoomable="true" overflow-scroll="true" class="detail-view photo-view">
     <ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
       <ion-slide ng-repeat="photo in location.photos">
+        <!-- <ion-scroll direction="['x', 'y']" class="padding fill-container photo">
+          <div id="container" ng-style="containerStyle">
+            <img id="image-scrollable" zoomable ng-src="{{ photo.url }}" class="scaled">
+          </div>
+        </ion-scroll> -->
         <div class="photo">
-          <img zoomable ng-src="{{ photo.url }}">
+          <img id="image-scrollable" zoomable zoomable ng-src="{{ photo.url }}" class="scaled">
         </div>
-<!--         <ion-content ng-hide="!photo.caption" class="caption">
+<!--    <ion-content ng-hide="!photo.caption" class="caption">
           {{photo.caption}}
         </ion-content> -->
       </ion-slide>
     </ion-slide-box>
   </ion-content>
 </ion-view>
+
+<!--<ion-scroll direction="['x', 'y']" class="padding fill-container has-header">
+  <div id="container" ng-style="containerStyle">
+    <img id="image-scrollable" zoomable ng-src="images/{{type.typeName}}.jpg" class="scaled">
+  </div>
+</ion-scroll>-->

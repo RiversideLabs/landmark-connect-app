@@ -4,8 +4,8 @@
     <div id="search-box" class="bar bar-header bar-dark item-input-inset" ng-show="search.showSearch">
       <div class="item-input-wrapper">
         <i class="icon ion-ios7-search placeholder-icon"></i>
-        <input type="search" placeholder="Search" ng-model="locations.name" autocorrect="off">
-        <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
+        <input type="search" placeholder="Search" ng-model="searchQuery.name" autocorrect="off">
+        <i ng-if="searchQuery.length" class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
       </div>
     </div>
     <ion-list class="locations-list">
@@ -15,7 +15,7 @@
       <div class="item item-divider">
         YOUR LOC: {{$storage.currentLocation}}
       </div><!--href="#/location/{{loc.id}}/details"-->
-      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc" type="item-text-wrap" ng-href="#/app/loc/{{loc.id}}/detail" style="background-image:url('{{loc.photos.0.url}}');">
+      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc | filter: searchQuery" type="item-text-wrap" ng-href="#/app/loc/{{loc.id}}/detail" style="background-image:url('{{loc.photos.0.url}}');">
         <div class="location-title">
           <p>{{loc.name}}<br>(LocID: {{loc.id}})</p>
           <span class="distance-indicator" ng-show="locations.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>

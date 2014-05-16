@@ -31,10 +31,10 @@ angular.module('landmarkConnect.directives', [])
   }
 })
 
-.directive('zoomable', function($ionicGesture) {
-  console.log("zoom");
+.module('eAlgorithm').directive('zoomable', function($timeout, $ionicGesture) {
   return {
     restrict: 'A',
+    scope: true,
     link: function($scope, $element, $attrs) {
       var minHeight, minWidth, maxHeight, maxWidth;
 
@@ -49,10 +49,12 @@ angular.module('landmarkConnect.directives', [])
 
       // pinch to scale
       var handlePinch = function(e) {
+        e.gesture.srcEvent.preventDefault();
         $scope.$apply(function() {
           TweenMax.set($element, { scale: e.gesture.scale });
         });
       };
+      handlePinch = ionic.animationFrameThrottle(handlePinch);
       var pinchGesture = $ionicGesture.on('pinch', handlePinch, $element);
 
       // resize after done
@@ -64,9 +66,11 @@ angular.module('landmarkConnect.directives', [])
         newHeight = Math.round(dimensions.height);
         newWidth = Math.round(dimensions.width);
 
+        // upper bounds (dictated by naturalHeight and naturalWidth of image)
         newHeight = Math.min(newHeight, maxHeight);
         newWidth = Math.min(newWidth, maxWidth);
 
+        // lower bounds (dictacted by screen)
         newHeight = Math.max(newHeight, minHeight);
         newWidth = Math.max(newWidth, minWidth);
 
@@ -74,14 +78,14 @@ angular.module('landmarkConnect.directives', [])
           TweenMax.set($element, { clearProps: 'scale' });
           $scope.containerStyle.height = newHeight + 'px';
           $scope.containerStyle.width = newWidth + 'px';
-        })
+        });
       };
-      $ionicGesture.on('transformend', handleTransformEnd, $element);
+      var resizeGesture = $ionicGesture.on('transformend', handleTransformEnd, $element);
 
       // cleanup
       $scope.$on('$destroy', function() {
-        $ionicGesture.off(handlePinch, 'pinch', $element);
-        $ionicGesture.off(handleTransformEnd, 'transformend', $element);
+        $ionicGesture.off(pinchGesture, 'pinch', $element);
+        $ionicGesture.off(resizeGesture, 'transformend', $element);
       });
     }
   };
