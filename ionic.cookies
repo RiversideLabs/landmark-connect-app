@@ -1,0 +1,21 @@
+{
+  "cookies": [
+    {
+      "str": "csrftoken=ddyOQNnTlhW041pUr52WYHDVYmup256a; expires=Fri, 15-May-2015 22:25:11 GMT; Max-Age=31449600; Path=/",
+      "name": "csrftoken",
+      "value": "ddyOQNnTlhW041pUr52WYHDVYmup256a",
+      "expires": "2015-05-15T22:25:11.000Z",
+      "max-age": "31449600",
+      "path": "/"
+    },
+    {
+      "str": "sessionid=va6wfv5g67gmegiueq2ykuq8fxcy6xyd; expires=Fri, 30-May-2014 22:25:11 GMT; httponly; Max-Age=1209600; Path=/",
+      "name": "sessionid",
+      "value": "va6wfv5g67gmegiueq2ykuq8fxcy6xyd",
+      "expires": "2014-05-30T22:25:11.000Z",
+      "httpOnly": true,
+      "max-age": "1209600",
+      "path": "/"
+    }
+  ]
+}

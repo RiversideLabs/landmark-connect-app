@@ -171,7 +171,7 @@
 
 
 
-.slider, .photo {
+.slider, .scroll-view, .photo {
   height: 100%;
 }
 
@@ -184,8 +184,14 @@
   }
   img {
     @include vertical-align;
-    max-width: 100%;
-    height: auto;
-    -webkit-transform-origin: 0 0;
+    //max-width: 100%;
+    //height: auto;
+    //-webkit-transform-origin: 0 0;
   }
+}
+
+.scaled {
+  max-width: 100%;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
 }

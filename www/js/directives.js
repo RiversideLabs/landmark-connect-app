@@ -1,17 +1,38 @@
 angular.module('landmarkConnect.directives', [])
 
-.directive('videoLoader', function(){
-  return function (scope, element, attrs){
-    //console.log(scope.url);
-    scope.$watch("url",  function(newValue, oldValue){ //watching the scope url value
-      element[0].children[0].attributes[3].value=newValue; //set the URL on the src attribute
-      element[0].load();
-      element[0].play();
-    }, true);
-    scope.$watch("showFlag",  function(newValue, oldValue){
-      if (!newValue) // if the showFlag is false, stop playing the video (modal was closed)
-        element[0].pause();
-    }, true);
+.directive('headerShrink', function($document) {
+  var fadeAmt;
+
+  var shrink = function(header, content, amt, max) {
+    amt = Math.min(44, amt);
+    fadeAmt = 1 - amt / 44;
+    ionic.requestAnimationFrame(function() {
+      header.style[ionic.CSS.TRANSFORM] = 'translate3d(0, -' + amt + 'px, 0)';
+      for(var i = 0, j = header.children.length; i < j; i++) {
+        header.children[i].style.opacity = fadeAmt;
+      }
+    });
+  };
+
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attr) {
+      var starty = $scope.$eval($attr.headerShrink) || 0;
+      var shrinkAmt;
+
+      var header = $document[0].body.querySelector('.bar-header');
+      var headerHeight = header.offsetHeight;
+
+      $element.bind('scroll', function(e) {
+        if(e.detail.scrollTop > starty) {
+          // Start shrinking
+          shrinkAmt = headerHeight - Math.max(0, (starty + headerHeight) - e.detail.scrollTop);
+          shrink(header, $element[0], shrinkAmt, headerHeight);
+        } else {
+          shrink(header, $element[0], 0, headerHeight);
+        }
+      });
+    }
   }
 })
 
@@ -31,7 +52,31 @@ angular.module('landmarkConnect.directives', [])
   }
 })
 
-.module('eAlgorithm').directive('zoomable', function($timeout, $ionicGesture) {
+.directive('photo', function ($window) {
+  return {
+    link: function ($scope, $element, $attr) {
+      var size = ($window.outerWidth / 4) - 2;
+      $element.css('width', size + 'px');
+    }
+  };
+})
+
+.directive('videoLoader', function(){
+  return function (scope, element, attrs){
+    //console.log(scope.url);
+    scope.$watch("url",  function(newValue, oldValue){ //watching the scope url value
+      element[0].children[0].attributes[3].value=newValue; //set the URL on the src attribute
+      element[0].load();
+      element[0].play();
+    }, true);
+    scope.$watch("showFlag",  function(newValue, oldValue){
+      if (!newValue) // if the showFlag is false, stop playing the video (modal was closed)
+        element[0].pause();
+    }, true);
+  }
+})
+
+.directive('zoomable', function($timeout, $ionicGesture) {
   return {
     restrict: 'A',
     scope: true,

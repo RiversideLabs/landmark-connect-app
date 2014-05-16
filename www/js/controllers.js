@@ -1,7 +1,7 @@
 angular.module('landmarkConnect.controllers', [])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal) {
   $scope.$storage = $localStorage.$default({
     sortLoc: "name",
     favorites: [],
@@ -42,6 +42,13 @@ angular.module('landmarkConnect.controllers', [])
   }
   // --- END Set / Unset / Check Visited & Favorites ---
 
+  $ionicModal.fromTemplateUrl('search-modal.html', function(modal) {
+    $scope.modalSearch = modal;
+  }, {
+    // Use our scope for the scope of the modal to keep it simple
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
 
   ionic.Platform.ready(function(){
     console.log("Cordova is ready");
@@ -79,6 +86,21 @@ angular.module('landmarkConnect.controllers', [])
     { text: "Sort By Name", value: "name" },
     { text: "Sort By Distance", value: "distanceFromHere" }
   ];
+})
+
+.controller('SearchCtrl', function ($scope, $localStorage, LocationsService) {
+  $scope.$storage = $localStorage;
+  $scope.locations = [];
+  $scope.locations = LocationsService.all();
+
+  $scope.closeSearch = function() {
+	  var iF = document.getElementById("searchBox");
+	  iF.blur();
+	  $scope.modalSearch.hide();
+  };
+  $scope.clearSearch = function() {
+    $scope.search = '';
+  };
 })
 
 
@@ -404,6 +426,11 @@ angular.module('landmarkConnect.controllers', [])
   angular.forEach(location.photos, function(photo, index){
     $scope.photos.push(photo);
   });
+
+  $scope.containerStyle = {
+    width: '',
+    height: ''
+  };
 
   var delegate = $ionicScrollDelegate.$getByHandle('photo-gallery');
 

@@ -7454,7 +7454,7 @@ a.button {
 .bar .button {
   z-index: 2; }
 
-body, .pane, .view {
+body, .pane, .view, .modal {
   background-color: #1c1c1c;
   overflow: hidden; }
 
@@ -7794,7 +7794,7 @@ input[type="color"] {
     #photo-gallery .photo:nth-of-type(even) .photo-spacing {
       right: 6px; }
 
-.slider, .photo {
+.slider, .scroll-view, .photo {
   height: 100%; }
 
 .slider .photo {
@@ -7806,7 +7806,10 @@ input[type="color"] {
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.scaled {
   max-width: 100%;
-  height: auto;
-  -webkit-transform-origin: 0 0; }
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  /* Chrome, Safari, Opera */ }
