@@ -3798,7 +3798,8 @@ a.subdued {
   transform: none;
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
 
-.menu-open .scroll-content {
+.menu-open .menu-content .pane,
+.menu-open .menu-content .scroll-content {
   pointer-events: none; }
 
 .grade-b .menu-content,
