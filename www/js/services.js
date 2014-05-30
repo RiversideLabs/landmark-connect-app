@@ -14,7 +14,38 @@ angular.module('landmarkConnect.services', [])
   };
 })
 
-.factory('LocationsService', function($q) {
+.factory('LocationsService', [ '$http', function($http) {
+  var locations = [];
+  $http.get('http://localhost:3000/api/location/list').success(function(data){
+    locations = data.locations;
+  });
+  
+  return {
+    all: function() {
+      return locations;
+    },
+    getLocation: function(locationId) {
+      // Simple index lookup
+      for(var i=0, l=locations.length; i < l; i++) {
+        if(locations[i].id == locationId) {
+          return locations[i];
+        }
+      }
+      //return locations[locationId];
+    },
+    getTour: function(locationId, tourId) {
+      // Simple index lookup
+      return locations[locationId].tours[tourId];
+    },
+    getPhoto: function(locationId, photoId) {
+      // Simple index lookup
+      return locations[locationId].photos[photoId];
+    }
+  }
+  
+}])
+
+.factory('LocationsServiceBak', function($q) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
