@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.0-beta.5
+ * Ionic, v1.0.0-beta.6
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -19,7 +19,7 @@
 window.ionic = {
   controllers: {},
   views: {},
-  version: '1.0.0-beta.5'
+  version: '1.0.0-beta.6'
 };
 
 (function(ionic) {
@@ -2487,7 +2487,9 @@ var tapTouchFocusedInput;
 var tapLastTouchTarget;
 var tapTouchMoveListener = 'touchmove';
 
-var TAP_RELEASE_TOLERANCE = 6; // how much the coordinates can be off between start/end, but still a click
+// how much the coordinates can be off between start/end, but still a click
+var TAP_RELEASE_TOLERANCE = 6; // default tolerance
+var TAP_RELEASE_BUTTON_TOLERANCE = 50; // button elements should have a larger tolerance
 
 var tapEventListeners = {
   'click': tapClickGateKeeper,
@@ -2560,16 +2562,16 @@ ionic.tap = {
   ignoreScrollStart: function(e) {
     return (e.defaultPrevented) ||  // defaultPrevented has been assigned by another component handling the event
            (e.target.isContentEditable) ||
-           (/file|range/i).test(e.target.type) ||
+           (/^(file|range)$/i).test(e.target.type) ||
            (e.target.dataset ? e.target.dataset.preventScroll : e.target.getAttribute('data-prevent-default')) == 'true' || // manually set within an elements attributes
-           (!!(/object|embed/i).test(e.target.tagName));  // flash/movie/object touches should not try to scroll
+           (!!(/^(object|embed)$/i).test(e.target.tagName));  // flash/movie/object touches should not try to scroll
   },
 
   isTextInput: function(ele) {
     return !!ele &&
            (ele.tagName == 'TEXTAREA' ||
             ele.contentEditable === 'true' ||
-            (ele.tagName == 'INPUT' && !(/radio|checkbox|range|file|submit|reset/i).test(ele.type)) );
+            (ele.tagName == 'INPUT' && !(/^(radio|checkbox|range|file|submit|reset)$/i).test(ele.type)) );
   },
 
   isLabelWithTextInput: function(ele) {
@@ -2628,7 +2630,7 @@ ionic.tap = {
   },
 
   requiresNativeClick: function(ele) {
-    if(!ele || ele.disabled || (/file|range/i).test(ele.type) || (/object|video/i).test(ele.tagName) ) {
+    if(!ele || ele.disabled || (/^(file|range)$/i).test(ele.type) || (/^(object|video)$/i).test(ele.tagName) ) {
       return true;
     }
     if(ele.nodeType === 1) {
@@ -2643,8 +2645,9 @@ ionic.tap = {
     return false;
   },
 
-  setTolerance: function(val) {
-    TAP_RELEASE_TOLERANCE = val;
+  setTolerance: function(releaseTolerance, releaseButtonTolerance) {
+    TAP_RELEASE_TOLERANCE = releaseTolerance;
+    TAP_RELEASE_BUTTON_TOLERANCE = releaseButtonTolerance;
   }
 
 };
@@ -2709,7 +2712,7 @@ function tapMouseDown(e) {
     void 0;
     e.stopPropagation();
 
-    if( !ionic.tap.isTextInput(e.target) || tapLastTouchTarget !== e.target ) {
+    if( (!ionic.tap.isTextInput(e.target) || tapLastTouchTarget !== e.target) && !(/^(select|option)$/i).test(e.target.tagName) ) {
       // If you preventDefault on a text input then you cannot move its text caret/cursor.
       // Allow through only the text input default. However, without preventDefault on an
       // input the 300ms delay can change focus on inputs after the keyboard shows up.
@@ -2734,7 +2737,7 @@ function tapMouseUp(e) {
     return false;
   }
 
-  if( tapIgnoreEvent(e) || (/select|option/i).test(e.target.tagName) ) return;
+  if( tapIgnoreEvent(e) || (/^(select|option)$/i).test(e.target.tagName) ) return false;
 
   if( !tapHasPointerMoved(e) ) {
     tapClick(e);
@@ -2787,7 +2790,7 @@ function tapTouchEnd(e) {
   if( !tapHasPointerMoved(e) ) {
     tapClick(e);
 
-    if( (/select|option/i).test(e.target.tagName) ) {
+    if( (/^(select|option)$/i).test(e.target.tagName) ) {
       e.preventDefault();
     }
   }
@@ -2844,7 +2847,7 @@ function tapHandleFocus(ele) {
     // already is the active element and has focus
     triggerFocusIn = true;
 
-  } else if( (/input|textarea/i).test(ele.tagName) ) {
+  } else if( (/^(input|textarea)$/i).test(ele.tagName) ) {
     triggerFocusIn = true;
     ele.focus && ele.focus();
     ele.value = ele.value;
@@ -2866,7 +2869,7 @@ function tapHandleFocus(ele) {
 
 function tapFocusOutActive() {
   var ele = tapActiveElement();
-  if(ele && (/input|textarea|select/i).test(ele.tagName) ) {
+  if(ele && (/^(input|textarea|select)$/i).test(ele.tagName) ) {
     void 0;
     ele.blur();
   }
@@ -2911,8 +2914,10 @@ function tapHasPointerMoved(endEvent) {
   }
   var endCoordinates = getPointerCoordinates(endEvent);
 
-  return Math.abs(tapPointerStart.x - endCoordinates.x) > TAP_RELEASE_TOLERANCE ||
-         Math.abs(tapPointerStart.y - endCoordinates.y) > TAP_RELEASE_TOLERANCE;
+  var releaseTolerance = (endEvent.target.classList.contains('button') ? TAP_RELEASE_BUTTON_TOLERANCE : TAP_RELEASE_TOLERANCE);
+
+  return Math.abs(tapPointerStart.x - endCoordinates.x) > releaseTolerance ||
+         Math.abs(tapPointerStart.y - endCoordinates.y) > releaseTolerance;
 }
 
 function getPointerCoordinates(event) {
@@ -2954,8 +2959,9 @@ function tapTargetElement(ele) {
 }
 
 ionic.DomUtil.ready(function(){
+  var ng = typeof angular !== 'undefined' ? angular : null;
   //do nothing for e2e tests
-  if (!angular.scenario) {
+  if (!ng || (ng && !ng.scenario)) {
     ionic.tap.register(document);
   }
 });
@@ -3243,16 +3249,20 @@ ionic.DomUtil.ready(function(){
  * @name keyboard
  * @module ionic
  * @description
- * On both Android and iOS, Ionic will attempt to prevent the keyboard from obscuring inputs and 
- * focusable elements when it appears by scrolling them into view.  In order for this to work,
- * any focusable elements must be within a [Scroll View](http://ionicframework.com/docs/api/directive/ionScroll/)
- * or a directive such as [Content](http://ionicframework.com/docs/api/directive/ionContent/) that has a Scroll View.
+ * On both Android and iOS, Ionic will attempt to prevent the keyboard from
+ * obscuring inputs and focusable elements when it appears by scrolling them
+ * into view.  In order for this to work, any focusable elements must be within
+ * a [Scroll View](http://ionicframework.com/docs/api/directive/ionScroll/)
+ * or a directive such as [Content](http://ionicframework.com/docs/api/directive/ionContent/)
+ * that has a Scroll View.
  *
- * It will also attempt to prevent the native overflow scrolling on focus, which can cause layout issues such as 
- * pushing headers up and out of view.
+ * It will also attempt to prevent the native overflow scrolling on focus,
+ * which can cause layout issues such as pushing headers up and out of view.
  *
- * The keyboard fixes work best in conjunction with the [Ionic Keyboard Plugin](https://github.com/driftyco/ionic-plugins-keyboard),
- * although it will perform reasonably well without.  However, if you are using Cordova there is no reason not to use the plugin.
+ * The keyboard fixes work best in conjunction with the 
+ * [Ionic Keyboard Plugin](https://github.com/driftyco/ionic-plugins-keyboard),
+ * although it will perform reasonably well without.  However, if you are using
+ * Cordova there is no reason not to use the plugin.
  *
  * ### Hide when keyboard shows
  * 
@@ -3263,14 +3273,25 @@ ionic.DomUtil.ready(function(){
  *   <div id="google-map"></div>
  * </div>
  * ```
- * 
+ * ----------
+ *
+ * ### Plugin Usage
+ * Information on using the plugin can be found at 
+ * [https://github.com/driftyco/ionic-plugins-keyboard](https://github.com/driftyco/ionic-plugins-keyboard).
+ *
+ * ---------- 
  *
  * ### Android Notes
- * - If your app is running in fullscreen, i.e. you have `<preference name="Fullscreen" value="true" />` in your `config.xml` file
- * you will need to set `ionic.Platform.isFullScreen = true` manually.
+ * - If your app is running in fullscreen, i.e. you have 
+ *   `<preference name="Fullscreen" value="true" />` in your `config.xml` file
+ *   you will need to set `ionic.Platform.isFullScreen = true` manually.
  *
  * - You can configure the behavior of the web view when the keyboard shows by setting 
- *   [android:windowSoftInputMode](http://developer.android.com/reference/android/R.attr.html#windowSoftInputMode) to either `adjustPan`, `adjustResize` or `adjustNothing` in your app's activity in `AndroidManifest.xml`. `adjustResize` is the recommended setting for Ionic, but if for some reason you do use `adjustPan` you will need to set `ionic.Platform.isFullScreen = true`.
+ *   [android:windowSoftInputMode](http://developer.android.com/reference/android/R.attr.html#windowSoftInputMode)
+ *   to either `adjustPan`, `adjustResize` or `adjustNothing` in your app's
+ *   activity in `AndroidManifest.xml`. `adjustResize` is the recommended setting
+ *   for Ionic, but if for some reason you do use `adjustPan` you will need to
+ *   set `ionic.Platform.isFullScreen = true`.
  *
  *   ```xml
  *   <activity android:windowSoftInputMode="adjustResize">
@@ -3278,16 +3299,13 @@ ionic.DomUtil.ready(function(){
  *   ```
  *
  * ### iOS Notes
- * - if you are not using the keyboard plugin, switching to inputs below the keyboard using the accessory bar will automatically use the native browser's
- * overflow scrolling and push headers out of view
+ * - If the content of your app (including the header) is being pushed up and
+ *   out of view on input focus, try setting `cordova.plugins.Keyboard.disableScroll(true)`.
+ *   This does **not** disable scrolling in the Ionic scroll view, rather it
+ *   disables the native overflow scrolling that happens automatically as a
+ *   result of focusing on inputs below the keyboard. 
  * 
  */
-
-/*
-IONIC KEYBOARD
----------------
-
-*/
 
 var keyboardViewportHeight = window.innerHeight;
 var keyboardIsOpen;
@@ -3307,6 +3325,10 @@ ionic.keyboard = {
 
 function keyboardInit() {
   if( keyboardHasPlugin() ) {
+    window.addEventListener('native.keyboardshow', keyboardNativeShow);
+    window.addEventListener('native.keyboardhide', keyboardFocusOut);
+
+    //deprecated
     window.addEventListener('native.showkeyboard', keyboardNativeShow);
     window.addEventListener('native.hidekeyboard', keyboardFocusOut);
   }
@@ -4367,12 +4389,15 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
           scrollBottomOffsetToTop = container.getBoundingClientRect().bottom;
           //distance from top of focused element to the bottom of the scroll view
-          var elementTopOffsetToScrollBottom = e.detail.elementTop - scrollBottomOffsetToTop; 
+          var elementTopOffsetToScrollBottom = e.detail.elementTop - scrollBottomOffsetToTop;
 
           var scrollTop = elementTopOffsetToScrollBottom  + scrollMidpointOffset;
-          ionic.tap.cloneFocusedInput(container, self);
-          self.scrollBy(0, scrollTop, true);
-          self.onScroll();
+
+          if (scrollTop > 0){
+            ionic.tap.cloneFocusedInput(container, self);
+            self.scrollBy(0, scrollTop, true);
+            self.onScroll();
+          }
         }, delay);
       }
 
@@ -4506,7 +4531,7 @@ ionic.views.Scroll = ionic.views.View.inherit({
       // Mouse Events
       var mousedown = false;
 
-      container.addEventListener("mousedown", function(e) {
+      self.mouseDown = function(e) {
         if ( ionic.tap.ignoreScrollStart(e) || e.target.tagName === 'SELECT' ) {
           return;
         }
@@ -4514,9 +4539,9 @@ ionic.views.Scroll = ionic.views.View.inherit({
 
         e.preventDefault();
         mousedown = true;
-      }, false);
+      };
 
-      document.addEventListener("mousemove", function(e) {
+      self.mouseMove = function(e) {
         if (!mousedown || e.defaultPrevented) {
           return;
         }
@@ -4524,9 +4549,9 @@ ionic.views.Scroll = ionic.views.View.inherit({
         self.doTouchMove(getEventTouches(e), e.timeStamp);
 
         mousedown = true;
-      }, false);
+      };
 
-      document.addEventListener("mouseup", function(e) {
+      self.mouseUp = function(e) {
         if (!mousedown) {
           return;
         }
@@ -4534,25 +4559,55 @@ ionic.views.Scroll = ionic.views.View.inherit({
         self.doTouchEnd(e.timeStamp);
 
         mousedown = false;
-      }, false);
+      };
 
-      var wheelShowBarFn = ionic.debounce(function() {
-        self.__fadeScrollbars('in');
-      }, 500, true);
+      self.mouseWheel = ionic.animationFrameThrottle(function(e) {
+        var scrollParent = ionic.DomUtil.getParentOrSelfWithClass(e.target, 'ionic-scroll');
+        if (scrollParent === self.__container) {
 
-      var wheelHideBarFn = ionic.debounce(function() {
-        self.__fadeScrollbars('out');
-      }, 100, false);
+          self.hintResize();
+          self.scrollBy(
+            e.wheelDeltaX/self.options.wheelDampen, 
+            -e.wheelDeltaY/self.options.wheelDampen
+          );
 
-      //For Firefox
-      document.addEventListener('mousewheel', onMouseWheel);
+          self.__fadeScrollbars('in');
+          clearTimeout(self.__wheelHideBarTimeout);
+          self.__wheelHideBarTimeout = setTimeout(function() {
+            self.__fadeScrollbars('out');
+          }, 100);
+        }
+      });
+
+      container.addEventListener("mousedown", self.mouseDown, false);
+      document.addEventListener("mousemove", self.mouseMove, false);
+      document.addEventListener("mouseup", self.mouseUp, false);
+      document.addEventListener('mousewheel', self.mouseWheel, false);
     }
-    function onMouseWheel(e) {
-      self.hintResize();
-      wheelShowBarFn();
-      self.scrollBy(e.wheelDeltaX/self.options.wheelDampen, -e.wheelDeltaY/self.options.wheelDampen);
-      wheelHideBarFn();
-    }
+  },
+
+  __removeEventHandlers: function() {
+    var container = this.__container;
+
+    container.removeEventListener('touchstart', self.touchStart);
+    document.removeEventListener('touchmove', self.touchMove);
+    document.removeEventListener('touchend', self.touchEnd);
+    document.removeEventListener('touchcancel', self.touchCancel);
+
+    container.removeEventListener("pointerdown", self.touchStart);
+    document.removeEventListener("pointermove", self.touchMove);
+    document.removeEventListener("pointerup", self.touchEnd);
+    document.removeEventListener("pointercancel", self.touchEnd);
+
+    container.removeEventListener("MSPointerDown", self.touchStart);
+    document.removeEventListener("MSPointerMove", self.touchMove);
+    document.removeEventListener("MSPointerUp", self.touchEnd);
+    document.removeEventListener("MSPointerCancel", self.touchEnd);
+
+    container.removeEventListener("mousedown", self.mouseDown);
+    document.removeEventListener("mousemove", self.mouseMove);
+    document.removeEventListener("mouseup", self.mouseUp);
+    document.removeEventListener('mousewheel', self.mouseWheel);
   },
 
   /** Create a scroll bar div with the given direction **/
@@ -5201,7 +5256,6 @@ ionic.views.Scroll = ionic.views.View.inherit({
     return self.zoomTo(self.__zoomLevel * change, false, pageX - self.__clientLeft, pageY - self.__clientTop);
 
   },
-
 
   /**
    * Touch start handler for scrolling support
@@ -7098,9 +7152,8 @@ ionic.views.Slider = ionic.views.View.inherit({
               Math.abs(delta.x) > width/2;      // or if slide amt is greater than half the width
 
         // determine if slide attempt is past start and end
-        var isPastBounds =
-              !index && delta.x > 0 |                    // if first slide and slide amt is greater than 0
-              index == slides.length - 1 && delta.x < 0; // or if last slide and slide amt is less than 0
+        var isPastBounds = (!index && delta.x > 0) ||      // if first slide and slide amt is greater than 0
+              (index == slides.length - 1 && delta.x < 0); // or if last slide and slide amt is less than 0
 
         if (options.continuous) isPastBounds = false;
 
@@ -7812,7 +7865,7 @@ ionic.views.Slider = ionic.views.View.inherit({
       var tf;
 
       if(typeof opts.curve === 'string') {
-        tf = ionic.Animation.TimingFn[opts.curve] || ionic.Animation.TimingFn['linear'];
+        tf = ionic.Animation.TimingFn[opts.curve] || ionic.Animation.TimingFn.linear;
         if(opts.curve.indexOf('cubic-bezier(') >= 0) {
           var parts = opts.curve.replace('cubic-bezier(', '').replace(')', '').split(',');
           tf = ionic.Animation.TimingFn['cubic-bezier'];
@@ -7937,7 +7990,7 @@ ionic.views.Slider = ionic.views.View.inherit({
  * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
  * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 (function(ionic) {
 
@@ -7952,24 +8005,24 @@ ionic.views.Slider = ionic.views.View.inherit({
   function B3(t) { return 3*t*(1-t)*(1-t); }
   function B4(t) { return (1-t)*(1-t)*(1-t); }
 
-  ionic.Animation = ionic.Animation || {}
+  ionic.Animation = ionic.Animation || {};
 
- 
-  /**
+
+  /*
    * JavaScript port of Webkit implementation of CSS cubic-bezier(p1x.p1y,p2x,p2y) by http://mck.me
    * http://svn.webkit.org/repository/webkit/trunk/Source/WebCore/platform/graphics/UnitBezier.h
    */
   ionic.Animation.Bezier = (function(){
     'use strict';
-   
-    /**
+
+    /*
      * Duration value to use when one is not specified (400ms is a common value).
      * @const
      * @type {number}
      */
     var DEFAULT_DURATION = 400;//ms
-   
-    /**
+
+    /*
      * The epsilon value we pass to UnitBezier::solve given that the animation is going to run over |dur| seconds.
      * The longer the animation, the more precision we need in the timing function result to avoid ugly discontinuities.
      * http://svn.webkit.org/repository/webkit/trunk/Source/WebCore/page/animation/AnimationBase.cpp
@@ -7977,8 +8030,8 @@ ionic.views.Slider = ionic.views.View.inherit({
     var solveEpsilon = function(duration) {
       return 1.0 / (200.0 * duration);
     };
-   
-    /**
+
+    /*
      * Defines a cubic-bezier curve given the middle two control points.
      * NOTE: first and last control points are implicitly (0,0) and (1,1).
      * @param p1x {number} X component of control point 1
@@ -7987,54 +8040,54 @@ ionic.views.Slider = ionic.views.View.inherit({
      * @param p2y {number} Y component of control point 2
      */
     var unitBezier = function(p1x, p1y, p2x, p2y) {
-    
+
       // private members --------------------------------------------
-   
+
       // Calculate the polynomial coefficients, implicit first and last control points are (0,0) and (1,1).
-   
-      /**
+
+      /*
        * X component of Bezier coefficient C
        * @const
        * @type {number}
        */
       var cx = 3.0 * p1x;
-   
-      /**
+
+      /*
        * X component of Bezier coefficient B
        * @const
        * @type {number}
        */
       var bx = 3.0 * (p2x - p1x) - cx;
-   
-      /**
+
+      /*
        * X component of Bezier coefficient A
        * @const
        * @type {number}
        */
       var ax = 1.0 - cx -bx;
-   
-      /**
+
+      /*
        * Y component of Bezier coefficient C
        * @const
        * @type {number}
        */
       var cy = 3.0 * p1y;
-   
-      /**
+
+      /*
        * Y component of Bezier coefficient B
        * @const
        * @type {number}
        */
       var by = 3.0 * (p2y - p1y) - cy;
-   
-      /**
+
+      /*
        * Y component of Bezier coefficient A
        * @const
        * @type {number}
        */
       var ay = 1.0 - cy - by;
-   
-      /**
+
+      /*
        * @param t {number} parametric timing value
        * @return {number}
        */
@@ -8042,24 +8095,24 @@ ionic.views.Slider = ionic.views.View.inherit({
         // `ax t^3 + bx t^2 + cx t' expanded using Horner's rule.
         return ((ax * t + bx) * t + cx) * t;
       };
-   
-      /**
+
+      /*
        * @param t {number} parametric timing value
        * @return {number}
        */
       var sampleCurveY = function(t) {
         return ((ay * t + by) * t + cy) * t;
       };
-   
-      /**
+
+      /*
        * @param t {number} parametric timing value
        * @return {number}
        */
       var sampleCurveDerivativeX = function(t) {
         return (3.0 * ax * t + 2.0 * bx) * t + cx;
       };
-   
-      /**
+
+      /*
        * Given an x value, find a parametric value it came from.
        * @param x {number} value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param epsilon {number} accuracy limit of t for the given x
@@ -8072,7 +8125,7 @@ ionic.views.Slider = ionic.views.View.inherit({
         var x2;
         var d2;
         var i;
-   
+
         // First try a few iterations of Newton's method -- normally very fast.
         for (t2 = x, i = 0; i < 8; i++) {
           x2 = sampleCurveX(t2) - x;
@@ -8085,19 +8138,19 @@ ionic.views.Slider = ionic.views.View.inherit({
           }
           t2 = t2 - x2 / d2;
         }
-   
+
         // Fall back to the bisection method for reliability.
         t0 = 0.0;
         t1 = 1.0;
         t2 = x;
-   
+
         if (t2 < t0) {
           return t0;
         }
         if (t2 > t1) {
           return t1;
         }
-   
+
         while (t0 < t1) {
           x2 = sampleCurveX(t2);
           if (Math.abs(x2 - x) < epsilon) {
@@ -8110,12 +8163,12 @@ ionic.views.Slider = ionic.views.View.inherit({
           }
           t2 = (t1 - t0) * 0.5 + t0;
         }
-   
+
         // Failure.
         return t2;
       };
-   
-      /**
+
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param epsilon {number} the accuracy of t for the given x
        * @return {number} the y value along the bezier curve
@@ -8123,10 +8176,10 @@ ionic.views.Slider = ionic.views.View.inherit({
       var solve = function(x, epsilon) {
         return sampleCurveY(solveCurveX(x, epsilon));
       };
-   
+
       // public interface --------------------------------------------
-   
-      /**
+
+      /*
        * Find the y of the cubic-bezier for a given x with accuracy determined by the animation duration.
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
@@ -8136,45 +8189,45 @@ ionic.views.Slider = ionic.views.View.inherit({
         return solve(x, solveEpsilon(+duration || DEFAULT_DURATION));
       };
     };
-   
+
     // http://www.w3.org/TR/css3-transitions/#transition-timing-function
     return {
-      /**
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
        * @return {number} the y value along the bezier curve
        */
       linear: unitBezier(0.0, 0.0, 1.0, 1.0),
-   
-      /**
+
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
        * @return {number} the y value along the bezier curve
        */
       ease: unitBezier(0.25, 0.1, 0.25, 1.0),
-   
-      /**
+
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
        * @return {number} the y value along the bezier curve
        */
       easeIn: unitBezier(0.42, 0, 1.0, 1.0),
-   
-      /**
+
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
        * @return {number} the y value along the bezier curve
        */
       easeOut: unitBezier(0, 0, 0.58, 1.0),
-   
-      /**
+
+      /*
        * @param x {number} the value of x along the bezier curve, 0.0 <= x <= 1.0
        * @param duration {number} the duration of the animation in milliseconds
        * @return {number} the y value along the bezier curve
        */
       easeInOut: unitBezier(0.42, 0, 0.58, 1.0),
-   
-      /**
+
+      /*
        * @param p1x {number} X component of control point 1
        * @param p1y {number} Y component of control point 1
        * @param p2x {number} X component of control point 2
@@ -8189,29 +8242,29 @@ ionic.views.Slider = ionic.views.View.inherit({
     };
   })();
 
-/**
+/*
  * Various fast approximations and alternates to cubic-bezier easing functions.
  * http://www.w3.org/TR/css3-transitions/#transition-timing-function
  */
 var Easing = (function(){
 	'use strict';
- 
-	/**
+
+	/*
 	 * @const
 	 */
 	var EASE_IN_OUT_CONST = 0.5 * Math.pow(0.5, 1.925);
- 
+
 	return {
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		linear: function(x) {
 			return x;
 		},
- 
-//		/**
+
+//		/*
 //		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 //		 * @return {number} the y value along the curve
 //		 */
@@ -8219,8 +8272,8 @@ var Easing = (function(){
 //			// TODO: find fast approximations
 //			return x;
 //		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
@@ -8228,24 +8281,24 @@ var Easing = (function(){
 			// very close approximation to cubic-bezier(0.42, 0, 1.0, 1.0)
 			return Math.pow(x, 1.685);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInQuadratic: function(x) {
 			return (x * x);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInCubic: function(x) {
 			return (x * x * x);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
@@ -8253,8 +8306,8 @@ var Easing = (function(){
 			// very close approximation to cubic-bezier(0, 0, 0.58, 1.0)
 			return 1 - Math.pow(1-x, 1.685);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
@@ -8262,8 +8315,8 @@ var Easing = (function(){
 			x -= 1;
 			return 1 - (x * x);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
@@ -8271,8 +8324,8 @@ var Easing = (function(){
 			x -= 1;
 			return 1 + (x * x * x);
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
@@ -8280,62 +8333,62 @@ var Easing = (function(){
 			// very close approximation to cubic-bezier(0.42, 0, 0.58, 1.0)
 			if (x < 0.5) {
 				return EASE_IN_OUT_CONST * Math.pow(x, 1.925);
-	
+
 			} else {
 				return 1 - EASE_IN_OUT_CONST * Math.pow(1-x, 1.925);
 			}
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInOutQuadratic: function(x) {
 			if (x < 0.5) {
 				return (2 * x * x);
-	
+
 			} else {
 				x -= 1;
 				return 1 - (2 * x * x);
 			}
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInOutCubic: function(x) {
 			if (x < 0.5) {
 				return (4 * x * x * x);
-	
+
 			} else {
 				x -= 1;
 				return 1 + (4 * x * x * x);
 			}
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInOutQuartic: function(x) {
 			if (x < 0.5) {
 				return (8 * x * x * x * x);
-	
+
 			} else {
 				x -= 1;
 				return 1 + (8 * x * x * x * x);
 			}
 		},
- 
-		/**
+
+		/*
 		 * @param x {number} the value of x along the curve, 0.0 <= x <= 1.0
 		 * @return {number} the y value along the curve
 		 */
 		easeInOutQuintic: function(x) {
 			if (x < 0.5) {
 				return (16 * x * x * x * x * x);
-	
+
 			} else {
 				x -= 1;
 				return 1 + (16 * x * x * x * x * x);
@@ -8382,7 +8435,7 @@ var Easing = (function(){
       anticipationStrength: 0,
       anticipationSize: 0
     };
-    
+
     ionic.extend(this, opts);
   };
 
@@ -8422,7 +8475,7 @@ var Easing = (function(){
       //return [t, v, At, frictionT, angle];
       return v;
     }
-  }
+  };
 
   ionic.Animation.Dynamics.Gravity = function(opts) {
     this.options = {
@@ -8490,8 +8543,8 @@ var Easing = (function(){
       }
       return _results;
     },
-    curve: function(a, b, H, t){ 
-      
+    curve: function(a, b, H, t){
+
       var L, c, t2;
       L = b - a;
       t2 = (2 / L) * t - 1 - (a * 2 / L);
@@ -8522,8 +8575,8 @@ var Easing = (function(){
       //return [t, v];
       return v;
     }
-    
-  }
+
+  };
 })(window);
 
 (function(window) {
@@ -8536,43 +8589,43 @@ var Easing = (function(){
     'spring': function(duration) {
       return function(t) {
         return ionic.Animation.Dynamics.Spring(t, duration);
-      }
+      };
     },
     'gravity': function(duration) {
       return function(t) {
         return ionic.Animation.Dynamics.Gravity(t, duration);
-      }
+      };
     },
     'linear': function(duration) {
       return function(t) {
         return ionic.Animation.Bezier.linear(t, duration);
-      }
+      };
     },
     'ease': function(duration) {
       return function(t) {
         return ionic.Animation.Bezier.ease(t, duration);
-      }
+      };
     },
     'ease-in': function(duration) {
       return function(t) {
         return ionic.Animation.Bezier.easeIn(t, duration);
-      }
+      };
     },
     'ease-out': function(duration) {
       return function(t) {
         return ionic.Animation.Bezier.easeOut(t, duration);
-      }
+      };
     },
     'ease-in-out': function(duration) {
       return function(t) {
         return ionic.Animation.Bezier.easeInOut(t, duration);
-      }
+      };
     },
     'cubic-bezier': function(x1, y1, x2, y2, duration) {
       var bz = ionic.Animation.Bezier.cubicBezier(x1, y1, x2, y2);//, t, duration);
       return function(t) {
         return bz(t, duration);
-      }
+      };
     }
   };
 })(window);
@@ -8614,7 +8667,7 @@ var Easing = (function(){
       });
     },
     curve: 'linear',
-    curveFn: ionic.Animation.TimingFn['linear'],
+    curveFn: ionic.Animation.TimingFn.linear,
     duration: 500,
     delay: 0,
     repeat: -1,
@@ -8658,7 +8711,7 @@ var Easing = (function(){
     _saveState: function(now, closure) {
       this._pauseState = {
         pausedAt: now,
-      }
+      };
       this._lastStepFn = closure;
       window.cancelAnimationFrame(closure);
     },
@@ -8670,7 +8723,7 @@ var Easing = (function(){
       // TODO: Verify this isn't totally stupid
       ionic.requestAnimationFrame(function() {
         self.start();
-      })
+      });
     },
 
     start: function() {
@@ -8687,7 +8740,7 @@ var Easing = (function(){
         repeat: this.repeat,
         autoReverse: this.autoReverse,
         dynamic: this.dynamic
-      }
+      };
 
       ionic.Animation.animationStarted(this);
 
@@ -8751,7 +8804,7 @@ var Easing = (function(){
         // Start fresh either way
         start = time();
         ionic.requestAnimationFrame(step);
-      }
+      };
 
 
       // This is the internal step method which is called every few milliseconds
@@ -8839,7 +8892,11 @@ var Easing = (function(){
           } else if(repeat === 0 && autoReverse) {
             perhapsAutoreverse();
           } else {
-            completedCallback && completedCallback(desiredFrames - (dropCounter / ((now - start) / millisecondsPerSecond)), self._animationId, percent === endPercent || duration == null);
+            completedCallback && completedCallback(
+              desiredFrames - (dropCounter / ((now - start) / millisecondsPerSecond)),
+              self._animationId,
+              percent === endPercent || duration === null
+            );
           }
         } else if (render) {
           lastFrame = now;
