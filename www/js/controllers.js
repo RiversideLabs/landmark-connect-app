@@ -160,45 +160,77 @@ angular.module('landmarkConnect.controllers', [])
       $ionicScrollDelegate.scrollTo(0, 44, false);
     }
   };
-
-  $timeout( function() {
-    console.log($scope.$storage.currentLocation);
-    if ($scope.$storage.currentLocation) {
-      $scope.locations.showDistance=true;
-      $scope.locations = LocationsService.all();
+  
+  var watchID = null;
+  
+  function onPositionSuccess(pos) {
+    console.log("successfully recieved position");
+    var coords = $scope.$storage.currentLocation = [
+      pos.coords.latitude,
+      pos.coords.longitude
+    ];
+    $scope.locations.showDistance=true;
+    $scope.locations = LocationsService.all();
+    $ionicLoading.hide();
+    adjustScroll();
+  }
+  function onPositionError(error) {
+    console.log("position error: " + error.message);
+    $ionicPopup.alert({
+      title: 'Unable to get location: ' + error.message
+    }).then(function(res) {
+      $scope.locations.showDistance=false;
+      $ionicLoading.hide();
       adjustScroll();
-    } else {
-      $ionicLoading.show({
-        content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
-        showBackdrop: false
-      });
+    });
+  }
+  ionic.Platform.ready(function(){
+    console.log("ready");
+    var watchOptions = { timeout: 30000 };
+    $ionicLoading.show({
+      content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
+      showBackdrop: false
+    });
+    watchID = navigator.geolocation.watchPosition(onPositionSuccess, onPositionError, watchOptions);
+  });
 
-      cordovaGeolocationService.watchPosition(function(pos) {
-        var coords = $scope.$storage.currentLocation = [
-          pos.coords.latitude,
-          pos.coords.longitude
-        ];
-        $scope.locations.showDistance=true;
-        $scope.locations = LocationsService.all();
-        $ionicLoading.hide();
-        adjustScroll();
-      }, function(error) {
-        $ionicPopup.alert({
-          title: 'Unable to get location: ' + error.message
-        }).then(function(res) {
-          $scope.locations.showDistance=false;
-          $ionicLoading.hide();
-          adjustScroll();
-        });
-      });
-    }
-
-
-    $timeout( function() {
-      adjustScroll();
-    }, 700);
-
-  }, 500);
+  // $timeout( function() {
+  //   console.log($scope.$storage.currentLocation);
+  //   if ($scope.$storage.currentLocation) {
+  //     $scope.locations.showDistance=true;
+  //     $scope.locations = LocationsService.all();
+  //     adjustScroll();
+  //   } else {
+  //     $ionicLoading.show({
+  //       content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
+  //       showBackdrop: false
+  //     });
+  //     cordovaGeolocationService.watchPosition(function(pos) {
+  //       var coords = $scope.$storage.currentLocation = [
+  //         pos.coords.latitude,
+  //         pos.coords.longitude
+  //       ];
+  //       $scope.locations.showDistance=true;
+  //       $scope.locations = LocationsService.all();
+  //       $ionicLoading.hide();
+  //       adjustScroll();
+  //     }, function(error) {
+  //       $ionicPopup.alert({
+  //         title: 'Unable to get location: ' + error.message
+  //       }).then(function(res) {
+  //         $scope.locations.showDistance=false;
+  //         $ionicLoading.hide();
+  //         adjustScroll();
+  //       });
+  //     });
+  //   }
+  // 
+  // 
+  //   $timeout( function() {
+  //     adjustScroll();
+  //   }, 700);
+  // 
+  // }, 500);
 
 
   $scope.distanceFromHere = function (_location, _startPoint) {
@@ -264,8 +296,8 @@ angular.module('landmarkConnect.controllers', [])
     });
     for (var i = 0; i < locations.length; i++) {
       var location = locations[i];
-      var latLng = new google.maps.LatLng(locations[i].location.lat, locations[i].location.lng);
-      var contentString = '<div style="width:200px;"><h4>' + location.name + '</h4><p>' + location.location.formattedAddress + '</p><p><a href="/#/location/'+location.id+'/details/">View Details</a> | <a href="http://maps.apple.com/?q='+location.location.formattedAddress+'">Get Directions</a></p></div>';
+      var latLng = new google.maps.LatLng(locations[i].location.geo[1], locations[i].location.geo[0]);
+      var contentString = '<div style="width:200px;"><h4>' + location.commonName + '</h4><p>' + location.location.street1+'<br>'+location.location.suburb+', '+location.location.state+' '+location.location.postcode+'</p><p><a href="/#/location/'+location._id+'/details/">View Details</a> | <a href="http://maps.apple.com/?q='+location.location.street1+'+'+location.location.suburb+'+'+location.location.state+'+'+location.location.postcode+'">Get Directions</a></p></div>';
 
       bounds.extend(latLng); // Create a new viewpoint bound
 
@@ -359,7 +391,7 @@ angular.module('landmarkConnect.controllers', [])
 
 .controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
-  $scope.navTitle = $scope.location.name;
+  $scope.navTitle = $scope.location.commonName;
 
   $scope.fade = true;
   $scope.$storage = $localStorage;

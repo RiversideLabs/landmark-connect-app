@@ -27,7 +27,7 @@ angular.module('landmarkConnect.services', [])
     getLocation: function(locationId) {
       // Simple index lookup
       for(var i=0, l=locations.length; i < l; i++) {
-        if(locations[i].id == locationId) {
+        if(locations[i]._id == locationId) {
           return locations[i];
         }
       }
