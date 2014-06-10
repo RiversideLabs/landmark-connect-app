@@ -126,10 +126,10 @@
 
 
 // PHOTO GALLERY
-#photo-gallery {
+#image-gallery {
   margin: auto;
 
-  .photo {
+  .image {
     float: left;
     overflow: hidden;
     position: relative;
@@ -137,7 +137,7 @@
     height: 0;
     padding-bottom: 30%;
 
-    .photo-spacing {
+    .image-spacing {
       position: absolute;
       left: 3px; right: 3px;
       top: 0; bottom: 6px;
@@ -152,17 +152,17 @@
     }
 
     &:nth-child(-n+2) {
-      .photo-spacing {
+      .image-spacing {
         top: 6px;
       }
     }
     &:nth-of-type(odd) {
-      .photo-spacing {
+      .image-spacing {
         left: 6px;
       }
     }
     &:nth-of-type(even) {
-      .photo-spacing {
+      .image-spacing {
         right: 6px;
       }
     }
@@ -171,15 +171,15 @@
 
 
 
-.slider, .scroll-view, .photo {
+.slider, .scroll-view, .image {
   height: 100%;
 }
 
 .slider {
-  .photo {
+  .image {
     -webkit-transform-style: preserve-3d;
   }
-  .photo, img {
+  .image, img {
     -webkit-transition: 250ms ease-in;
   }
   img {

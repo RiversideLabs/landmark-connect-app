@@ -1,19 +1,3 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #4a87ee !default;
-$calm:                            #43cee6 !default;
-$balanced:                        #66cc33 !default;
-$energized:                       #f0b840 !default;
-$assertive:                       #ef4e3a !default;
-$royal:                           #8a6de9 !default;
-$dark:                            #444 !default;
-*/
 /*!
   Ionicons, v1.4.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -22,8 +6,8 @@ $dark:                            #444 !default;
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../lib/ionic/fonts/ionicons.eot?v=1.4.1");
-  src: url("../lib/ionic/fonts/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../lib/ionic/fonts/ionicons.ttf?v=1.4.1") format("truetype"), url("../lib/ionic/fonts/ionicons.woff?v=1.4.1") format("woff"), url("../lib/ionic/fonts/ionicons.svg?v=1.4.1#Ionicons") format("svg");
+  src: url("../fonts/ionicons.eot?v=1.4.1");
+  src: url("../fonts/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.4.1") format("truetype"), url("../fonts/ionicons.woff?v=1.4.1") format("woff"), url("../fonts/ionicons.svg?v=1.4.1#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -33,539 +17,532 @@ $dark:                            #444 !default;
 .ion-loading-d,
 .ion-looping,
 .ion-refreshing,
-.ion-ios7-reloading, .ionicons:before,
-.ion-alert:before,
-.ion-alert-circled:before,
-.ion-android-add:before,
-.ion-android-add-contact:before,
-.ion-android-alarm:before,
-.ion-android-archive:before,
-.ion-android-arrow-back:before,
-.ion-android-arrow-down-left:before,
-.ion-android-arrow-down-right:before,
-.ion-android-arrow-up-left:before,
-.ion-android-arrow-up-right:before,
-.ion-android-battery:before,
-.ion-android-book:before,
-.ion-android-calendar:before,
-.ion-android-call:before,
-.ion-android-camera:before,
-.ion-android-chat:before,
-.ion-android-checkmark:before,
-.ion-android-clock:before,
-.ion-android-close:before,
-.ion-android-contact:before,
-.ion-android-contacts:before,
-.ion-android-data:before,
-.ion-android-developer:before,
-.ion-android-display:before,
-.ion-android-download:before,
-.ion-android-dropdown:before,
-.ion-android-earth:before,
-.ion-android-folder:before,
-.ion-android-forums:before,
-.ion-android-friends:before,
-.ion-android-hand:before,
-.ion-android-image:before,
-.ion-android-inbox:before,
-.ion-android-information:before,
-.ion-android-keypad:before,
-.ion-android-lightbulb:before,
-.ion-android-locate:before,
-.ion-android-location:before,
-.ion-android-mail:before,
-.ion-android-microphone:before,
-.ion-android-mixer:before,
-.ion-android-more:before,
-.ion-android-note:before,
-.ion-android-playstore:before,
-.ion-android-printer:before,
-.ion-android-promotion:before,
-.ion-android-reminder:before,
-.ion-android-remove:before,
-.ion-android-search:before,
-.ion-android-send:before,
-.ion-android-settings:before,
-.ion-android-share:before,
-.ion-android-social:before,
-.ion-android-social-user:before,
-.ion-android-sort:before,
-.ion-android-star:before,
-.ion-android-stopwatch:before,
-.ion-android-storage:before,
-.ion-android-system-back:before,
-.ion-android-system-home:before,
-.ion-android-system-windows:before,
-.ion-android-timer:before,
-.ion-android-trash:before,
-.ion-android-volume:before,
-.ion-android-wifi:before,
-.ion-archive:before,
-.ion-arrow-down-a:before,
-.ion-arrow-down-b:before,
-.ion-arrow-down-c:before,
-.ion-arrow-expand:before,
-.ion-arrow-graph-down-left:before,
-.ion-arrow-graph-down-right:before,
-.ion-arrow-graph-up-left:before,
-.ion-arrow-graph-up-right:before,
-.ion-arrow-left-a:before,
-.ion-arrow-left-b:before,
-.ion-arrow-left-c:before,
-.ion-arrow-move:before,
-.ion-arrow-resize:before,
-.ion-arrow-return-left:before,
-.ion-arrow-return-right:before,
-.ion-arrow-right-a:before,
-.ion-arrow-right-b:before,
-.ion-arrow-right-c:before,
-.ion-arrow-shrink:before,
-.ion-arrow-swap:before,
-.ion-arrow-up-a:before,
-.ion-arrow-up-b:before,
-.ion-arrow-up-c:before,
-.ion-at:before,
-.ion-bag:before,
-.ion-battery-charging:before,
-.ion-battery-empty:before,
-.ion-battery-full:before,
-.ion-battery-half:before,
-.ion-battery-low:before,
-.ion-beaker:before,
-.ion-beer:before,
-.ion-bluetooth:before,
-.ion-bookmark:before,
-.ion-briefcase:before,
-.ion-bug:before,
-.ion-calculator:before,
-.ion-calendar:before,
-.ion-camera:before,
-.ion-card:before,
-.ion-chatbox:before,
-.ion-chatbox-working:before,
-.ion-chatboxes:before,
-.ion-chatbubble:before,
-.ion-chatbubble-working:before,
-.ion-chatbubbles:before,
-.ion-checkmark:before,
-.ion-checkmark-circled:before,
-.ion-checkmark-round:before,
-.ion-chevron-down:before,
-.ion-chevron-left:before,
-.ion-chevron-right:before,
-.ion-chevron-up:before,
-.ion-clipboard:before,
-.ion-clock:before,
-.ion-close:before,
-.ion-close-circled:before,
-.ion-close-round:before,
-.ion-cloud:before,
-.ion-code:before,
-.ion-code-download:before,
-.ion-code-working:before,
-.ion-coffee:before,
-.ion-compass:before,
-.ion-compose:before,
-.ion-connection-bars:before,
-.ion-contrast:before,
-.ion-disc:before,
-.ion-document:before,
-.ion-document-text:before,
-.ion-drag:before,
-.ion-earth:before,
-.ion-edit:before,
-.ion-egg:before,
-.ion-eject:before,
-.ion-email:before,
-.ion-eye:before,
-.ion-eye-disabled:before,
-.ion-female:before,
-.ion-filing:before,
-.ion-film-marker:before,
-.ion-flag:before,
-.ion-flash:before,
-.ion-flash-off:before,
-.ion-flask:before,
-.ion-folder:before,
-.ion-fork:before,
-.ion-fork-repo:before,
-.ion-forward:before,
-.ion-game-controller-a:before,
-.ion-game-controller-b:before,
-.ion-gear-a:before,
-.ion-gear-b:before,
-.ion-grid:before,
-.ion-hammer:before,
-.ion-headphone:before,
-.ion-heart:before,
-.ion-help:before,
-.ion-help-buoy:before,
-.ion-help-circled:before,
-.ion-home:before,
-.ion-icecream:before,
-.ion-icon-social-google-plus:before,
-.ion-icon-social-google-plus-outline:before,
-.ion-image:before,
-.ion-images:before,
-.ion-information:before,
-.ion-information-circled:before,
-.ion-ionic:before,
-.ion-ios7-alarm:before,
-.ion-ios7-alarm-outline:before,
-.ion-ios7-albums:before,
-.ion-ios7-albums-outline:before,
-.ion-ios7-arrow-back:before,
-.ion-ios7-arrow-down:before,
-.ion-ios7-arrow-forward:before,
-.ion-ios7-arrow-left:before,
-.ion-ios7-arrow-right:before,
-.ion-ios7-arrow-thin-down:before,
-.ion-ios7-arrow-thin-left:before,
-.ion-ios7-arrow-thin-right:before,
-.ion-ios7-arrow-thin-up:before,
-.ion-ios7-arrow-up:before,
-.ion-ios7-at:before,
-.ion-ios7-at-outline:before,
-.ion-ios7-bell:before,
-.ion-ios7-bell-outline:before,
-.ion-ios7-bolt:before,
-.ion-ios7-bolt-outline:before,
-.ion-ios7-bookmarks:before,
-.ion-ios7-bookmarks-outline:before,
-.ion-ios7-box:before,
-.ion-ios7-box-outline:before,
-.ion-ios7-briefcase:before,
-.ion-ios7-briefcase-outline:before,
-.ion-ios7-browsers:before,
-.ion-ios7-browsers-outline:before,
-.ion-ios7-calculator:before,
-.ion-ios7-calculator-outline:before,
-.ion-ios7-calendar:before,
-.ion-ios7-calendar-outline:before,
-.ion-ios7-camera:before,
-.ion-ios7-camera-outline:before,
-.ion-ios7-cart:before,
-.ion-ios7-cart-outline:before,
-.ion-ios7-chatboxes:before,
-.ion-ios7-chatboxes-outline:before,
-.ion-ios7-chatbubble:before,
-.ion-ios7-chatbubble-outline:before,
-.ion-ios7-checkmark:before,
-.ion-ios7-checkmark-empty:before,
-.ion-ios7-checkmark-outline:before,
-.ion-ios7-circle-filled:before,
-.ion-ios7-circle-outline:before,
-.ion-ios7-clock:before,
-.ion-ios7-clock-outline:before,
-.ion-ios7-close:before,
-.ion-ios7-close-empty:before,
-.ion-ios7-close-outline:before,
-.ion-ios7-cloud:before,
-.ion-ios7-cloud-download:before,
-.ion-ios7-cloud-download-outline:before,
-.ion-ios7-cloud-outline:before,
-.ion-ios7-cloud-upload:before,
-.ion-ios7-cloud-upload-outline:before,
-.ion-ios7-cloudy:before,
-.ion-ios7-cloudy-night:before,
-.ion-ios7-cloudy-night-outline:before,
-.ion-ios7-cloudy-outline:before,
-.ion-ios7-cog:before,
-.ion-ios7-cog-outline:before,
-.ion-ios7-compose:before,
-.ion-ios7-compose-outline:before,
-.ion-ios7-contact:before,
-.ion-ios7-contact-outline:before,
-.ion-ios7-copy:before,
-.ion-ios7-copy-outline:before,
-.ion-ios7-download:before,
-.ion-ios7-download-outline:before,
-.ion-ios7-drag:before,
-.ion-ios7-email:before,
-.ion-ios7-email-outline:before,
-.ion-ios7-eye:before,
-.ion-ios7-eye-outline:before,
-.ion-ios7-fastforward:before,
-.ion-ios7-fastforward-outline:before,
-.ion-ios7-filing:before,
-.ion-ios7-filing-outline:before,
-.ion-ios7-film:before,
-.ion-ios7-film-outline:before,
-.ion-ios7-flag:before,
-.ion-ios7-flag-outline:before,
-.ion-ios7-folder:before,
-.ion-ios7-folder-outline:before,
-.ion-ios7-gear:before,
-.ion-ios7-gear-outline:before,
-.ion-ios7-glasses:before,
-.ion-ios7-glasses-outline:before,
-.ion-ios7-heart:before,
-.ion-ios7-heart-outline:before,
-.ion-ios7-help:before,
-.ion-ios7-help-empty:before,
-.ion-ios7-help-outline:before,
-.ion-ios7-infinite:before,
-.ion-ios7-infinite-outline:before,
-.ion-ios7-information:before,
-.ion-ios7-information-empty:before,
-.ion-ios7-information-outline:before,
-.ion-ios7-ionic-outline:before,
-.ion-ios7-keypad:before,
-.ion-ios7-keypad-outline:before,
-.ion-ios7-lightbulb:before,
-.ion-ios7-lightbulb-outline:before,
-.ion-ios7-location:before,
-.ion-ios7-location-outline:before,
-.ion-ios7-locked:before,
-.ion-ios7-locked-outline:before,
-.ion-ios7-medkit:before,
-.ion-ios7-medkit-outline:before,
-.ion-ios7-mic:before,
-.ion-ios7-mic-off:before,
-.ion-ios7-mic-outline:before,
-.ion-ios7-minus:before,
-.ion-ios7-minus-empty:before,
-.ion-ios7-minus-outline:before,
-.ion-ios7-monitor:before,
-.ion-ios7-monitor-outline:before,
-.ion-ios7-moon:before,
-.ion-ios7-moon-outline:before,
-.ion-ios7-more:before,
-.ion-ios7-more-outline:before,
-.ion-ios7-musical-note:before,
-.ion-ios7-musical-notes:before,
-.ion-ios7-navigate:before,
-.ion-ios7-navigate-outline:before,
-.ion-ios7-paperplane:before,
-.ion-ios7-paperplane-outline:before,
-.ion-ios7-partlysunny:before,
-.ion-ios7-partlysunny-outline:before,
-.ion-ios7-pause:before,
-.ion-ios7-pause-outline:before,
-.ion-ios7-people:before,
-.ion-ios7-people-outline:before,
-.ion-ios7-person:before,
-.ion-ios7-person-outline:before,
-.ion-ios7-personadd:before,
-.ion-ios7-personadd-outline:before,
-.ion-ios7-images:before,
-.ion-ios7-images-outline:before,
-.ion-ios7-pie:before,
-.ion-ios7-pie-outline:before,
-.ion-ios7-play:before,
-.ion-ios7-play-outline:before,
-.ion-ios7-plus:before,
-.ion-ios7-plus-empty:before,
-.ion-ios7-plus-outline:before,
-.ion-ios7-pricetag:before,
-.ion-ios7-pricetag-outline:before,
-.ion-ios7-printer:before,
-.ion-ios7-printer-outline:before,
-.ion-ios7-rainy:before,
-.ion-ios7-rainy-outline:before,
-.ion-ios7-recording:before,
-.ion-ios7-recording-outline:before,
-.ion-ios7-redo:before,
-.ion-ios7-redo-outline:before,
-.ion-ios7-refresh:before,
-.ion-ios7-refresh-empty:before,
-.ion-ios7-refresh-outline:before,
-.ion-ios7-reload:before,
-.ion-ios7-reloading:before,
-.ion-ios7-rewind:before,
-.ion-ios7-rewind-outline:before,
-.ion-ios7-search:before,
-.ion-ios7-search-strong:before,
-.ion-ios7-skipbackward:before,
-.ion-ios7-skipbackward-outline:before,
-.ion-ios7-skipforward:before,
-.ion-ios7-skipforward-outline:before,
-.ion-ios7-snowy:before,
-.ion-ios7-speedometer:before,
-.ion-ios7-speedometer-outline:before,
-.ion-ios7-star:before,
-.ion-ios7-star-outline:before,
-.ion-ios7-stopwatch:before,
-.ion-ios7-stopwatch-outline:before,
-.ion-ios7-sunny:before,
-.ion-ios7-sunny-outline:before,
-.ion-ios7-telephone:before,
-.ion-ios7-telephone-outline:before,
-.ion-ios7-thunderstorm:before,
-.ion-ios7-thunderstorm-outline:before,
-.ion-ios7-time:before,
-.ion-ios7-time-outline:before,
-.ion-ios7-timer:before,
-.ion-ios7-timer-outline:before,
-.ion-ios7-trash:before,
-.ion-ios7-trash-outline:before,
-.ion-ios7-undo:before,
-.ion-ios7-undo-outline:before,
-.ion-ios7-unlocked:before,
-.ion-ios7-unlocked-outline:before,
-.ion-ios7-upload:before,
-.ion-ios7-upload-outline:before,
-.ion-ios7-videocam:before,
-.ion-ios7-videocam-outline:before,
-.ion-ios7-volume-high:before,
-.ion-ios7-volume-low:before,
-.ion-ios7-wineglass:before,
-.ion-ios7-wineglass-outline:before,
-.ion-ios7-world:before,
-.ion-ios7-world-outline:before,
-.ion-ipad:before,
-.ion-iphone:before,
-.ion-ipod:before,
-.ion-jet:before,
-.ion-key:before,
-.ion-knife:before,
-.ion-laptop:before,
-.ion-leaf:before,
-.ion-levels:before,
-.ion-lightbulb:before,
-.ion-link:before,
-.ion-load-a:before,
-.ion-loading-a:before,
-.ion-load-b:before,
-.ion-loading-b:before,
-.ion-load-c:before,
-.ion-loading-c:before,
-.ion-load-d:before,
-.ion-loading-d:before,
-.ion-location:before,
-.ion-locked:before,
-.ion-log-in:before,
-.ion-log-out:before,
-.ion-loop:before,
-.ion-looping:before,
-.ion-magnet:before,
-.ion-male:before,
-.ion-man:before,
-.ion-map:before,
-.ion-medkit:before,
-.ion-mic-a:before,
-.ion-mic-b:before,
-.ion-mic-c:before,
-.ion-minus:before,
-.ion-minus-circled:before,
-.ion-minus-round:before,
-.ion-model-s:before,
-.ion-monitor:before,
-.ion-more:before,
-.ion-music-note:before,
-.ion-navicon:before,
-.ion-navicon-round:before,
-.ion-navigate:before,
-.ion-no-smoking:before,
-.ion-nuclear:before,
-.ion-paper-airplane:before,
-.ion-paperclip:before,
-.ion-pause:before,
-.ion-person:before,
-.ion-person-add:before,
-.ion-person-stalker:before,
-.ion-pie-graph:before,
-.ion-pin:before,
-.ion-pinpoint:before,
-.ion-pizza:before,
-.ion-plane:before,
-.ion-play:before,
-.ion-playstation:before,
-.ion-plus:before,
-.ion-plus-circled:before,
-.ion-plus-round:before,
-.ion-pound:before,
-.ion-power:before,
-.ion-pricetag:before,
-.ion-pricetags:before,
-.ion-printer:before,
-.ion-radio-waves:before,
-.ion-record:before,
-.ion-refresh:before,
-.ion-refreshing:before,
-.ion-reply:before,
-.ion-reply-all:before,
-.ion-search:before,
-.ion-settings:before,
-.ion-share:before,
-.ion-shuffle:before,
-.ion-skip-backward:before,
-.ion-skip-forward:before,
-.ion-social-android:before,
-.ion-social-android-outline:before,
-.ion-social-apple:before,
-.ion-social-apple-outline:before,
-.ion-social-bitcoin:before,
-.ion-social-bitcoin-outline:before,
-.ion-social-buffer:before,
-.ion-social-buffer-outline:before,
-.ion-social-designernews:before,
-.ion-social-designernews-outline:before,
-.ion-social-dribbble:before,
-.ion-social-dribbble-outline:before,
-.ion-social-dropbox:before,
-.ion-social-dropbox-outline:before,
-.ion-social-facebook:before,
-.ion-social-facebook-outline:before,
-.ion-social-freebsd-devil:before,
-.ion-social-github:before,
-.ion-social-github-outline:before,
-.ion-social-googleplus:before,
-.ion-social-googleplus-outline:before,
-.ion-social-hackernews:before,
-.ion-social-hackernews-outline:before,
-.ion-social-linkedin:before,
-.ion-social-linkedin-outline:before,
-.ion-social-pinterest:before,
-.ion-social-pinterest-outline:before,
-.ion-social-reddit:before,
-.ion-social-reddit-outline:before,
-.ion-social-rss:before,
-.ion-social-rss-outline:before,
-.ion-social-skype:before,
-.ion-social-skype-outline:before,
-.ion-social-tumblr:before,
-.ion-social-tumblr-outline:before,
-.ion-social-tux:before,
-.ion-social-twitter:before,
-.ion-social-twitter-outline:before,
-.ion-social-vimeo:before,
-.ion-social-vimeo-outline:before,
-.ion-social-windows:before,
-.ion-social-windows-outline:before,
-.ion-social-wordpress:before,
-.ion-social-wordpress-outline:before,
-.ion-social-yahoo:before,
-.ion-social-yahoo-outline:before,
-.ion-social-youtube:before,
-.ion-social-youtube-outline:before,
-.ion-speakerphone:before,
-.ion-speedometer:before,
-.ion-spoon:before,
-.ion-star:before,
-.ion-stats-bars:before,
-.ion-steam:before,
-.ion-stop:before,
-.ion-thermometer:before,
-.ion-thumbsdown:before,
-.ion-thumbsup:before,
-.ion-trash-a:before,
-.ion-trash-b:before,
-.ion-umbrella:before,
-.ion-unlocked:before,
-.ion-upload:before,
-.ion-usb:before,
-.ion-videocamera:before,
-.ion-volume-high:before,
-.ion-volume-low:before,
-.ion-volume-medium:before,
-.ion-volume-mute:before,
-.ion-waterdrop:before,
-.ion-wifi:before,
-.ion-wineglass:before,
-.ion-woman:before,
-.ion-wrench:before,
-.ion-xbox:before {
+.ion-ios7-reloading, .ionicons,
+.ion-alert,
+.ion-alert-circled,
+.ion-android-add,
+.ion-android-add-contact,
+.ion-android-alarm,
+.ion-android-archive,
+.ion-android-arrow-back,
+.ion-android-arrow-down-left,
+.ion-android-arrow-down-right,
+.ion-android-arrow-up-left,
+.ion-android-arrow-up-right,
+.ion-android-battery,
+.ion-android-book,
+.ion-android-calendar,
+.ion-android-call,
+.ion-android-camera,
+.ion-android-chat,
+.ion-android-checkmark,
+.ion-android-clock,
+.ion-android-close,
+.ion-android-contact,
+.ion-android-contacts,
+.ion-android-data,
+.ion-android-developer,
+.ion-android-display,
+.ion-android-download,
+.ion-android-dropdown,
+.ion-android-earth,
+.ion-android-folder,
+.ion-android-forums,
+.ion-android-friends,
+.ion-android-hand,
+.ion-android-image,
+.ion-android-inbox,
+.ion-android-information,
+.ion-android-keypad,
+.ion-android-lightbulb,
+.ion-android-locate,
+.ion-android-location,
+.ion-android-mail,
+.ion-android-microphone,
+.ion-android-mixer,
+.ion-android-more,
+.ion-android-note,
+.ion-android-playstore,
+.ion-android-printer,
+.ion-android-promotion,
+.ion-android-reminder,
+.ion-android-remove,
+.ion-android-search,
+.ion-android-send,
+.ion-android-settings,
+.ion-android-share,
+.ion-android-social,
+.ion-android-social-user,
+.ion-android-sort,
+.ion-android-star,
+.ion-android-stopwatch,
+.ion-android-storage,
+.ion-android-system-back,
+.ion-android-system-home,
+.ion-android-system-windows,
+.ion-android-timer,
+.ion-android-trash,
+.ion-android-volume,
+.ion-android-wifi,
+.ion-archive,
+.ion-arrow-down-a,
+.ion-arrow-down-b,
+.ion-arrow-down-c,
+.ion-arrow-expand,
+.ion-arrow-graph-down-left,
+.ion-arrow-graph-down-right,
+.ion-arrow-graph-up-left,
+.ion-arrow-graph-up-right,
+.ion-arrow-left-a,
+.ion-arrow-left-b,
+.ion-arrow-left-c,
+.ion-arrow-move,
+.ion-arrow-resize,
+.ion-arrow-return-left,
+.ion-arrow-return-right,
+.ion-arrow-right-a,
+.ion-arrow-right-b,
+.ion-arrow-right-c,
+.ion-arrow-shrink,
+.ion-arrow-swap,
+.ion-arrow-up-a,
+.ion-arrow-up-b,
+.ion-arrow-up-c,
+.ion-at,
+.ion-bag,
+.ion-battery-charging,
+.ion-battery-empty,
+.ion-battery-full,
+.ion-battery-half,
+.ion-battery-low,
+.ion-beaker,
+.ion-beer,
+.ion-bluetooth,
+.ion-bookmark,
+.ion-briefcase,
+.ion-bug,
+.ion-calculator,
+.ion-calendar,
+.ion-camera,
+.ion-card,
+.ion-chatbox,
+.ion-chatbox-working,
+.ion-chatboxes,
+.ion-chatbubble,
+.ion-chatbubble-working,
+.ion-chatbubbles,
+.ion-checkmark,
+.ion-checkmark-circled,
+.ion-checkmark-round,
+.ion-chevron-down,
+.ion-chevron-left,
+.ion-chevron-right,
+.ion-chevron-up,
+.ion-clipboard,
+.ion-clock,
+.ion-close,
+.ion-close-circled,
+.ion-close-round,
+.ion-cloud,
+.ion-code,
+.ion-code-download,
+.ion-code-working,
+.ion-coffee,
+.ion-compass,
+.ion-compose,
+.ion-connection-bars,
+.ion-contrast,
+.ion-disc,
+.ion-document,
+.ion-document-text,
+.ion-drag,
+.ion-earth,
+.ion-edit,
+.ion-egg,
+.ion-eject,
+.ion-email,
+.ion-eye,
+.ion-eye-disabled,
+.ion-female,
+.ion-filing,
+.ion-film-marker,
+.ion-flag,
+.ion-flash,
+.ion-flash-off,
+.ion-flask,
+.ion-folder,
+.ion-fork,
+.ion-fork-repo,
+.ion-forward,
+.ion-game-controller-a,
+.ion-game-controller-b,
+.ion-gear-a,
+.ion-gear-b,
+.ion-grid,
+.ion-hammer,
+.ion-headphone,
+.ion-heart,
+.ion-help,
+.ion-help-buoy,
+.ion-help-circled,
+.ion-home,
+.ion-icecream,
+.ion-icon-social-google-plus,
+.ion-icon-social-google-plus-outline,
+.ion-image,
+.ion-images,
+.ion-information,
+.ion-information-circled,
+.ion-ionic,
+.ion-ios7-alarm,
+.ion-ios7-alarm-outline,
+.ion-ios7-albums,
+.ion-ios7-albums-outline,
+.ion-ios7-arrow-back,
+.ion-ios7-arrow-down,
+.ion-ios7-arrow-forward,
+.ion-ios7-arrow-left,
+.ion-ios7-arrow-right,
+.ion-ios7-arrow-thin-down,
+.ion-ios7-arrow-thin-left,
+.ion-ios7-arrow-thin-right,
+.ion-ios7-arrow-thin-up,
+.ion-ios7-arrow-up,
+.ion-ios7-at,
+.ion-ios7-at-outline,
+.ion-ios7-bell,
+.ion-ios7-bell-outline,
+.ion-ios7-bolt,
+.ion-ios7-bolt-outline,
+.ion-ios7-bookmarks,
+.ion-ios7-bookmarks-outline,
+.ion-ios7-box,
+.ion-ios7-box-outline,
+.ion-ios7-briefcase,
+.ion-ios7-briefcase-outline,
+.ion-ios7-browsers,
+.ion-ios7-browsers-outline,
+.ion-ios7-calculator,
+.ion-ios7-calculator-outline,
+.ion-ios7-calendar,
+.ion-ios7-calendar-outline,
+.ion-ios7-camera,
+.ion-ios7-camera-outline,
+.ion-ios7-cart,
+.ion-ios7-cart-outline,
+.ion-ios7-chatboxes,
+.ion-ios7-chatboxes-outline,
+.ion-ios7-chatbubble,
+.ion-ios7-chatbubble-outline,
+.ion-ios7-checkmark,
+.ion-ios7-checkmark-empty,
+.ion-ios7-checkmark-outline,
+.ion-ios7-circle-filled,
+.ion-ios7-circle-outline,
+.ion-ios7-clock,
+.ion-ios7-clock-outline,
+.ion-ios7-close,
+.ion-ios7-close-empty,
+.ion-ios7-close-outline,
+.ion-ios7-cloud,
+.ion-ios7-cloud-download,
+.ion-ios7-cloud-download-outline,
+.ion-ios7-cloud-outline,
+.ion-ios7-cloud-upload,
+.ion-ios7-cloud-upload-outline,
+.ion-ios7-cloudy,
+.ion-ios7-cloudy-night,
+.ion-ios7-cloudy-night-outline,
+.ion-ios7-cloudy-outline,
+.ion-ios7-cog,
+.ion-ios7-cog-outline,
+.ion-ios7-compose,
+.ion-ios7-compose-outline,
+.ion-ios7-contact,
+.ion-ios7-contact-outline,
+.ion-ios7-copy,
+.ion-ios7-copy-outline,
+.ion-ios7-download,
+.ion-ios7-download-outline,
+.ion-ios7-drag,
+.ion-ios7-email,
+.ion-ios7-email-outline,
+.ion-ios7-eye,
+.ion-ios7-eye-outline,
+.ion-ios7-fastforward,
+.ion-ios7-fastforward-outline,
+.ion-ios7-filing,
+.ion-ios7-filing-outline,
+.ion-ios7-film,
+.ion-ios7-film-outline,
+.ion-ios7-flag,
+.ion-ios7-flag-outline,
+.ion-ios7-folder,
+.ion-ios7-folder-outline,
+.ion-ios7-gear,
+.ion-ios7-gear-outline,
+.ion-ios7-glasses,
+.ion-ios7-glasses-outline,
+.ion-ios7-heart,
+.ion-ios7-heart-outline,
+.ion-ios7-help,
+.ion-ios7-help-empty,
+.ion-ios7-help-outline,
+.ion-ios7-infinite,
+.ion-ios7-infinite-outline,
+.ion-ios7-information,
+.ion-ios7-information-empty,
+.ion-ios7-information-outline,
+.ion-ios7-ionic-outline,
+.ion-ios7-keypad,
+.ion-ios7-keypad-outline,
+.ion-ios7-lightbulb,
+.ion-ios7-lightbulb-outline,
+.ion-ios7-location,
+.ion-ios7-location-outline,
+.ion-ios7-locked,
+.ion-ios7-locked-outline,
+.ion-ios7-medkit,
+.ion-ios7-medkit-outline,
+.ion-ios7-mic,
+.ion-ios7-mic-off,
+.ion-ios7-mic-outline,
+.ion-ios7-minus,
+.ion-ios7-minus-empty,
+.ion-ios7-minus-outline,
+.ion-ios7-monitor,
+.ion-ios7-monitor-outline,
+.ion-ios7-moon,
+.ion-ios7-moon-outline,
+.ion-ios7-more,
+.ion-ios7-more-outline,
+.ion-ios7-musical-note,
+.ion-ios7-musical-notes,
+.ion-ios7-navigate,
+.ion-ios7-navigate-outline,
+.ion-ios7-paperplane,
+.ion-ios7-paperplane-outline,
+.ion-ios7-partlysunny,
+.ion-ios7-partlysunny-outline,
+.ion-ios7-pause,
+.ion-ios7-pause-outline,
+.ion-ios7-people,
+.ion-ios7-people-outline,
+.ion-ios7-person,
+.ion-ios7-person-outline,
+.ion-ios7-personadd,
+.ion-ios7-personadd-outline,
+.ion-ios7-images,
+.ion-ios7-images-outline,
+.ion-ios7-pie,
+.ion-ios7-pie-outline,
+.ion-ios7-play,
+.ion-ios7-play-outline,
+.ion-ios7-plus,
+.ion-ios7-plus-empty,
+.ion-ios7-plus-outline,
+.ion-ios7-pricetag,
+.ion-ios7-pricetag-outline,
+.ion-ios7-printer,
+.ion-ios7-printer-outline,
+.ion-ios7-rainy,
+.ion-ios7-rainy-outline,
+.ion-ios7-recording,
+.ion-ios7-recording-outline,
+.ion-ios7-redo,
+.ion-ios7-redo-outline,
+.ion-ios7-refresh,
+.ion-ios7-refresh-empty,
+.ion-ios7-refresh-outline,
+.ion-ios7-reload,
+.ion-ios7-rewind,
+.ion-ios7-rewind-outline,
+.ion-ios7-search,
+.ion-ios7-search-strong,
+.ion-ios7-skipbackward,
+.ion-ios7-skipbackward-outline,
+.ion-ios7-skipforward,
+.ion-ios7-skipforward-outline,
+.ion-ios7-snowy,
+.ion-ios7-speedometer,
+.ion-ios7-speedometer-outline,
+.ion-ios7-star,
+.ion-ios7-star-outline,
+.ion-ios7-stopwatch,
+.ion-ios7-stopwatch-outline,
+.ion-ios7-sunny,
+.ion-ios7-sunny-outline,
+.ion-ios7-telephone,
+.ion-ios7-telephone-outline,
+.ion-ios7-thunderstorm,
+.ion-ios7-thunderstorm-outline,
+.ion-ios7-time,
+.ion-ios7-time-outline,
+.ion-ios7-timer,
+.ion-ios7-timer-outline,
+.ion-ios7-trash,
+.ion-ios7-trash-outline,
+.ion-ios7-undo,
+.ion-ios7-undo-outline,
+.ion-ios7-unlocked,
+.ion-ios7-unlocked-outline,
+.ion-ios7-upload,
+.ion-ios7-upload-outline,
+.ion-ios7-videocam,
+.ion-ios7-videocam-outline,
+.ion-ios7-volume-high,
+.ion-ios7-volume-low,
+.ion-ios7-wineglass,
+.ion-ios7-wineglass-outline,
+.ion-ios7-world,
+.ion-ios7-world-outline,
+.ion-ipad,
+.ion-iphone,
+.ion-ipod,
+.ion-jet,
+.ion-key,
+.ion-knife,
+.ion-laptop,
+.ion-leaf,
+.ion-levels,
+.ion-lightbulb,
+.ion-link,
+.ion-load-a,
+.ion-load-b,
+.ion-load-c,
+.ion-load-d,
+.ion-location,
+.ion-locked,
+.ion-log-in,
+.ion-log-out,
+.ion-loop,
+.ion-magnet,
+.ion-male,
+.ion-man,
+.ion-map,
+.ion-medkit,
+.ion-mic-a,
+.ion-mic-b,
+.ion-mic-c,
+.ion-minus,
+.ion-minus-circled,
+.ion-minus-round,
+.ion-model-s,
+.ion-monitor,
+.ion-more,
+.ion-music-note,
+.ion-navicon,
+.ion-navicon-round,
+.ion-navigate,
+.ion-no-smoking,
+.ion-nuclear,
+.ion-paper-airplane,
+.ion-paperclip,
+.ion-pause,
+.ion-person,
+.ion-person-add,
+.ion-person-stalker,
+.ion-pie-graph,
+.ion-pin,
+.ion-pinpoint,
+.ion-pizza,
+.ion-plane,
+.ion-play,
+.ion-playstation,
+.ion-plus,
+.ion-plus-circled,
+.ion-plus-round,
+.ion-pound,
+.ion-power,
+.ion-pricetag,
+.ion-pricetags,
+.ion-printer,
+.ion-radio-waves,
+.ion-record,
+.ion-refresh,
+.ion-reply,
+.ion-reply-all,
+.ion-search,
+.ion-settings,
+.ion-share,
+.ion-shuffle,
+.ion-skip-backward,
+.ion-skip-forward,
+.ion-social-android,
+.ion-social-android-outline,
+.ion-social-apple,
+.ion-social-apple-outline,
+.ion-social-bitcoin,
+.ion-social-bitcoin-outline,
+.ion-social-buffer,
+.ion-social-buffer-outline,
+.ion-social-designernews,
+.ion-social-designernews-outline,
+.ion-social-dribbble,
+.ion-social-dribbble-outline,
+.ion-social-dropbox,
+.ion-social-dropbox-outline,
+.ion-social-facebook,
+.ion-social-facebook-outline,
+.ion-social-freebsd-devil,
+.ion-social-github,
+.ion-social-github-outline,
+.ion-social-googleplus,
+.ion-social-googleplus-outline,
+.ion-social-hackernews,
+.ion-social-hackernews-outline,
+.ion-social-linkedin,
+.ion-social-linkedin-outline,
+.ion-social-pinterest,
+.ion-social-pinterest-outline,
+.ion-social-reddit,
+.ion-social-reddit-outline,
+.ion-social-rss,
+.ion-social-rss-outline,
+.ion-social-skype,
+.ion-social-skype-outline,
+.ion-social-tumblr,
+.ion-social-tumblr-outline,
+.ion-social-tux,
+.ion-social-twitter,
+.ion-social-twitter-outline,
+.ion-social-vimeo,
+.ion-social-vimeo-outline,
+.ion-social-windows,
+.ion-social-windows-outline,
+.ion-social-wordpress,
+.ion-social-wordpress-outline,
+.ion-social-yahoo,
+.ion-social-yahoo-outline,
+.ion-social-youtube,
+.ion-social-youtube-outline,
+.ion-speakerphone,
+.ion-speedometer,
+.ion-spoon,
+.ion-star,
+.ion-stats-bars,
+.ion-steam,
+.ion-stop,
+.ion-thermometer,
+.ion-thumbsdown,
+.ion-thumbsup,
+.ion-trash-a,
+.ion-trash-b,
+.ion-umbrella,
+.ion-unlocked,
+.ion-upload,
+.ion-usb,
+.ion-videocamera,
+.ion-volume-high,
+.ion-volume-low,
+.ion-volume-medium,
+.ion-volume-mute,
+.ion-waterdrop,
+.ion-wifi,
+.ion-wineglass,
+.ion-woman,
+.ion-wrench,
+.ion-xbox {
   display: inline-block;
   font-family: "Ionicons";
   speak: none;
@@ -2533,11 +2510,6 @@ table {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-html {
-  overflow: hidden;
-  -ms-touch-action: none;
-  touch-action: none; }
-
 body,
 .ionic-body {
   -webkit-touch-callout: none;
@@ -2552,6 +2524,7 @@ body,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -2588,9 +2561,9 @@ body.grade-c {
 
 .scroll-view {
   position: relative;
-  display: block;
   overflow: hidden;
-  margin-top: -1px; }
+  margin-top: -1px;
+  height: 100%; }
 
 /**
  * Scroll is the scroll view component available for complex and custom
@@ -2607,7 +2580,8 @@ body.grade-c {
   text-size-adjust: none;
   -webkit-transform-origin: left top;
   -moz-transform-origin: left top;
-  transform-origin: left top; }
+  transform-origin: left top;
+  -webkit-backface-visibility: hidden; }
 
 .scroll-bar {
   position: absolute;
@@ -2655,31 +2629,31 @@ body.grade-c {
 
 @keyframes refresh-spin {
   0% {
-    transform: translate3d(0, 0, 0) rotate(0); }
+    transform: rotate(0); }
 
   100% {
-    transform: translate3d(0, 0, 0) rotate(-180deg); } }
+    transform: rotate(-180deg); } }
 
 @-webkit-keyframes refresh-spin {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(0); }
+    -webkit-transform: rotate(0); }
 
   100% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(-180deg); } }
+    -webkit-transform: rotate(-180deg); } }
 
 @keyframes refresh-spin-back {
   0% {
-    transform: translate3d(0, 0, 0) rotate(-180deg); }
+    transform: rotate(-180deg); }
 
   100% {
-    transform: translate3d(0, 0, 0) rotate(0); } }
+    transform: rotate(0); } }
 
 @-webkit-keyframes refresh-spin-back {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(-180deg); }
+    -webkit-transform: rotate(-180deg); }
 
   100% {
-    -webkit-transform: translate3d(0, 0, 0) rotate(0); } }
+    -webkit-transform: rotate(0); } }
 
 .scroll-refresher {
   position: absolute;
@@ -2699,17 +2673,8 @@ body.grade-c {
     font-size: 30px; }
     .scroll-refresher .ionic-refresher-content .text-refreshing,
     .scroll-refresher .ionic-refresher-content .text-pulling {
-      font-size: 16px;
-      line-height: 16px; }
-    .scroll-refresher .ionic-refresher-content.ionic-refresher-with-text {
-      bottom: 10px; }
-  .scroll-refresher .icon-refreshing,
-  .scroll-refresher .icon-pulling {
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    backface-visibility: hidden;
-    transform-style: preserve-3d; }
+      line-height: 16px;
+      font-size: 16px; }
   .scroll-refresher .icon-pulling {
     -webkit-animation-name: refresh-spin-back;
     -moz-animation-name: refresh-spin-back;
@@ -2720,11 +2685,9 @@ body.grade-c {
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
     animation-timing-function: linear;
-    -webkit-animation-fill-mode: none;
-    -moz-animation-fill-mode: none;
-    animation-fill-mode: none;
-    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
-    transform: translate3d(0, 0, 0) rotate(0deg); }
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
   .scroll-refresher .icon-refreshing,
   .scroll-refresher .text-refreshing {
     display: none; }
@@ -2732,12 +2695,16 @@ body.grade-c {
     -webkit-animation-duration: 1.5s;
     -moz-animation-duration: 1.5s;
     animation-duration: 1.5s; }
+  .scroll-refresher.active .icon-pulling,
+  .scroll-refresher.active .text-pulling {
+    display: block; }
   .scroll-refresher.active .icon-pulling {
     -webkit-animation-name: refresh-spin;
     -moz-animation-name: refresh-spin;
-    animation-name: refresh-spin;
-    -webkit-transform: translate3d(0, 0, 0) rotate(-180deg);
-    transform: translate3d(0, 0, 0) rotate(-180deg); }
+    animation-name: refresh-spin; }
+  .scroll-refresher.active .icon-refreshing,
+  .scroll-refresher.active .text-refreshing {
+    display: none; }
   .scroll-refresher.active.refreshing .icon-pulling,
   .scroll-refresher.active.refreshing .text-pulling {
     display: none; }
@@ -2762,7 +2729,7 @@ ion-infinite-scroll .scroll-infinite {
 
 .scroll-infinite-content {
   position: absolute;
-  bottom: -1px;
+  bottom: 15px;
   left: 0;
   width: 100%;
   color: #666666;
@@ -2778,15 +2745,18 @@ ion-infinite-scroll.active .scroll-infinite {
   -webkit-overflow-scrolling: touch; }
   .overflow-scroll .scroll {
     position: static;
-    height: 100%;
-    -webkit-transform: translate3d(0, 0, 0); }
+    height: 100%; }
 
-/* If you change these, change platform.scss as well */
+.overflow-scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+  .overflow-scroll .scroll {
+    position: static;
+    height: 100%; }
+
 .has-header {
   top: 44px; }
-
-.no-header {
-  top: 0; }
 
 .has-subheader {
   top: 88px; }
@@ -2799,9 +2769,6 @@ ion-infinite-scroll.active .scroll-infinite {
 
 .has-footer {
   bottom: 44px; }
-
-.has-subfooter {
-  bottom: 88px; }
 
 .has-tabs,
 .bar-footer.has-tabs {
@@ -2828,8 +2795,7 @@ ion-infinite-scroll.active .scroll-infinite {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
-  overflow: hidden; }
+  background-color: white; }
 
 /**
  * Typography
@@ -3054,24 +3020,6 @@ a.subdued {
   .action-sheet-open .action-sheet-backdrop {
     pointer-events: auto; }
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 11;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: 0.1s opacity linear;
-  -moz-transition: 0.1s opacity linear;
-  transition: 0.1s opacity linear; }
-  .backdrop.visible {
-    visibility: visible; }
-  .backdrop.active {
-    opacity: 1; }
-
 /**
  * Bar (Headers and Footers)
  * --------------------------------------------------
@@ -3125,9 +3073,7 @@ a.subdued {
     margin-top: -1px; }
     .bar.item-input-inset .item-input-wrapper input {
       padding-left: 8px;
-      width: 94%;
-      height: 28px;
-      background: transparent; }
+      height: 28px; }
   .bar.bar-light {
     border-color: #dddddd;
     background-color: white;
@@ -3200,7 +3146,6 @@ a.subdued {
     overflow: hidden;
     margin: 0 10px;
     min-width: 30px;
-    height: 43px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3217,8 +3162,8 @@ a.subdued {
     padding: 0 8px;
     min-width: initial;
     min-height: 31px;
-    font-weight: 400;
     font-size: 13px;
+    font-weight: 400;
     line-height: 32px; }
     .bar .button.button-icon:before,
     .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
@@ -3226,21 +3171,19 @@ a.subdued {
       padding-left: 2px;
       font-size: 20px;
       line-height: 32px; }
-    .bar .button.button-icon {
-      font-size: 17px; }
-      .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
-        vertical-align: top;
-        font-size: 32px;
-        line-height: 32px; }
+    .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
+      vertical-align: top;
+      font-size: 32px;
+      line-height: 32px; }
     .bar .button.button-clear {
-      padding-right: 2px;
-      padding-left: 2px;
+      font-size: 17px;
       font-weight: 300;
-      font-size: 17px; }
+      padding-right: 2px;
+      padding-left: 2px; }
       .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
         font-size: 32px;
         line-height: 32px; }
-    .bar .button.back-button.active, .bar .button.back-button.activated {
+    .bar .button.back-button.active {
       opacity: 1; }
   .bar .button-bar > .button,
   .bar .buttons > .button {
@@ -3249,10 +3192,6 @@ a.subdued {
   .bar .button-bar + .button,
   .bar .button + .button-bar {
     margin-left: 5px; }
-  .bar .buttons,
-  .bar .buttons.left-buttons,
-  .bar .buttons.right-buttons {
-    display: inherit; }
   .bar .title + .button:last-child,
   .bar > .button + .button:last-child,
   .bar > .button.pull-right,
@@ -3270,7 +3209,7 @@ a.subdued {
   .bar-light .button:hover {
     color: #444444;
     text-decoration: none; }
-  .bar-light .button.active, .bar-light .button.activated {
+  .bar-light .button.active {
     border-color: #cccccc;
     background-color: #fafafa;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3291,7 +3230,7 @@ a.subdued {
   .bar-stable .button:hover {
     color: #444444;
     text-decoration: none; }
-  .bar-stable .button.active, .bar-stable .button.activated {
+  .bar-stable .button.active {
     border-color: #a2a2a2;
     background-color: #e5e5e5;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3312,7 +3251,7 @@ a.subdued {
   .bar-positive .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-positive .button.active, .bar-positive .button.activated {
+  .bar-positive .button.active {
     border-color: #145dd7;
     background-color: #145dd7;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3333,7 +3272,7 @@ a.subdued {
   .bar-calm .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-calm .button.active, .bar-calm .button.activated {
+  .bar-calm .button.active {
     border-color: #1aaac3;
     background-color: #1aaac3;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3354,7 +3293,7 @@ a.subdued {
   .bar-assertive .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-assertive .button.active, .bar-assertive .button.activated {
+  .bar-assertive .button.active {
     border-color: #cc2511;
     background-color: #cc2511;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3375,7 +3314,7 @@ a.subdued {
   .bar-balanced .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-balanced .button.active, .bar-balanced .button.activated {
+  .bar-balanced .button.active {
     border-color: #478f24;
     background-color: #478f24;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3396,7 +3335,7 @@ a.subdued {
   .bar-energized .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-energized .button.active, .bar-energized .button.activated {
+  .bar-energized .button.active {
     border-color: #d39511;
     background-color: #d39511;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3417,7 +3356,7 @@ a.subdued {
   .bar-royal .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-royal .button.active, .bar-royal .button.activated {
+  .bar-royal .button.active {
     border-color: #552bdf;
     background-color: #552bdf;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3438,7 +3377,7 @@ a.subdued {
   .bar-dark .button:hover {
     color: white;
     text-decoration: none; }
-  .bar-dark .button.active, .bar-dark .button.activated {
+  .bar-dark .button.active {
     border-color: black;
     background-color: #262626;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -3462,8 +3401,6 @@ a.subdued {
   border-top-width: 1px;
   border-bottom-width: 0;
   background-position: top; }
-  .bar-footer.item-input-inset {
-    position: absolute; }
 
 .bar-tabs {
   padding: 0; }
@@ -3628,7 +3565,6 @@ a.subdued {
     color: #444444; }
 
 /* Allow parent element to have tabs-top */
-/* If you change this, change platform.scss as well */
 .tabs-top > .tabs,
 .tabs.tabs-top {
   top: 44px;
@@ -3659,14 +3595,12 @@ a.subdued {
   .tab-item:hover {
     cursor: pointer; }
 
-.tabs-item-hide > .tabs,
-.tabs.tabs-item-hide {
+.tabs-item-hide,
+.tabs-item-hide > .tabs {
   display: none; }
 
-.tabs-icon-top > .tabs .tab-item,
-.tabs-icon-top.tabs .tab-item,
-.tabs-icon-bottom > .tabs .tab-item,
-.tabs-icon-bottom.tabs .tab-item {
+.tabs-icon-top .tab-item,
+.tabs-icon-bottom .tab-item {
   font-size: 12px;
   line-height: 14px; }
 
@@ -3676,34 +3610,25 @@ a.subdued {
   height: 32px;
   font-size: 32px; }
 
-.tabs-icon-left.tabs .tab-item,
-.tabs-icon-left > .tabs .tab-item,
-.tabs-icon-right.tabs .tab-item,
-.tabs-icon-right > .tabs .tab-item {
+.tabs-icon-left .tab-item,
+.tabs-icon-right .tab-item {
   font-size: 12px; }
-  .tabs-icon-left.tabs .tab-item .icon,
-  .tabs-icon-left > .tabs .tab-item .icon,
-  .tabs-icon-right.tabs .tab-item .icon,
-  .tabs-icon-right > .tabs .tab-item .icon {
+  .tabs-icon-left .tab-item .icon,
+  .tabs-icon-right .tab-item .icon {
     display: inline-block;
     vertical-align: top; }
-    .tabs-icon-left.tabs .tab-item .icon:before,
-    .tabs-icon-left > .tabs .tab-item .icon:before,
-    .tabs-icon-right.tabs .tab-item .icon:before,
-    .tabs-icon-right > .tabs .tab-item .icon:before {
+    .tabs-icon-left .tab-item .icon:before,
+    .tabs-icon-right .tab-item .icon:before {
       font-size: 24px;
       line-height: 49px; }
 
-.tabs-icon-left > .tabs .tab-item .icon,
-.tabs-icon-left.tabs .tab-item .icon {
+.tabs-icon-left .tab-item .icon {
   padding-right: 3px; }
 
-.tabs-icon-right > .tabs .tab-item .icon,
-.tabs-icon-right.tabs .tab-item .icon {
+.tabs-icon-right .tab-item .icon {
   padding-left: 3px; }
 
-.tabs-icon-only > .tabs .icon,
-.tabs-icon-only.tabs .icon {
+.tabs-icon-only .icon {
   line-height: inherit; }
 
 .tab-item.has-badge {
@@ -3711,55 +3636,35 @@ a.subdued {
 
 .tab-item .badge {
   position: absolute;
+  padding: 1px 6px;
   top: 4%;
   right: 33%;
   right: calc(50% - 26px);
-  padding: 1px 6px;
-  height: auto;
   font-size: 12px;
+  height: auto;
   line-height: 16px; }
 
 /* Navigational tab */
 /* Active state for tab */
-.tab-item.tab-item-active,
-.tab-item.active,
-.tab-item.activated {
+.tab-item.tab-item-active {
   opacity: 1; }
-  .tab-item.tab-item-active.tab-item-light,
-  .tab-item.active.tab-item-light,
-  .tab-item.activated.tab-item-light {
+  .tab-item.tab-item-active.tab-item-light {
     color: white; }
-  .tab-item.tab-item-active.tab-item-stable,
-  .tab-item.active.tab-item-stable,
-  .tab-item.activated.tab-item-stable {
+  .tab-item.tab-item-active.tab-item-stable {
     color: #f8f8f8; }
-  .tab-item.tab-item-active.tab-item-positive,
-  .tab-item.active.tab-item-positive,
-  .tab-item.activated.tab-item-positive {
+  .tab-item.tab-item-active.tab-item-positive {
     color: #4a87ee; }
-  .tab-item.tab-item-active.tab-item-calm,
-  .tab-item.active.tab-item-calm,
-  .tab-item.activated.tab-item-calm {
+  .tab-item.tab-item-active.tab-item-calm {
     color: #43cee6; }
-  .tab-item.tab-item-active.tab-item-assertive,
-  .tab-item.active.tab-item-assertive,
-  .tab-item.activated.tab-item-assertive {
+  .tab-item.tab-item-active.tab-item-assertive {
     color: #ef4e3a; }
-  .tab-item.tab-item-active.tab-item-balanced,
-  .tab-item.active.tab-item-balanced,
-  .tab-item.activated.tab-item-balanced {
+  .tab-item.tab-item-active.tab-item-balanced {
     color: #66cc33; }
-  .tab-item.tab-item-active.tab-item-energized,
-  .tab-item.active.tab-item-energized,
-  .tab-item.activated.tab-item-energized {
+  .tab-item.tab-item-active.tab-item-energized {
     color: #f0b840; }
-  .tab-item.tab-item-active.tab-item-royal,
-  .tab-item.active.tab-item-royal,
-  .tab-item.activated.tab-item-royal {
+  .tab-item.tab-item-active.tab-item-royal {
     color: #8a6de9; }
-  .tab-item.tab-item-active.tab-item-dark,
-  .tab-item.active.tab-item-dark,
-  .tab-item.activated.tab-item-dark {
+  .tab-item.tab-item-active.tab-item-dark {
     color: #444444; }
 
 .item.tabs {
@@ -3772,12 +3677,6 @@ a.subdued {
   padding: 0; }
   .item.tabs .icon:before {
     position: relative; }
-
-.tab-item.disabled,
-.tab-item[disabled] {
-  opacity: .4;
-  cursor: default;
-  pointer-events: none; }
 
 /**
  * Menus
@@ -3793,17 +3692,13 @@ a.subdued {
   min-height: 100%;
   max-height: 100%;
   width: 275px;
-  background-color: white; }
+  background-color: #fff; }
 
 .menu-content {
   -webkit-transform: none;
   -moz-transform: none;
   transform: none;
   box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
-
-.menu-open .menu-content .pane,
-.menu-open .menu-content .scroll-content {
-  pointer-events: none; }
 
 .grade-b .menu-content,
 .grade-c .menu-content {
@@ -3869,8 +3764,7 @@ a.subdued {
     bottom: 0; } }
 .modal-open {
   pointer-events: none; }
-  .modal-open .modal,
-  .modal-open .modal-backdrop {
+  .modal-open .modal {
     pointer-events: auto; }
 
 /**
@@ -3881,10 +3775,9 @@ a.subdued {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 12;
+  z-index: 11;
   visibility: hidden;
   width: 250px;
-  max-width: 100%;
   border-radius: 0px;
   background-color: rgba(255, 255, 255, 0.9); }
   .popup.popup-hidden {
@@ -3954,33 +3847,59 @@ a.subdued {
   .popup-open .popup-backdrop, .popup-open .popup {
     pointer-events: auto; }
 
-/**
- * Loading
- * --------------------------------------------------
- */
-.loading {
-  -webkit-transition: 0.2s opacity linear;
-  -moz-transition: 0.2s opacity linear;
-  transition: 0.2s opacity linear;
+.popup-backdrop {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.1s;
+  -moz-animation-duration: 0.1s;
+  animation-duration: 0.1s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.loading-backdrop {
+  -webkit-transition: visibility 0s linear 0.3s;
+  -moz-transition: visibility 0s linear 0.3s;
+  transition: visibility 0s linear 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
   visibility: hidden;
-  opacity: 0;
+  width: 100%;
+  height: 100%; }
+  .loading-backdrop.active {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+    visibility: visible; }
+    .loading-backdrop.active.show-backdrop {
+      background-color: rgba(0, 0, 0, 0.7); }
+
+.loading {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 13;
   padding: 20px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.7);
-  color: white;
+  color: #fff;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 15px; }
-  .loading.visible {
-    visibility: visible; }
-  .loading.active {
-    opacity: 1; }
   .loading h1, .loading h2, .loading h3, .loading h4, .loading h5, .loading h6 {
-    color: white; }
+    color: #fff; }
 
 /**
  * Items
@@ -4030,11 +3949,11 @@ a.subdued {
     display: flex;
     position: absolute;
     top: 15px;
-    right: 30px; }
+    right: 35px; }
   .item.item-button-right .badge {
     right: 65px; }
   .item.item-divider .badge {
-    top: 8px; }
+    top: 7.5px; }
   .item .badge + .badge {
     margin-right: 5px; }
   .item.item-light {
@@ -4076,84 +3995,44 @@ a.subdued {
   .item[ng-click]:hover {
     cursor: pointer; }
 
-.item.active,
-.item.activated,
-.item-complex.active .item-content,
-.item-complex.activated .item-content,
-.item .item-content.active,
-.item .item-content.activated {
+.item.active:not(.item-divider):not(.item-input):not(.item-input-inset),
+.item-complex.active .item-content {
   border-color: #cccccc;
   background-color: #d9d9d9; }
-  .item.active.item-light,
-  .item.activated.item-light,
-  .item-complex.active .item-content.item-light,
-  .item-complex.activated .item-content.item-light,
-  .item .item-content.active.item-light,
-  .item .item-content.activated.item-light {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-light,
+  .item-complex.active .item-content.item-light {
     border-color: #cccccc;
     background-color: #fafafa; }
-  .item.active.item-stable,
-  .item.activated.item-stable,
-  .item-complex.active .item-content.item-stable,
-  .item-complex.activated .item-content.item-stable,
-  .item .item-content.active.item-stable,
-  .item .item-content.activated.item-stable {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-stable,
+  .item-complex.active .item-content.item-stable {
     border-color: #a2a2a2;
     background-color: #e5e5e5; }
-  .item.active.item-positive,
-  .item.activated.item-positive,
-  .item-complex.active .item-content.item-positive,
-  .item-complex.activated .item-content.item-positive,
-  .item .item-content.active.item-positive,
-  .item .item-content.activated.item-positive {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-positive,
+  .item-complex.active .item-content.item-positive {
     border-color: #145dd7;
     background-color: #145dd7; }
-  .item.active.item-calm,
-  .item.activated.item-calm,
-  .item-complex.active .item-content.item-calm,
-  .item-complex.activated .item-content.item-calm,
-  .item .item-content.active.item-calm,
-  .item .item-content.activated.item-calm {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-calm,
+  .item-complex.active .item-content.item-calm {
     border-color: #1aaac3;
     background-color: #1aaac3; }
-  .item.active.item-assertive,
-  .item.activated.item-assertive,
-  .item-complex.active .item-content.item-assertive,
-  .item-complex.activated .item-content.item-assertive,
-  .item .item-content.active.item-assertive,
-  .item .item-content.activated.item-assertive {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-assertive,
+  .item-complex.active .item-content.item-assertive {
     border-color: #cc2511;
     background-color: #cc2511; }
-  .item.active.item-balanced,
-  .item.activated.item-balanced,
-  .item-complex.active .item-content.item-balanced,
-  .item-complex.activated .item-content.item-balanced,
-  .item .item-content.active.item-balanced,
-  .item .item-content.activated.item-balanced {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-balanced,
+  .item-complex.active .item-content.item-balanced {
     border-color: #478f24;
     background-color: #478f24; }
-  .item.active.item-energized,
-  .item.activated.item-energized,
-  .item-complex.active .item-content.item-energized,
-  .item-complex.activated .item-content.item-energized,
-  .item .item-content.active.item-energized,
-  .item .item-content.activated.item-energized {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-energized,
+  .item-complex.active .item-content.item-energized {
     border-color: #d39511;
     background-color: #d39511; }
-  .item.active.item-royal,
-  .item.activated.item-royal,
-  .item-complex.active .item-content.item-royal,
-  .item-complex.activated .item-content.item-royal,
-  .item .item-content.active.item-royal,
-  .item .item-content.activated.item-royal {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-royal,
+  .item-complex.active .item-content.item-royal {
     border-color: #552bdf;
     background-color: #552bdf; }
-  .item.active.item-dark,
-  .item.activated.item-dark,
-  .item-complex.active .item-content.item-dark,
-  .item-complex.activated .item-content.item-dark,
-  .item .item-content.active.item-dark,
-  .item .item-content.activated.item-dark {
+  .item.active:not(.item-divider):not(.item-input):not(.item-input-inset).item-dark,
+  .item-complex.active .item-content.item-dark {
     border-color: black;
     background-color: #262626; }
 
@@ -4201,7 +4080,7 @@ button.item.item-complex {
 .item-radio .item-content {
   position: relative;
   z-index: 2;
-  padding: 15px 45px 15px 15px;
+  padding: 15px 40px 15px 15px;
   border: none;
   background-color: white; }
 
@@ -4211,7 +4090,6 @@ a.item-content {
   text-decoration: none; }
 
 .item-text-wrap .item,
-.item-text-wrap .item-content,
 .item-text-wrap,
 .item-text-wrap h1,
 .item-text-wrap h2,
@@ -4228,7 +4106,7 @@ a.item-content {
 .item-body h5,
 .item-body h6,
 .item-body p {
-  overflow: visible;
+  overflow: hidden;
   white-space: normal; }
 
 .item-complex.item-text-wrap,
@@ -4239,8 +4117,8 @@ a.item-content {
 .item-complex.item-text-wrap h5,
 .item-complex.item-text-wrap h6,
 .item-complex.item-text-wrap p {
-  overflow: visible;
-  white-space: normal; }
+  overflow: hidden;
+  white-space: nowrap; }
 
 /**
  * Item Icons
@@ -4275,42 +4153,30 @@ a.item-content {
   font-size: 28px; }
 
 .item-icon-left {
-  padding-left: 50px; }
+  padding-left: 45px; }
   .item-icon-left .icon {
-    left: 10px; }
+    left: 7.5px; }
 
 .item-complex.item-icon-left {
   padding-left: 0; }
   .item-complex.item-icon-left .item-content {
-    padding-left: 50px; }
+    padding-left: 45px; }
 
 .item-icon-right {
-  padding-right: 50px; }
+  padding-right: 45px; }
   .item-icon-right .icon {
-    right: 10px; }
+    right: 7.5px; }
 
 .item-complex.item-icon-right {
   padding-right: 0; }
   .item-complex.item-icon-right .item-content {
-    padding-right: 50px; }
+    padding-right: 45px; }
 
 .item-icon-left.item-icon-right .icon:first-child {
   right: auto; }
 
-.item-icon-left.item-icon-right .icon:last-child,
-.item-icon-left .item-delete .icon {
+.item-icon-left.item-icon-right .icon:last-child {
   left: auto; }
-
-.item-icon-left .icon-accessory,
-.item-icon-right .icon-accessory {
-  color: #cccccc;
-  font-size: 16px; }
-
-.item-icon-left .icon-accessory {
-  left: 3px; }
-
-.item-icon-right .icon-accessory {
-  right: 3px; }
 
 /**
  * Item Button
@@ -4318,7 +4184,7 @@ a.item-content {
  * An item button is a child button inside an .item (not the entire .item)
  */
 .item-button-left {
-  padding-left: 68px; }
+  padding-left: 67.5px; }
 
 .item-button-left > .button,
 .item-button-left .item-content > .button {
@@ -4334,8 +4200,8 @@ a.item-content {
   -moz-align-items: center;
   align-items: center;
   position: absolute;
-  top: 8px;
-  left: 10px;
+  top: 7.5px;
+  left: 7.5px;
   min-width: 34px;
   min-height: 34px;
   font-size: 18px;
@@ -4374,7 +4240,7 @@ button.item.item-button-right {
   -moz-align-items: center;
   align-items: center;
   position: absolute;
-  top: 8px;
+  top: 7.5px;
   right: 15px;
   min-width: 34px;
   min-height: 34px;
@@ -4398,39 +4264,80 @@ button.item.item-button-right {
     font-size: 18px;
     line-height: 32px; }
 
+/**
+ * Auto Right Arrow Icon
+ * --------------------------------------------------
+ * By default, if an .item is created out of an <a> or <button>
+ * then a arrow will be added to the right side of the item.
+ */
+a.item,
+button.item,
+.item[href] .item-content,
+.item[ng-click] .item-content {
+  padding-right: 40px; }
+  a.item:after,
+  button.item:after,
+  .item[href] .item-content:after,
+  .item[ng-click] .item-content:after {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    height: 100%;
+    color: #ccc;
+    content: "\f125";
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 16px;
+    font-family: 'Ionicons';
+    line-height: 1;
+    speak: none; }
+
+.grade-b a.item:after,
+.grade-b button.item:after,
+.grade-b .item[href] .item-content:after,
+.grade-b .item[ng-click] .item-content:after,
+.grade-c a.item:after,
+.grade-c button.item:after,
+.grade-c .item[href] .item-content:after,
+.grade-c .item[ng-click] .item-content:after {
+  -webkit-font-smoothing: none;
+  font-smoothing: none;
+  content: '>';
+  font-family: 'monospace'; }
+
+a.item-icon-right:after,
+button.item-icon-right:after,
+a.item-button-right:after,
+button.item-button-right:after,
+.item a.item-content:after {
+  display: none; }
+
 .item-avatar,
-.item-avatar .item-content,
-.item-avatar-left,
-.item-avatar-left .item-content {
+.item-avatar .item-content {
   padding-left: 70px;
   min-height: 70px; }
   .item-avatar > img:first-child,
   .item-avatar .item-image,
   .item-avatar .item-content > img:first-child,
-  .item-avatar .item-content .item-image,
-  .item-avatar-left > img:first-child,
-  .item-avatar-left .item-image,
-  .item-avatar-left .item-content > img:first-child,
-  .item-avatar-left .item-content .item-image {
+  .item-avatar .item-content .item-image {
     position: absolute;
     top: 15px;
     left: 15px;
-    max-width: 40px;
-    max-height: 40px;
-    width: 100%;
-    border-radius: 4px; }
-
-.item-avatar-right,
-.item-avatar-right .item-content {
-  padding-right: 70px;
-  min-height: 70px; }
-  .item-avatar-right > img:first-child,
-  .item-avatar-right .item-image,
-  .item-avatar-right .item-content > img:first-child,
-  .item-avatar-right .item-content .item-image {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     max-width: 40px;
     max-height: 40px;
     width: 100%;
@@ -4452,7 +4359,6 @@ button.item.item-button-right {
     width: 100%; }
 
 .item-avatar.item-complex,
-.item-avatar-left.item-complex,
 .item-thumbnail-left.item-complex {
   padding-left: 0; }
 
@@ -4471,7 +4377,6 @@ button.item.item-button-right {
     max-height: 80px;
     width: 100%; }
 
-.item-avatar-right.item-complex,
 .item-thumbnail-right.item-complex {
   padding-right: 0; }
 
@@ -4492,8 +4397,8 @@ button.item.item-button-right {
     margin-bottom: 15px; }
 
 .item-divider {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
   min-height: 30px;
   background-color: whitesmoke;
   color: #222222;
@@ -4554,7 +4459,8 @@ button.item.item-button-right {
   z-index: 0;
   width: 50px;
   height: 100%;
-  line-height: 100%; }
+  line-height: 100%;
+  opacity: 0; }
   .item-left-edit .button {
     height: 100%; }
     .item-left-edit .button.icon {
@@ -4577,7 +4483,8 @@ button.item.item-button-right {
 .item-left-editing .item-left-edit {
   -webkit-transform: translate3d(8px, 0, 0);
   -moz-transform: translate3d(8px, 0, 0);
-  transform: translate3d(8px, 0, 0); }
+  transform: translate3d(8px, 0, 0);
+  opacity: 1; }
 
 .item-delete .button.icon {
   color: #ef4e3a;
@@ -4586,9 +4493,6 @@ button.item.item-button-right {
     opacity: .7; }
 
 .item-right-edit {
-  -webkit-transition: all ease-in-out 250ms;
-  -moz-transition: all ease-in-out 250ms;
-  transition: all ease-in-out 250ms;
   position: absolute;
   top: 0;
   right: 0;
@@ -4622,8 +4526,6 @@ button.item.item-button-right {
 
 .item-reordering {
   position: absolute;
-  left: 0;
-  top: 0;
   z-index: 9;
   width: 100%;
   box-shadow: 0px 0px 10px 0px #aaa; }
@@ -4632,17 +4534,6 @@ button.item.item-button-right {
 
 .item-placeholder {
   opacity: 0.7; }
-
-.item-left-edit.item-delete,
-.item-right-edit.item-reorder {
-  opacity: 1; }
-  .item-left-edit.item-delete.ng-hide,
-  .item-right-edit.item-reorder.ng-hide {
-    opacity: 0; }
-  .item-left-edit.item-delete.ng-hide-add, .item-left-edit.item-delete.ng-hide-remove,
-  .item-right-edit.item-reorder.ng-hide-add,
-  .item-right-edit.item-reorder.ng-hide-remove {
-    display: block !important; }
 
 /**
  * The hidden right-side buttons that can be exposed under a list item
@@ -4658,6 +4549,9 @@ button.item.item-button-right {
     height: 100%;
     border: none;
     border-radius: 0; }
+
+.item-options-hide .item-options {
+  display: none; }
 
 /**
  * Lists
@@ -4736,11 +4630,6 @@ button.item.item-button-right {
 .padding-horizontal > .list .item {
   margin-right: 0;
   margin-left: 0; }
-  .card .item.item-input input,
-  .list-inset .item.item-input input,
-  .padding > .list .item.item-input input,
-  .padding-horizontal > .list .item.item-input input {
-    padding-right: 44px; }
 
 .padding-left > .list .item {
   margin-left: 0; }
@@ -5034,7 +4923,7 @@ textarea {
 .item-input-inset .item-input-wrapper input {
   padding-left: 4px;
   height: 29px;
-  background: transparent;
+  background: inherit;
   line-height: 18px; }
 
 .item-input-wrapper ~ .button {
@@ -5047,10 +4936,8 @@ textarea {
   -moz-flex: 1 0 100px;
   -ms-flex: 1 0 100px;
   flex: 1 0 100px;
-  display: table;
   padding: 7px 10px 7px 3px;
   max-width: 200px;
-  width: 35%;
   color: #444444;
   font-weight: bold;
   font-size: 14px; }
@@ -5076,14 +4963,15 @@ textarea {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  overflow: hidden;
   padding: 4px 8px 3px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.2); }
+  background-color: white; }
 
 .item-stacked-label input {
-  overflow: hidden;
   height: 46px; }
 
+select,
 textarea,
 input[type="text"],
 input[type="password"],
@@ -5106,18 +4994,6 @@ input[type="color"] {
   vertical-align: middle;
   font-size: 14px;
   line-height: 16px; }
-
-.platform-ios input[type="datetime-local"],
-.platform-ios input[type="date"],
-.platform-ios input[type="month"],
-.platform-ios input[type="time"],
-.platform-ios input[type="week"],
-.platform-android input[type="datetime-local"],
-.platform-android input[type="date"],
-.platform-android input[type="month"],
-.platform-android input[type="time"],
-.platform-android input[type="week"] {
-  padding-top: 8px; }
 
 input,
 textarea {
@@ -5157,15 +5033,17 @@ input[type="radio"],
 input[type="checkbox"] {
   width: auto; }
 
+select[multiple],
+select[size] {
+  height: auto; }
+
+select,
 input[type="file"] {
   line-height: 34px; }
 
-.previous-input-focus,
-.cloned-text-input + input,
-.cloned-text-input + textarea {
-  position: absolute;
-  left: -9999px;
-  width: 200px; }
+select {
+  border: 1px solid #dddddd;
+  background-color: white; }
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
@@ -5180,9 +5058,9 @@ textarea::-webkit-input-placeholder {
 input[disabled],
 select[disabled],
 textarea[disabled],
-input[readonly]:not(.cloned-text-input),
-textarea[readonly]:not(.cloned-text-input),
-select[readonly] {
+input[readonly],
+select[readonly],
+textarea[readonly] {
   background-color: #f8f8f8;
   cursor: not-allowed; }
 
@@ -5201,78 +5079,67 @@ input[type="checkbox"][readonly] {
   display: inline-block;
   padding: 7px 7px;
   cursor: pointer; }
-  .checkbox input:before, .checkbox .checkbox-icon:before {
-    border-color: #4a87ee; }
-  .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+  .checkbox input:before {
+    border: 1px solid #4a87ee; }
+  .checkbox input:checked:before {
     background: #4a87ee; }
-  .checkbox.checkbox-light input:before, .checkbox.checkbox-light .checkbox-icon:before {
-    border-color: #dddddd; }
-  .checkbox.checkbox-light input:checked:before, .checkbox.checkbox-light input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-light input:before {
+    border: 1px solid #dddddd; }
+  .checkbox.checkbox-light input:checked:before {
     background: #dddddd; }
-  .checkbox.checkbox-stable input:before, .checkbox.checkbox-stable .checkbox-icon:before {
-    border-color: #b2b2b2; }
-  .checkbox.checkbox-stable input:checked:before, .checkbox.checkbox-stable input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-stable input:before {
+    border: 1px solid #b2b2b2; }
+  .checkbox.checkbox-stable input:checked:before {
     background: #b2b2b2; }
-  .checkbox.checkbox-positive input:before, .checkbox.checkbox-positive .checkbox-icon:before {
-    border-color: #4a87ee; }
-  .checkbox.checkbox-positive input:checked:before, .checkbox.checkbox-positive input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-positive input:before {
+    border: 1px solid #4a87ee; }
+  .checkbox.checkbox-positive input:checked:before {
     background: #4a87ee; }
-  .checkbox.checkbox-calm input:before, .checkbox.checkbox-calm .checkbox-icon:before {
-    border-color: #43cee6; }
-  .checkbox.checkbox-calm input:checked:before, .checkbox.checkbox-calm input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-calm input:before {
+    border: 1px solid #43cee6; }
+  .checkbox.checkbox-calm input:checked:before {
     background: #43cee6; }
-  .checkbox.checkbox-assertive input:before, .checkbox.checkbox-assertive .checkbox-icon:before {
-    border-color: #ef4e3a; }
-  .checkbox.checkbox-assertive input:checked:before, .checkbox.checkbox-assertive input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-assertive input:before {
+    border: 1px solid #ef4e3a; }
+  .checkbox.checkbox-assertive input:checked:before {
     background: #ef4e3a; }
-  .checkbox.checkbox-balanced input:before, .checkbox.checkbox-balanced .checkbox-icon:before {
-    border-color: #66cc33; }
-  .checkbox.checkbox-balanced input:checked:before, .checkbox.checkbox-balanced input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-balanced input:before {
+    border: 1px solid #66cc33; }
+  .checkbox.checkbox-balanced input:checked:before {
     background: #66cc33; }
-  .checkbox.checkbox-energized input:before, .checkbox.checkbox-energized .checkbox-icon:before {
-    border-color: #f0b840; }
-  .checkbox.checkbox-energized input:checked:before, .checkbox.checkbox-energized input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-energized input:before {
+    border: 1px solid #f0b840; }
+  .checkbox.checkbox-energized input:checked:before {
     background: #f0b840; }
-  .checkbox.checkbox-royal input:before, .checkbox.checkbox-royal .checkbox-icon:before {
-    border-color: #8a6de9; }
-  .checkbox.checkbox-royal input:checked:before, .checkbox.checkbox-royal input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-royal input:before {
+    border: 1px solid #8a6de9; }
+  .checkbox.checkbox-royal input:checked:before {
     background: #8a6de9; }
-  .checkbox.checkbox-dark input:before, .checkbox.checkbox-dark .checkbox-icon:before {
-    border-color: #444444; }
-  .checkbox.checkbox-dark input:checked:before, .checkbox.checkbox-dark input:checked + .checkbox-icon:before {
+  .checkbox.checkbox-dark input:before {
+    border: 1px solid #444444; }
+  .checkbox.checkbox-dark input:checked:before {
     background: #444444; }
 
-.checkbox.checkbox-input-hidden input {
-  display: none !important; }
-
-.checkbox input,
-.checkbox-icon {
+.checkbox input {
   position: relative;
   width: 28px;
   height: 28px;
-  display: block;
   border: 0;
   background: transparent;
   cursor: pointer;
   -webkit-appearance: none; }
-  .checkbox input:before,
-  .checkbox-icon:before {
+  .checkbox input:before {
+    /* what the checkbox looks like when its not checked */
     display: table;
     width: 100%;
     height: 100%;
-    border-width: 1px;
-    border-style: solid;
     border-radius: 28px;
     background: white;
     content: ' ';
-    transition: background-color 20ms ease-in-out; }
+    transition: background-color .1s ease-in-out; }
 
-.checkbox input:checked:before,
-input:checked + .checkbox-icon:before {
-  border-width: 2px; }
-
-.checkbox input:after,
-.checkbox-icon:after {
+/* the checkmark within the box */
+.checkbox input:after {
   -webkit-transition: opacity 0.05s ease-in-out;
   -moz-transition: opacity 0.05s ease-in-out;
   transition: opacity 0.05s ease-in-out;
@@ -5291,8 +5158,7 @@ input:checked + .checkbox-icon:before {
   content: ' ';
   opacity: 0; }
 
-.grade-c .checkbox input:after,
-.grade-c .checkbox-icon:after {
+.grade-c .checkbox input:after {
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
@@ -5300,46 +5166,47 @@ input:checked + .checkbox-icon:before {
   left: 4px;
   border: none;
   color: white;
-  content: '\2713';
   font-weight: bold;
-  font-size: 20px; }
+  font-size: 20px;
+  content: '\2713'; }
 
-.checkbox input:checked:after,
-input:checked + .checkbox-icon:after {
+/* what the checkmark looks like when its checked */
+.checkbox input:checked:after {
   opacity: 1; }
 
+/* make sure item content have enough padding on left to fit the checkbox */
 .item-checkbox {
   padding-left: 58px; }
   .item-checkbox.active {
     box-shadow: none; }
 
+/* position the checkbox to the left within an item */
 .item-checkbox .checkbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
   position: absolute;
-  top: 50%;
-  right: 7.5px;
+  top: 0;
   left: 7.5px;
   z-index: 3;
-  margin-top: -21px; }
-
-.item-checkbox.item-checkbox-right {
-  padding-right: 58px;
-  padding-left: 15px; }
-
-.item-checkbox-right .checkbox input,
-.item-checkbox-right .checkbox-icon {
-  float: right; }
+  height: 100%; }
 
 /**
  * Toggle
  * --------------------------------------------------
  */
-.item-toggle {
-  pointer-events: none; }
-
+/* the overall container of the toggle */
 .toggle {
   position: relative;
   display: inline-block;
-  pointer-events: auto;
   margin: -5px;
   padding: 5px; }
   .toggle input:checked + .track {
@@ -5375,6 +5242,7 @@ input:checked + .checkbox-icon:after {
     border-color: #444444;
     background-color: #444444; }
 
+/* hide the actual input checkbox */
 .toggle input {
   display: none; }
 
@@ -5397,13 +5265,7 @@ input:checked + .checkbox-icon:after {
   border-radius: 20px;
   background-color: #e5e5e5;
   content: ' ';
-  cursor: pointer;
-  pointer-events: none; }
-
-/* Fix to avoid background color bleeding */
-/* (occured on (at least) Android 4.2, Asus MeMO Pad HD7 ME173X) */
-.platform-android4_2 .toggle .track {
-  -webkit-background-clip: padding-box; }
+  cursor: pointer; }
 
 /* the handle (circle) thats inside the toggle's track area */
 /* also the handle's appearance when it is "off" */
@@ -5412,13 +5274,14 @@ input:checked + .checkbox-icon:after {
   -moz-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   position: absolute;
+  top: 7px;
+  left: 7px;
   display: block;
   width: 28px;
   height: 28px;
   border-radius: 28px;
   background-color: white;
-  top: 7px;
-  left: 7px; }
+  /* used to create a larger (but hidden) hit area to slide the handle */ }
   .toggle .handle:before {
     position: absolute;
     top: -4px;
@@ -5426,22 +5289,20 @@ input:checked + .checkbox-icon:after {
     padding: 19px 35px;
     content: " "; }
 
+/* the handle when the toggle is "on" */
 .toggle input:checked + .track .handle {
   -webkit-transform: translate3d(22px, 0, 0);
   -moz-transform: translate3d(22px, 0, 0);
   transform: translate3d(22px, 0, 0);
   background-color: white; }
 
-.item-toggle.active {
-  box-shadow: none; }
-
-.item-toggle,
-.item-toggle.item-complex .item-content {
+/* make sure list item content have enough padding on right to fit the toggle */
+.item-toggle {
   padding-right: 99px; }
+  .item-toggle.active {
+    box-shadow: none; }
 
-.item-toggle.item-complex {
-  padding-right: 0; }
-
+/* position the toggle to the right within a list item */
 .item-toggle .toggle {
   position: absolute;
   top: 7.5px;
@@ -5486,8 +5347,7 @@ input:checked + .checkbox-icon:after {
     /* show the checkmark icon when its checked */
     visibility: visible; }
 
-.platform-android.grade-b .item-radio,
-.platform-android.grade-c .item-radio {
+.item-radio {
   -webkit-animation: androidCheckedbugfix infinite 1s; }
 
 @-webkit-keyframes androidCheckedbugfix {
@@ -5616,51 +5476,6 @@ input[type="range"] {
   padding-left: 0; }
 
 /**
- * Select
- * --------------------------------------------------
- */
-.item-select {
-  position: relative; }
-  .item-select select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 13px 45px 15px 15px;
-    max-width: 65%;
-    border: none;
-    background: transparent;
-    color: #333;
-    text-indent: .01px;
-    text-overflow: '';
-    white-space: nowrap;
-    font-size: 14px;
-    cursor: pointer;
-    direction: rtl; }
-  .item-select select::-ms-expand {
-    display: none; }
-  .item-select option {
-    direction: ltr; }
-  .item-select:after {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    margin-top: -3px;
-    width: 0;
-    height: 0;
-    border-top: 5px solid;
-    border-right: 5px solid rgba(0, 0, 0, 0);
-    border-left: 5px solid rgba(0, 0, 0, 0);
-    color: #999;
-    content: "";
-    pointer-events: none; }
-
-select[multiple], select[size] {
-  height: auto; }
-
-/**
  * Progress
  * --------------------------------------------------
  */
@@ -5680,7 +5495,7 @@ progress {
   position: relative;
   display: inline-block;
   margin: 0;
-  padding: 0 12px;
+  padding: 1px 12px 0 12px;
   min-width: 52px;
   min-height: 47px;
   border-width: 1px;
@@ -5695,7 +5510,7 @@ progress {
   .button:hover {
     color: #444444;
     text-decoration: none; }
-  .button.active, .button.activated {
+  .button.active {
     border-color: #a2a2a2;
     background-color: #e5e5e5;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5707,15 +5522,13 @@ progress {
     left: -8px;
     content: ' '; }
   .button .icon {
-    vertical-align: top;
-    pointer-events: none; }
+    vertical-align: top; }
   .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
     padding: 0 0 1px 0;
     vertical-align: inherit;
     font-size: 24px;
-    line-height: 41px;
-    pointer-events: none; }
+    line-height: 42px; }
   .button.icon-left:before {
     float: left;
     padding-right: .2em;
@@ -5734,7 +5547,7 @@ progress {
     .button.button-light:hover {
       color: #444444;
       text-decoration: none; }
-    .button.button-light.active, .button.button-light.activated {
+    .button.button-light.active {
       border-color: #cccccc;
       background-color: #fafafa;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5750,7 +5563,7 @@ progress {
       border-color: #dddddd;
       background: transparent;
       color: #dddddd; }
-      .button.button-light.button-outline.active, .button.button-light.button-outline.activated {
+      .button.button-light.button-outline.active {
         background-color: #dddddd;
         box-shadow: none;
         color: #fff; }
@@ -5761,7 +5574,7 @@ progress {
     .button.button-stable:hover {
       color: #444444;
       text-decoration: none; }
-    .button.button-stable.active, .button.button-stable.activated {
+    .button.button-stable.active {
       border-color: #a2a2a2;
       background-color: #e5e5e5;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5777,7 +5590,7 @@ progress {
       border-color: #b2b2b2;
       background: transparent;
       color: #b2b2b2; }
-      .button.button-stable.button-outline.active, .button.button-stable.button-outline.activated {
+      .button.button-stable.button-outline.active {
         background-color: #b2b2b2;
         box-shadow: none;
         color: #fff; }
@@ -5788,7 +5601,7 @@ progress {
     .button.button-positive:hover {
       color: white;
       text-decoration: none; }
-    .button.button-positive.active, .button.button-positive.activated {
+    .button.button-positive.active {
       border-color: #145dd7;
       background-color: #145dd7;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5804,7 +5617,7 @@ progress {
       border-color: #4a87ee;
       background: transparent;
       color: #4a87ee; }
-      .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+      .button.button-positive.button-outline.active {
         background-color: #4a87ee;
         box-shadow: none;
         color: #fff; }
@@ -5815,7 +5628,7 @@ progress {
     .button.button-calm:hover {
       color: white;
       text-decoration: none; }
-    .button.button-calm.active, .button.button-calm.activated {
+    .button.button-calm.active {
       border-color: #1aaac3;
       background-color: #1aaac3;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5831,7 +5644,7 @@ progress {
       border-color: #43cee6;
       background: transparent;
       color: #43cee6; }
-      .button.button-calm.button-outline.active, .button.button-calm.button-outline.activated {
+      .button.button-calm.button-outline.active {
         background-color: #43cee6;
         box-shadow: none;
         color: #fff; }
@@ -5842,7 +5655,7 @@ progress {
     .button.button-assertive:hover {
       color: white;
       text-decoration: none; }
-    .button.button-assertive.active, .button.button-assertive.activated {
+    .button.button-assertive.active {
       border-color: #cc2511;
       background-color: #cc2511;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5858,7 +5671,7 @@ progress {
       border-color: #ef4e3a;
       background: transparent;
       color: #ef4e3a; }
-      .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated {
+      .button.button-assertive.button-outline.active {
         background-color: #ef4e3a;
         box-shadow: none;
         color: #fff; }
@@ -5869,7 +5682,7 @@ progress {
     .button.button-balanced:hover {
       color: white;
       text-decoration: none; }
-    .button.button-balanced.active, .button.button-balanced.activated {
+    .button.button-balanced.active {
       border-color: #478f24;
       background-color: #478f24;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5885,7 +5698,7 @@ progress {
       border-color: #66cc33;
       background: transparent;
       color: #66cc33; }
-      .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated {
+      .button.button-balanced.button-outline.active {
         background-color: #66cc33;
         box-shadow: none;
         color: #fff; }
@@ -5896,7 +5709,7 @@ progress {
     .button.button-energized:hover {
       color: white;
       text-decoration: none; }
-    .button.button-energized.active, .button.button-energized.activated {
+    .button.button-energized.active {
       border-color: #d39511;
       background-color: #d39511;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5912,7 +5725,7 @@ progress {
       border-color: #f0b840;
       background: transparent;
       color: #f0b840; }
-      .button.button-energized.button-outline.active, .button.button-energized.button-outline.activated {
+      .button.button-energized.button-outline.active {
         background-color: #f0b840;
         box-shadow: none;
         color: #fff; }
@@ -5923,7 +5736,7 @@ progress {
     .button.button-royal:hover {
       color: white;
       text-decoration: none; }
-    .button.button-royal.active, .button.button-royal.activated {
+    .button.button-royal.active {
       border-color: #552bdf;
       background-color: #552bdf;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5939,7 +5752,7 @@ progress {
       border-color: #8a6de9;
       background: transparent;
       color: #8a6de9; }
-      .button.button-royal.button-outline.active, .button.button-royal.button-outline.activated {
+      .button.button-royal.button-outline.active {
         background-color: #8a6de9;
         box-shadow: none;
         color: #fff; }
@@ -5950,7 +5763,7 @@ progress {
     .button.button-dark:hover {
       color: white;
       text-decoration: none; }
-    .button.button-dark.active, .button.button-dark.activated {
+    .button.button-dark.active {
       border-color: black;
       background-color: #262626;
       box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15); }
@@ -5966,21 +5779,20 @@ progress {
       border-color: #444444;
       background: transparent;
       color: #444444; }
-      .button.button-dark.button-outline.active, .button.button-dark.button-outline.activated {
+      .button.button-dark.button-outline.active {
         background-color: #444444;
         box-shadow: none;
         color: #fff; }
 
 .button-small {
-  padding: 2px 4px 1px;
+  padding: 0 4px;
   min-width: 28px;
-  min-height: 30px;
+  min-height: 31px;
   font-size: 12px;
-  line-height: 26px; }
+  line-height: 28px; }
   .button-small .icon:before, .button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
     font-size: 16px;
-    line-height: 19px;
-    margin-top: 3px; }
+    line-height: 26px; }
 
 .button-large {
   padding: 0 16px;
@@ -6001,7 +5813,7 @@ progress {
   min-width: initial;
   border-color: transparent;
   background: none; }
-  .button-icon.button.active, .button-icon.button.activated {
+  .button-icon.button.active {
     border-color: transparent;
     background: none;
     box-shadow: none;
@@ -6026,7 +5838,7 @@ progress {
   .button-clear.button-icon {
     border-color: transparent;
     background: none; }
-  .button-clear.active, .button-clear.activated {
+  .button-clear.active {
     opacity: 0.3; }
 
 .button-outline {
@@ -6039,7 +5851,7 @@ progress {
     border-color: #b2b2b2;
     background: transparent;
     color: #b2b2b2; }
-    .button-outline.button-outline.active, .button-outline.button-outline.activated {
+    .button-outline.button-outline.active {
       background-color: #b2b2b2;
       box-shadow: none;
       color: #fff; }
@@ -6548,23 +6360,17 @@ a.button {
 .slide-right-left-ios7.reverse.ng-enter,
 .slide-right-left-ios7.reverse > .ng-leave,
 .slide-right-left-ios7.reverse.ng-leave {
-  -webkit-transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
-  -moz-transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
-  transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
   position: absolute;
   top: 0;
   right: -1px;
   bottom: 0;
   left: -1px;
-  width: auto; }
-  .slide-left-right-ios7 > .ng-enter:not(.bar), .slide-left-right-ios7.ng-enter:not(.bar),
-  .slide-left-right-ios7 > .ng-leave:not(.bar), .slide-left-right-ios7.ng-leave:not(.bar),
-  .slide-right-left-ios7.reverse > .ng-enter:not(.bar),
-  .slide-right-left-ios7.reverse.ng-enter:not(.bar),
-  .slide-right-left-ios7.reverse > .ng-leave:not(.bar),
-  .slide-right-left-ios7.reverse.ng-leave:not(.bar) {
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd; }
+  width: auto;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd; }
 .slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter,
 .slide-right-left-ios7.reverse > .ng-enter,
 .slide-right-left-ios7.reverse.ng-enter {
@@ -6572,10 +6378,6 @@ a.button {
   -webkit-transform: translate3d(100%, 0, 0);
   -moz-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0); }
-.slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave,
-.slide-right-left-ios7.reverse > .ng-leave,
-.slide-right-left-ios7.reverse.ng-leave {
-  z-index: 1; }
 .slide-left-right-ios7 > .ng-enter.ng-enter-active, .slide-left-right-ios7.ng-enter.ng-enter-active,
 .slide-right-left-ios7.reverse > .ng-enter.ng-enter-active,
 .slide-right-left-ios7.reverse.ng-enter.ng-enter-active {
@@ -6596,9 +6398,9 @@ a.button {
 .slide-right-left-ios7.ng-enter,
 .slide-right-left-ios7 > .ng-leave,
 .slide-right-left-ios7.ng-leave {
-  -webkit-transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
-  -moz-transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
-  transition: all cubic-bezier(0.4, 0.6, 0.2, 1) 340ms;
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
   position: absolute;
   top: 0;
   right: -1px;
@@ -6611,13 +6413,9 @@ a.button {
 .slide-right-left-ios7 > .ng-enter,
 .slide-right-left-ios7.ng-enter {
   /* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
-  -webkit-transform: translate3d(-15%, 0, 0);
-  -moz-transform: translate3d(-15%, 0, 0);
-  transform: translate3d(-15%, 0, 0); }
-.slide-left-right-ios7.reverse > .ng-leave, .slide-left-right-ios7.reverse.ng-leave,
-.slide-right-left-ios7 > .ng-leave,
-.slide-right-left-ios7.ng-leave {
-  z-index: 2; }
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
 .slide-left-right-ios7.reverse > .ng-enter.ng-enter-active, .slide-left-right-ios7.reverse.ng-enter.ng-enter-active,
 .slide-right-left-ios7 > .ng-enter.ng-enter-active,
 .slide-right-left-ios7.ng-enter.ng-enter-active {
@@ -6629,9 +6427,9 @@ a.button {
 .slide-right-left-ios7 > .ng-leave.ng-leave-active,
 .slide-right-left-ios7.ng-leave.ng-leave-active {
   /* OLD content ACTIVELY sliding OUT to the RIGHT */
-  -webkit-transform: translate3d(100%, 0, 0);
-  -moz-transform: translate3d(100%, 0, 0);
-  transform: translate3d(100%, 0, 0); }
+  -webkit-transform: translate3d(15%, 0, 0);
+  -moz-transform: translate3d(15%, 0, 0);
+  transform: translate3d(15%, 0, 0); }
 
 .slide-in-left {
   -webkit-transform: translate3d(0%, 0, 0);
@@ -6880,46 +6678,20 @@ a.button {
 /**
  * Some component specific animations
  */
-.nav-title-slide-ios7:not(.no-animation) .button.back-button {
-  -webkit-transition: all 340ms;
-  -moz-transition: all 340ms;
-  transition: all 340ms;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  -moz-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  -webkit-transform: translate3d(0%, 0, 0);
-  -moz-transform: translate3d(0%, 0, 0);
-  transform: translate3d(0%, 0, 0);
-  opacity: 1; }
-  .nav-title-slide-ios7:not(.no-animation) .button.back-button.active, .nav-title-slide-ios7:not(.no-animation) .button.back-button.activated {
-    opacity: 0.5; }
-  .nav-title-slide-ios7:not(.no-animation) .button.back-button.ng-hide {
-    opacity: 0;
-    -webkit-transform: translate3d(30%, 0, 0);
-    -moz-transform: translate3d(30%, 0, 0);
-    transform: translate3d(30%, 0, 0); }
-  .nav-title-slide-ios7:not(.no-animation) .button.back-button.ng-hide-add, .nav-title-slide-ios7:not(.no-animation) .button.back-button.ng-hide-remove {
-    display: block !important; }
-  .nav-title-slide-ios7:not(.no-animation) .button.back-button.ng-hide-add {
-    position: absolute; }
 .nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter,
 .nav-title-slide-ios7 > .ng-leave, .nav-title-slide-ios7.ng-leave {
-  -webkit-transition: all 340ms;
-  -moz-transition: all 340ms;
-  transition: all 340ms;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  -moz-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  transition: all 250ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
   opacity: 1; }
 .nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter {
   -webkit-transform: translate3d(30%, 0, 0);
   -moz-transform: translate3d(30%, 0, 0);
   transform: translate3d(30%, 0, 0);
   opacity: 0; }
-  .nav-title-slide-ios7 > .ng-enter.title, .nav-title-slide-ios7.ng-enter.title {
-    -webkit-transform: translate3d(100%, 0, 0);
-    -moz-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0); }
 .nav-title-slide-ios7 > .ng-enter.ng-enter-active, .nav-title-slide-ios7.ng-enter.ng-enter-active {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -6932,12 +6704,9 @@ a.button {
   opacity: 0; }
 .nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter,
 .nav-title-slide-ios7.reverse > .ng-leave, .nav-title-slide-ios7.reverse.ng-leave {
-  -webkit-transition: all 340ms;
-  -moz-transition: all 340ms;
-  transition: all 340ms;
-  -webkit-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  -moz-transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
-  transition-timing-function: cubic-bezier(0.4, 0.6, 0.2, 1);
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
   opacity: 1; }
 .nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter {
   -webkit-transform: translate3d(-30%, 0, 0);
@@ -6950,9 +6719,9 @@ a.button {
   transform: translate3d(0, 0, 0);
   opacity: 1; }
 .nav-title-slide-ios7.reverse > .ng-leave.ng-leave-active, .nav-title-slide-ios7.reverse.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(100%, 0, 0);
-  -moz-transform: translate3d(100%, 0, 0);
-  transform: translate3d(100%, 0, 0);
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
   opacity: 0; }
 
 /**
@@ -7011,20 +6780,6 @@ a.button {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center; }
-
-.row-stretch {
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  -webkit-align-items: stretch;
-  -moz-align-items: stretch;
-  align-items: stretch; }
-
-.row-baseline {
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  -webkit-align-items: baseline;
-  -moz-align-items: baseline;
-  align-items: baseline; }
 
 /* .col-* vertically aligns an individual .col */
 .col-top {
@@ -7247,11 +7002,11 @@ a.button {
 .invisible {
   visibility: hidden; }
 
-.keyboard-open .hide-on-keyboard-open {
+.footer-hide .bar-footer,
+.footer-hide .tabs {
   display: none; }
-
-.keyboard-open .tabs.hide-on-keyboard-open + .pane .has-tabs,
-.keyboard-open .bar-footer.hide-on-keyboard-open + .pane .has-footer {
+.footer-hide .has-footer,
+.footer-hide .has-tabs {
   bottom: 0; }
 
 .inline {
@@ -7274,9 +7029,6 @@ a.button {
   -webkit-user-drag: none;
   -ms-touch-action: none;
   -ms-content-zooming: none; }
-
-.no-resize {
-  resize: none; }
 
 .block {
   display: block;
@@ -7421,423 +7173,29 @@ a.button {
 /**
  * Platform
  * --------------------------------------------------
- * Platform specific tweaks
+ * Platform specific tweaks when in Cordova.
  */
-.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header {
   height: 64px; }
-  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header.item-input-inset .item-input-wrapper {
     margin-top: 19px !important; }
-  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header > * {
     margin-top: 20px; }
-.platform-ios7.platform-cordova:not(.fullscreen) .tabs-top > .tabs,
-.platform-ios7.platform-cordova:not(.fullscreen) .tabs.tabs-top {
-  top: 64px; }
 .platform-ios7.platform-cordova:not(.fullscreen) .has-header,
 .platform-ios7.platform-cordova:not(.fullscreen) .bar-subheader {
   top: 64px; }
 .platform-ios7.platform-cordova:not(.fullscreen) .has-subheader {
   top: 108px; }
-.platform-ios7.platform-cordova:not(.fullscreen) .has-tabs-top {
-  top: 113px; }
-.platform-ios7.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
-  top: 157px; }
-.platform-ios7.platform-cordova.status-bar-hide {
+
+.platform-ios7.status-bar-hide {
   margin-bottom: 20px; }
 
-@media (orientation: landscape) {
-  .platform-ios7.platform-browser.platform-ipad {
-    position: fixed; } }
-.platform-c:not(.enable-transitions) * {
-  -webkit-transition: none !important;
-  transition: none !important; }
-
-.fade-bar {
-  height: 20px;
-  width: 100%;
-  position: fixed;
-  z-index: 9999;
-  opacity: 0;
-  background-color: #000; }
-
-.ionic-contrib-blur {
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  -webkit-filter: blur(20px);
-  opacity: .25;
-  z-index: 1; }
-
-.bar-frosted {
-  background-color: #1c1c1c; }
-
-.caps, .item-divider {
-  text-transform: uppercase; }
-
-.no-header {
-  top: 0; }
-
-.bar .button {
-  z-index: 2; }
-
-body, .pane, .view, .modal {
-  background-color: #1c1c1c;
-  overflow: hidden; }
-
-.bar .button.button-icon .icon:before,
-.bar .button.button-icon:before,
-.bar .button.button-icon.icon-left:before,
-.bar .button.button-icon.icon-right:before {
-  font-size: 24px; }
-
-.bar.bar-dark {
-  background-color: #1c1c1c;
-  *zoom: 1; }
-  .bar.bar-dark:before, .bar.bar-dark:after {
-    display: table;
-    content: "";
-    line-height: 0; }
-  .bar.bar-dark:after {
-    clear: both; }
-  .bar.bar-dark.bar-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
-  .bar.bar-dark .button.right {
-    position: absolute;
-    right: 0; }
-  .bar.bar-dark .button.button-clear {
-    color: rgba(255, 255, 255, 0.6); }
-  .bar.bar-dark .button.button-icon {
-    border: 0 none;
-    padding: 0 5px;
-    line-height: 32px; }
-  .bar.bar-dark button.no-padding {
-    padding: 0;
-    border: 0 none; }
-  .bar.bar-dark .button.button-smaller .icon:before,
-  .bar.bar-dark .button.button-smaller:before,
-  .bar.bar-dark .button.button-smaller.icon-left:before,
-  .bar.bar-dark .button.button-smaller.icon-right:before {
-    font-size: 21px; }
-  .bar.bar-dark .button-toggle-deselected {
-    opacity: 0.5; }
-
-.tabs-dark > .tabs, .tabs.tabs-dark {
-  border-top-width: 1px !important;
-  border-top-style: solid !important;
-  border-top-color: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: #1c1c1c;
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 50%, transparent 50%);
-  color: #fff; }
-
-.item-input-wrapper {
-  background-color: rgba(255, 255, 255, 0.2); }
-
-.item-input-inset .item-input-wrapper input {
-  background-color: transparent; }
-
-.placeholder-icon {
-  color: white; }
-
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"] {
-  color: white; }
-
-.item {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
-  color: white; }
-  .item a {
-    color: white; }
-
-.item-divider {
-  font-weight: normal;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5); }
-
-.item-complex .item-content,
-.item-radio .item-content {
-  background-color: rgba(255, 255, 255, 0.05); }
-
-.item-radio input:checked ~ .item-content {
-  background-color: rgba(255, 255, 255, 0.05); }
-
-.item.active,
-.item.activated,
-.item-complex.active .item-content,
-.item-complex.activated .item-content {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2); }
-
-.favorite-result-item .button .icon:before,
-.favorite-result-item .button.icon:before,
-.favorite-result-item .button.icon-left:before,
-.favorite-result-item .button.icon-right:before,
-.visited-result-item .button .icon:before,
-.visited-result-item .button.icon:before,
-.visited-result-item .button.icon-left:before,
-.visited-result-item .button.icon-right:before {
-  line-height: 50px; }
-
-.about-app {
-  text-align: center;
-  color: #fff;
-  font-size: 13px; }
-
-.about-logo {
-  padding: 25px 0 20px; }
-
-.handcrafted-by-maven {
-  line-height: 25px;
-  opacity: 0.5;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  margin: 15px 35px; }
-  .handcrafted-by-maven hr {
-    opacity: 0.4;
-    border-color: #fff;
-    margin: 0; }
-  .handcrafted-by-maven img {
-    margin-left: 2px;
-    vertical-align: middle; }
-
-.map-wrapper .scroll {
-  height: 100%; }
-
-#map_all, #map_detail, .angular-google-map, .angular-google-map-container {
-  width: 100%;
-  height: 100%; }
-
-.bar-header.bar-dark .locations-toggle-wrap {
-  font-size: 0 !important; }
-  .bar-header.bar-dark .locations-toggle-wrap .button.button-icon {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 0;
-    margin: 6px 0 0;
-    padding-left: 22.5px;
-    padding-right: 22.5px;
-    vertical-align: middle;
-    line-height: 29px; }
-    .bar-header.bar-dark .locations-toggle-wrap .button.button-icon:before {
-      font-size: 20px;
-      line-height: 28px; }
-    .bar-header.bar-dark .locations-toggle-wrap .button.button-icon.active, .bar-header.bar-dark .locations-toggle-wrap .button.button-icon.activated {
-      border-color: transparent;
-      background-color: rgba(255, 255, 255, 0.6);
-      color: #1c1c1c;
-      opacity: 1; }
-
-.scrollToTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 37.5px;
-  height: 37.5px;
-  line-height: 37.5px;
-  text-align: center;
-  font-size: 24px;
-  z-index: 10;
-  background-color: #1c1c1c;
-  color: #fff;
-  opacity: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
-  .scrollToTop.showscrollbtn {
-    opacity: 1; }
-
-.locations-list {
-  padding: 0 !important; }
-  .locations-list .location-item {
-    position: relative;
-    clear: both;
-    padding: 0px;
-    margin: 0px;
-    border: 0 none;
-    padding-bottom: 46.875%;
-    background-position: 50% 0;
-    background-size: cover; }
-    .locations-list .location-item .item-options .button {
-      background-color: rgba(0, 0, 0, 0.75);
-      color: #fff; }
-    .locations-list .location-item > a {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: 0;
-      display: block;
-      padding: 0;
-      background-color: transparent;
-      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.65)), color-stop(1, rgba(255, 255, 255, 0)));
-      background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
-      background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
-      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
-      background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 100%); }
-      .locations-list .location-item > a:after {
-        display: none !important; }
-      .locations-list .location-item > a > .location-title {
-        position: absolute;
-        left: 15px;
-        right: 15px;
-        bottom: 12px; }
-        .locations-list .location-item > a > .location-title > p {
-          width: 65%;
-          margin: 0;
-          font-size: 18px;
-          font-weight: 300;
-          color: #fff;
-          white-space: pre-wrap; }
-        .locations-list .location-item > a > .location-title > .distance-indicator {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          font-size: 16px;
-          font-weight: 300;
-          color: #fff; }
-          .locations-list .location-item > a > .location-title > .distance-indicator > .digit {
-            font-size: 32px;
-            font-weight: normal; }
-
-.detail-view:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #1c1c1c), color-stop(1, rgba(28, 28, 28, 0)));
-  background-image: -o-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -moz-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -webkit-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -ms-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: linear-gradient(to top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  opacity: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
-.detail-view.fade:after {
-  opacity: 1; }
-
-.details .location-details-header {
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  height: 320px; }
-  .details .location-details-header .location-details-header-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0.65)), color-stop(1, rgba(255, 255, 255, 0)));
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 53%);
-    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 53%);
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 53%);
-    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 53%);
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 53%); }
-    .details .location-details-header .location-details-header-container h1 {
-      position: absolute;
-      display: block;
-      bottom: 15px;
-      left: 20px;
-      right: 20px;
-      text-align: left;
-      padding: 0;
-      margin: 0;
-      font-size: 26px;
-      font-weight: 400;
-      color: #fff;
-      line-height: 30px;
-      white-space: normal; }
-.details .location-details-description {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 15px 20px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 17px;
-  text-align: left; }
-  .details .location-details-description h3 {
-    font-size: 17px;
-    font-weight: 400;
-    color: #fff;
-    margin-bottom: 16px; }
-
-.audio-player audio {
-  width: 100%; }
-
-.video-player .player-wrap {
-  position: relative;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-  padding-top: 25px;
-  height: 0; }
-  .video-player .player-wrap video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-
-#image-gallery {
-  margin: auto; }
-  #image-gallery .image {
-    float: left;
-    overflow: hidden;
-    position: relative;
-    width: 50%;
-    height: 0;
-    padding-bottom: 30%; }
-    #image-gallery .image .image-spacing {
-      position: absolute;
-      left: 3px;
-      right: 3px;
-      top: 0;
-      bottom: 6px;
-      overflow: hidden; }
-    #image-gallery .image img {
-      min-width: 100%;
-      min-height: 100%;
-      max-width: 150%;
-      max-height: 150%; }
-    #image-gallery .image:nth-child(-n+2) .image-spacing {
-      top: 6px; }
-    #image-gallery .image:nth-of-type(odd) .image-spacing {
-      left: 6px; }
-    #image-gallery .image:nth-of-type(even) .image-spacing {
-      right: 6px; }
-
-.slider, .scroll-view, .image {
-  height: 100%; }
-
-.slider .image {
-  -webkit-transform-style: preserve-3d; }
-.slider .image, .slider img {
-  -webkit-transition: 250ms ease-in; }
-.slider img {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%); }
-
-.scaled {
-  max-width: 100%;
-  transform-origin: 50% 50%;
-  -webkit-transform-origin: 50% 50%;
-  /* Chrome, Safari, Opera */ }
+.platform-android.platform-cordova .bar-header {
+  height: 48px; }
+.platform-android.platform-cordova .has-header,
+.platform-android.platform-cordova .bar-subheader {
+  top: 48px; }
+.platform-android.platform-cordova .has-subheader {
+  top: 96px; }
+.platform-android.platform-cordova .title {
+  line-height: 48px; }

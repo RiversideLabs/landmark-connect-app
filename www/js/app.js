@@ -164,19 +164,19 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       })
 
-    .state('app.loc.detail.photo', {
-      url: '/photo',
+    .state('app.loc.detail.image', {
+      url: '/image',
       views: {
-        'tab-loc-photo': {
+        'tab-loc-image': {
           templateUrl: 'templates/detail/location-gallery.html',
           controller: 'LocationDetailCtrl'
         }
       }
     })
-      .state('app.loc.detail.photo-view', {
-        url: '/photo/v/:photoId',
+      .state('app.loc.detail.image-view', {
+        url: '/image/v/:imageId',
         views: {
-          'tab-loc-photo': {
+          'tab-loc-image': {
             templateUrl: 'templates/detail/location-gallery-view.html',
             controller: 'LocationDetailCtrl'
           }
@@ -256,7 +256,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
     // })
     //
     // .state('location.gallery-view', {
-    //   url: '/gallery/view/:photoId',
+    //   url: '/gallery/view/:imageId',
     //   views: {
     //     'tab-location-detail-gallery': {
     //       templateUrl: 'templates/detail/location-gallery-view.html',

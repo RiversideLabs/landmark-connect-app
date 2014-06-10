@@ -24,16 +24,16 @@
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-tabs class="tabs-icon-only tabs-dark">
-    <ion-tab title="Details" icon-on="ion-ios7-information" icon-off="ion-ios7-information-outline" href="#/app/loc/{{location.id}}/detail">
+    <ion-tab title="Details" icon-on="ion-ios7-information" icon-off="ion-ios7-information-outline" href="#/app/loc/{{location._id}}/detail">
       <ion-nav-view name="tab-loc-detail"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Tours" icon-on="ion-ios7-recording" icon-off="ion-ios7-recording-outline" href="#/app/loc/{{location.id}}/tour">
+    <ion-tab title="Tours" icon-on="ion-ios7-recording" icon-off="ion-ios7-recording-outline" href="#/app/loc/{{location._id}}/tour">
       <ion-nav-view name="tab-loc-tour"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Gallery" icon-on="ion-ios7-photos" icon-off="ion-ios7-photos-outline" href="#/app/loc/{{location.id}}/photo">
-      <ion-nav-view name="tab-loc-photo"></ion-nav-view>
+    <ion-tab title="Gallery" icon-on="ion-ios7-images" icon-off="ion-ios7-images-outline" href="#/app/loc/{{location._id}}/image">
+      <ion-nav-view name="tab-loc-image"></ion-nav-view>
     </ion-tab>
-    <ion-tab title="Map" icon-on="ion-ios7-location" icon-off="ion-ios7-location-outline" href="#/app/loc/{{location.id}}/map">
+    <ion-tab title="Map" icon-on="ion-ios7-location" icon-off="ion-ios7-location-outline" href="#/app/loc/{{location._id}}/map">
       <ion-nav-view name="tab-loc-map"></ion-nav-view>
     </ion-tab>
   </ion-tabs>

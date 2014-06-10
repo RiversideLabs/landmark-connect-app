@@ -52,7 +52,7 @@ angular.module('landmarkConnect.directives', [])
   }
 })
 
-.directive('photo', function ($window) {
+.directive('image', function ($window) {
   return {
     link: function ($scope, $element, $attr) {
       var size = ($window.outerWidth / 4) - 2;

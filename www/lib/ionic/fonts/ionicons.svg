@@ -916,9 +916,9 @@ v0s1 -3 0 -6c-1 -5 -6 -5 -4 -16s4 -14 5 -18s8 -3 9 -8s1 -4 1 -4c1 -9 4 -23 6 -28
     <glyph glyph-name="ion-ios7-personadd" unicode="&#xf1c4;" horiz-adv-x="320" 
 d="M320 295v-14h-25v-25h-14v25h-25v14h25v25h14v-25h25zM267 84c13 -5 53 -20 53 -52h-160h-160c0 32 40 47 53 52s31 6 43 9c7 2 17 5 20 9s1 41 1 41s-6 10 -9 18s-7 32 -7 32s-7 0 -9 12c-2 13 -6 17 -6 27c0 9 5 10 5 10v0s-4 13 -5 42c-1 34 25 68 74 68
 s75 -34 74 -68c-1 -29 -5 -42 -5 -42v0s5 -1 5 -10c0 -10 -3 -15 -6 -28c-2 -12 -9 -12 -9 -12s-4 -23 -7 -31s-9 -18 -9 -18s-2 -37 1 -41s13 -7 20 -9c12 -3 30 -4 43 -9z" />
-    <glyph glyph-name="ion-ios7-photos-outline" unicode="&#xf1c5;" 
+    <glyph glyph-name="ion-ios7-images-outline" unicode="&#xf1c5;" 
 d="M64 320h384v-320h-384v320zM432 16v288h-352v-288h352zM0 384h384v-48h-16v32h-352v-288h32v-16h-48v320z" />
-    <glyph glyph-name="ion-ios7-photos" unicode="&#xf1c6;" 
+    <glyph glyph-name="ion-ios7-images" unicode="&#xf1c6;" 
 d="M64 320h384v-320h-384v320zM384 384v-48h-336v-272h-48v320h384z" />
     <glyph glyph-name="ion-ios7-pie-outline" unicode="&#xf28a;" 
 d="M32 176h208v208c5 0 11 -1 16 -1c17 -1 33 -4 49 -9c24 -8 46 -21 65 -36c47 -38 78 -96 78 -162c0 -115 -93 -208 -208 -208c-66 0 -124 31 -162 78c-15 19 -28 41 -36 65c-5 16 -8 32 -9 49c0 5 -1 11 -1 16zM49 160c2 -20 6 -40 14 -59c7 -16 15 -30 26 -44

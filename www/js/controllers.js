@@ -392,7 +392,7 @@ angular.module('landmarkConnect.controllers', [])
 .controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
-
+  
   $scope.fade = true;
   $scope.$storage = $localStorage;
 
@@ -449,42 +449,42 @@ angular.module('landmarkConnect.controllers', [])
 
 
   // --- TOURS -----
-  $scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
-  $scope.aPlayer = AudioService;
+  //$scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
+  //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
-  // --- PHOTOS -----
-  $scope.photo = LocationsService.getPhoto($stateParams.locationId, $stateParams.photoId);
-  angular.forEach(location.photos, function(photo, index){
-    $scope.photos.push(photo);
+  // --- IMAGES -----
+  $scope.image = LocationsService.getImage($stateParams.locationId, $stateParams.imageId);
+  angular.forEach(location.images, function(image, index){
+    $scope.images.push(image);
   });
-
+  
   $scope.containerStyle = {
     width: '',
     height: ''
   };
-
-  var delegate = $ionicScrollDelegate.$getByHandle('photo-gallery');
-
-  if($stateParams.photoId) {
+  
+  var delegate = $ionicScrollDelegate.$getByHandle('image-gallery');
+  
+  if($stateParams.imageId) {
     $timeout( function() {
-      $scope.$broadcast('slideBox.setSlide', $stateParams.photoId);
+      $scope.$broadcast('slideBox.setSlide', $stateParams.imageId);
     }, 50);
   }
-
+  
   $scope.dataSlide = {};
   $scope.dataSlide.currSlide = $ionicSlideBoxDelegate.currentIndex();
-
+  
   $scope.slideChanged = function() {
-    delegate.rememberScrollPosition('photo-gallery');
+    delegate.rememberScrollPosition('image-gallery');
     $scope.dataSlide.currSlide = $ionicSlideBoxDelegate.currentIndex();
-
+  
     $timeout( function() {
       $ionicScrollDelegate.resize();
     }, 50);
   };
 
-  // --- END PHOTOS -----
+  // --- END IMAGES -----
 
   // ------- MAP -------
   var latLng = new google.maps.LatLng($scope.location.location.lat, $scope.location.location.lng);

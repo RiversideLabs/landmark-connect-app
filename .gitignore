@@ -6,3 +6,6 @@ platforms/^.*
 
 scss/.sass-cache
 scss/.sass-cache/*
+
+www/lib/ionic/scss/.sass-cache
+www/lib/ionic/scss/.sass-cache/*
