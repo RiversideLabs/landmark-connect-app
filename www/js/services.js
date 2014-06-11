@@ -16,7 +16,7 @@ angular.module('landmarkConnect.services', [])
 
 .factory('LocationsService', [ '$http', function($http) {
   var locations = [];
-  $http.get('http://localhost:3000/api/location/list').success(function(data){
+  $http.get('http://landmarkjs-demo.herokuapp.com/api/location/list').success(function(data){
     locations = data.locations;
   });
   
