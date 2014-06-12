@@ -8,10 +8,9 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
     alert('This app is meant for iOS and Android 4.4, it will not work on older Androids!');
   }
   $ionicPlatform.ready(function() {
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleBlackOpaque();
-    }
+    setTimeout(function() {
+        navigator.splashscreen.hide();
+    }, 100);
   });
 })
 

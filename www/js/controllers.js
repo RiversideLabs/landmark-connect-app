@@ -160,9 +160,9 @@ angular.module('landmarkConnect.controllers', [])
       $ionicScrollDelegate.scrollTo(0, 44, false);
     }
   };
-  
+
   var watchID = null;
-  
+
   function onPositionSuccess(pos) {
     console.log("successfully recieved position");
     var coords = $scope.$storage.currentLocation = [
@@ -224,12 +224,12 @@ angular.module('landmarkConnect.controllers', [])
   //       });
   //     });
   //   }
-  // 
-  // 
+  //
+  //
   //   $timeout( function() {
   //     adjustScroll();
   //   }, 700);
-  // 
+  //
   // }, 500);
 
 
@@ -297,7 +297,7 @@ angular.module('landmarkConnect.controllers', [])
     for (var i = 0; i < locations.length; i++) {
       var location = locations[i];
       var latLng = new google.maps.LatLng(locations[i].location.geo[1], locations[i].location.geo[0]);
-      var contentString = '<div style="width:200px;"><h4>' + location.commonName + '</h4><p>' + location.location.street1+'<br>'+location.location.suburb+', '+location.location.state+' '+location.location.postcode+'</p><p><a href="/#/location/'+location._id+'/details/">View Details</a> | <a href="http://maps.apple.com/?q='+location.location.street1+'+'+location.location.suburb+'+'+location.location.state+'+'+location.location.postcode+'">Get Directions</a></p></div>';
+      var contentString = '<div style="width:200px;"><h4>' + location.commonName + '</h4><p>' + location.location.street1+'<br>'+location.location.suburb+', '+location.location.state+' '+location.location.postcode+'</p><p><a href="/#/app/loc/'+location._id+'/detail" class="button button-small button-positive">View Details</a> <a href="http://maps.apple.com/?q='+location.location.street1+'+'+location.location.suburb+'+'+location.location.state+'+'+location.location.postcode+'" class="button button-small button-positive">Get Directions</a></p></div>';
 
       bounds.extend(latLng); // Create a new viewpoint bound
 
@@ -392,7 +392,7 @@ angular.module('landmarkConnect.controllers', [])
 .controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
-  
+
   $scope.fade = true;
   $scope.$storage = $localStorage;
 
@@ -458,27 +458,27 @@ angular.module('landmarkConnect.controllers', [])
   angular.forEach(location.images, function(image, index){
     $scope.images.push(image);
   });
-  
+
   $scope.containerStyle = {
     width: '',
     height: ''
   };
-  
+
   var delegate = $ionicScrollDelegate.$getByHandle('image-gallery');
-  
+
   if($stateParams.imageId) {
     $timeout( function() {
       $scope.$broadcast('slideBox.setSlide', $stateParams.imageId);
     }, 50);
   }
-  
+
   $scope.dataSlide = {};
   $scope.dataSlide.currSlide = $ionicSlideBoxDelegate.currentIndex();
-  
+
   $scope.slideChanged = function() {
     delegate.rememberScrollPosition('image-gallery');
     $scope.dataSlide.currSlide = $ionicSlideBoxDelegate.currentIndex();
-  
+
     $timeout( function() {
       $ionicScrollDelegate.resize();
     }, 50);
@@ -561,7 +561,7 @@ angular.module('landmarkConnect.controllers', [])
 
     $scope.map = map;
 
-    var contentString = '<div style="width:200px;"><h4>' + $scope.location.name + '</h4><p>' + $scope.location.location.formattedAddress + '</p><p><a href="http://maps.apple.com/?q='+$scope.location.location.formattedAddress+'">Get Directions</a></div>';
+    var contentString = '<div style="width:200px;"><h4>' + $scope.location.commonName + '</h4><p>' + $scope.location.location.street1+'<br>'+$scope.location.location.suburb+', '+$scope.location.location.state+' '+$scope.location.location.postcode+'</p><p><a href="http://maps.apple.com/?q='+$scope.location.location.street1+'+'+$scope.location.location.suburb+'+'+$scope.location.location.state+'+'+$scope.location.location.postcode+'" class="button button-small button-positive">Get Directions</a></p></div>';
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString

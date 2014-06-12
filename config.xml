@@ -9,6 +9,12 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+
+
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="BackupWebStorage" value="cloud" />
+
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
@@ -21,15 +27,25 @@
     <feature name="Geolocation">
       <param name="ios-package" value="CDVLocation" />
     </feature>
-    
-    <preference name="BackgroundColor" value="0x00000000"/>
-    
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+
+    <preference name="BackgroundColor" value="0xff000000"/>
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="target-device" value="handset" />
+    <preference name="exit-on-suspend" value="true" />
+
     <platform name="ios">
       <icon src="res/ios/icon-60.png" width="60" height="60" />
       <icon src="res/ios/icon-60@2x.png" width="120" height="120" />
       <icon src="res/ios/icon-small.png" width="29" height="29" />
       <icon src="res/ios/icon-small@2x.png" width="58" height="58" />
     </platform>
-    
-    
+
+
 </widget>

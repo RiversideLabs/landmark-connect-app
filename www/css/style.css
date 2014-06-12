@@ -26,7 +26,6 @@ $dark:                            #444 !default;
   src: url("../lib/ionic/fonts/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../lib/ionic/fonts/ionicons.ttf?v=1.4.1") format("truetype"), url("../lib/ionic/fonts/ionicons.woff?v=1.4.1") format("woff"), url("../lib/ionic/fonts/ionicons.svg?v=1.4.1#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 .ion, .ion-loading-a,
 .ion-loading-b,
 .ion-loading-c,
@@ -596,35 +595,30 @@ $dark:                            #444 !default;
 
   100% {
     -moz-transform: rotate(359deg); } }
-
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg); }
 
   100% {
     -webkit-transform: rotate(359deg); } }
-
 @-o-keyframes spin {
   0% {
     -o-transform: rotate(0deg); }
 
   100% {
     -o-transform: rotate(359deg); } }
-
 @-ms-keyframes spin {
   0% {
     -ms-transform: rotate(0deg); }
 
   100% {
     -ms-transform: rotate(359deg); } }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg); }
 
   100% {
     transform: rotate(359deg); } }
-
 .ion-loading-a {
   -webkit-animation-timing-function: steps(8, start);
   -moz-animation-timing-function: steps(8, start);
@@ -2312,7 +2306,7 @@ a:hover {
  */
 a {
   -webkit-user-drag: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent; }
   a[href]:hover {
     cursor: pointer; }
@@ -2546,7 +2540,7 @@ body,
   -webkit-text-size-adjust: none;
   -moz-text-size-adjust: none;
   text-size-adjust: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2559,7 +2553,7 @@ body,
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: black;
+  color: white;
   word-wrap: break-word;
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -2659,28 +2653,24 @@ body.grade-c {
 
   100% {
     transform: translate3d(0, 0, 0) rotate(-180deg); } }
-
 @-webkit-keyframes refresh-spin {
   0% {
     -webkit-transform: translate3d(0, 0, 0) rotate(0); }
 
   100% {
     -webkit-transform: translate3d(0, 0, 0) rotate(-180deg); } }
-
 @keyframes refresh-spin-back {
   0% {
     transform: translate3d(0, 0, 0) rotate(-180deg); }
 
   100% {
     transform: translate3d(0, 0, 0) rotate(0); } }
-
 @-webkit-keyframes refresh-spin-back {
   0% {
     -webkit-transform: translate3d(0, 0, 0) rotate(-180deg); }
 
   100% {
     -webkit-transform: translate3d(0, 0, 0) rotate(0); } }
-
 .scroll-refresher {
   position: absolute;
   top: -60px;
@@ -2828,7 +2818,7 @@ ion-infinite-scroll.active .scroll-infinite {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #1c1c1c;
   overflow: hidden; }
 
 /**
@@ -2855,7 +2845,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: black;
+  color: white;
   font-weight: 500;
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   line-height: 1.2; }
@@ -2991,7 +2981,7 @@ a.subdued {
   z-index: 11;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); }
+  background-color: transparent; }
   .action-sheet-backdrop.active {
     background-color: rgba(0, 0, 0, 0.5); }
 
@@ -3030,7 +3020,7 @@ a.subdued {
 
 .action-sheet-title {
   padding: 10px;
-  color: #666666;
+  color: white;
   text-align: center;
   font-size: 12px; }
 
@@ -3842,7 +3832,7 @@ a.subdued {
   z-index: 10;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); }
+  background-color: transparent; }
   .modal-backdrop.active {
     background-color: rgba(0, 0, 0, 0.5); }
 
@@ -5496,7 +5486,6 @@ input:checked + .checkbox-icon:after {
 
   to {
     padding: 0; } }
-
 /**
  * Range
  * --------------------------------------------------
@@ -5651,8 +5640,8 @@ input[type="range"] {
     width: 0;
     height: 0;
     border-top: 5px solid;
-    border-right: 5px solid rgba(0, 0, 0, 0);
-    border-left: 5px solid rgba(0, 0, 0, 0);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
     color: #999;
     content: "";
     pointer-events: none; }
@@ -6152,210 +6141,180 @@ a.button {
 
   100% {
     -webkit-transform: translate3d(0, 0, 0); } }
-
 @-moz-keyframes slideInUp {
   0% {
     -moz-transform: translate3d(0, 100%, 0); }
 
   100% {
     -moz-transform: translate3d(0, 0, 0); } }
-
 @keyframes slideInUp {
   0% {
     transform: translate3d(0, 100%, 0); }
 
   100% {
     transform: translate3d(0, 0, 0); } }
-
 @-webkit-keyframes slideOutUp {
   0% {
     -webkit-transform: translate3d(0, 0, 0); }
 
   100% {
     -webkit-transform: translate3d(0, 100%, 0); } }
-
 @-moz-keyframes slideOutUp {
   0% {
     -moz-transform: translate3d(0, 0, 0); }
 
   100% {
     -moz-transform: translate3d(0, 100%, 0); } }
-
 @keyframes slideOutUp {
   0% {
     transform: translate3d(0, 0, 0); }
 
   100% {
     transform: translate3d(0, 100%, 0); } }
-
 @-webkit-keyframes slideInFromLeft {
   from {
     -webkit-transform: translate3d(-100%, 0, 0); }
 
   to {
     -webkit-transform: translate3d(0, 0, 0); } }
-
 @-moz-keyframes slideInFromLeft {
   from {
     -moz-transform: translateX(-100%); }
 
   to {
     -moz-transform: translateX(0); } }
-
 @keyframes slideInFromLeft {
   from {
     transform: translateX(-100%); }
 
   to {
     transform: translateX(0); } }
-
 @-webkit-keyframes slideInFromRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0); }
 
   to {
     -webkit-transform: translate3d(0, 0, 0); } }
-
 @-moz-keyframes slideInFromRight {
   from {
     -moz-transform: translateX(100%); }
 
   to {
     -moz-transform: translateX(0); } }
-
 @keyframes slideInFromRight {
   from {
     transform: translateX(100%); }
 
   to {
     transform: translateX(0); } }
-
 @-webkit-keyframes slideOutToLeft {
   from {
     -webkit-transform: translate3d(0, 0, 0); }
 
   to {
     -webkit-transform: translate3d(-100%, 0, 0); } }
-
 @-moz-keyframes slideOutToLeft {
   from {
     -moz-transform: translateX(0); }
 
   to {
     -moz-transform: translateX(-100%); } }
-
 @keyframes slideOutToLeft {
   from {
     transform: translateX(0); }
 
   to {
     transform: translateX(-100%); } }
-
 @-webkit-keyframes slideOutToRight {
   from {
     -webkit-transform: translate3d(0, 0, 0); }
 
   to {
     -webkit-transform: translate3d(100%, 0, 0); } }
-
 @-moz-keyframes slideOutToRight {
   from {
     -moz-transform: translateX(0); }
 
   to {
     -moz-transform: translateX(100%); } }
-
 @keyframes slideOutToRight {
   from {
     transform: translateX(0); }
 
   to {
     transform: translateX(100%); } }
-
 @-webkit-keyframes fadeOut {
   from {
     opacity: 1; }
 
   to {
     opacity: 0; } }
-
 @-moz-keyframes fadeOut {
   from {
     opacity: 1; }
 
   to {
     opacity: 0; } }
-
 @keyframes fadeOut {
   from {
     opacity: 1; }
 
   to {
     opacity: 0; } }
-
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }
 
   to {
     opacity: 1; } }
-
 @-moz-keyframes fadeIn {
   from {
     opacity: 0; }
 
   to {
     opacity: 1; } }
-
 @keyframes fadeIn {
   from {
     opacity: 0; }
 
   to {
     opacity: 1; } }
-
 @-webkit-keyframes fadeInHalf {
   from {
-    background-color: rgba(0, 0, 0, 0); }
+    background-color: transparent; }
 
   to {
     background-color: rgba(0, 0, 0, 0.5); } }
-
 @-moz-keyframes fadeInHalf {
   from {
-    background-color: rgba(0, 0, 0, 0); }
+    background-color: transparent; }
 
   to {
     background-color: rgba(0, 0, 0, 0.5); } }
-
 @keyframes fadeInHalf {
   from {
-    background-color: rgba(0, 0, 0, 0); }
+    background-color: transparent; }
 
   to {
     background-color: rgba(0, 0, 0, 0.5); } }
-
 @-webkit-keyframes fadeOutHalf {
   from {
     background-color: rgba(0, 0, 0, 0.5); }
 
   to {
-    background-color: rgba(0, 0, 0, 0); } }
-
+    background-color: transparent; } }
 @-moz-keyframes fadeOutHalf {
   from {
     background-color: rgba(0, 0, 0, 0.5); }
 
   to {
-    background-color: rgba(0, 0, 0, 0); } }
-
+    background-color: transparent; } }
 @keyframes fadeOutHalf {
   from {
     background-color: rgba(0, 0, 0, 0.5); }
 
   to {
-    background-color: rgba(0, 0, 0, 0); } }
-
+    background-color: transparent; } }
 @-webkit-keyframes scaleOut {
   from {
     -webkit-transform: scale(1);
@@ -6364,7 +6323,6 @@ a.button {
   to {
     -webkit-transform: scale(0.8);
     opacity: 0; } }
-
 @-moz-keyframes scaleOut {
   from {
     -moz-transform: scale(1);
@@ -6373,7 +6331,6 @@ a.button {
   to {
     -moz-transform: scale(0.8);
     opacity: 0; } }
-
 @keyframes scaleOut {
   from {
     transform: scale(1);
@@ -6382,28 +6339,24 @@ a.button {
   to {
     transform: scale(0.8);
     opacity: 0; } }
-
 @-webkit-keyframes scaleIn {
   from {
     -webkit-transform: scale(0); }
 
   to {
     -webkit-transform: scale(1); } }
-
 @-moz-keyframes scaleIn {
   from {
     -moz-transform: scale(0); }
 
   to {
     -moz-transform: scale(1); } }
-
 @keyframes scaleIn {
   from {
     transform: scale(0); }
 
   to {
     transform: scale(1); } }
-
 @-webkit-keyframes superScaleIn {
   from {
     -webkit-transform: scale(1.2);
@@ -6412,7 +6365,6 @@ a.button {
   to {
     -webkit-transform: scale(1);
     opacity: 1; } }
-
 @-moz-keyframes superScaleIn {
   from {
     -moz-transform: scale(1.2);
@@ -6421,7 +6373,6 @@ a.button {
   to {
     -moz-transform: scale(1);
     opacity: 1; } }
-
 @keyframes superScaleIn {
   from {
     transform: scale(1.2);
@@ -6430,19 +6381,15 @@ a.button {
   to {
     transform: scale(1);
     opacity: 1; } }
-
 @-webkit-keyframes spin {
   100% {
     -webkit-transform: rotate(360deg); } }
-
 @-moz-keyframes spin {
   100% {
     -moz-transform: rotate(360deg); } }
-
 @keyframes spin {
   100% {
     transform: rotate(360deg); } }
-
 .no-animation > .ng-enter, .no-animation.ng-enter, .no-animation > .ng-leave, .no-animation.ng-leave {
   -webkit-transition: none;
   -moz-transition: none;
@@ -7269,7 +7216,7 @@ a.button {
   -ms-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-drag: none;
   -ms-touch-action: none;
@@ -7621,6 +7568,9 @@ input[type="color"] {
 #map_all, #map_detail, .angular-google-map, .angular-google-map-container {
   width: 100%;
   height: 100%; }
+
+.gm-style-iw h1, .gm-style-iw h2, .gm-style-iw h3, .gm-style-iw h4, .gm-style-iw p {
+  color: #1c1c1c; }
 
 .bar-header.bar-dark .locations-toggle-wrap {
   font-size: 0 !important; }

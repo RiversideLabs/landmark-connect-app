@@ -8,6 +8,11 @@
   height: 100%;
 }
 
+.gm-style-iw {
+	h1, h2, h3, h4, p {
+		color: $bg;
+	}
+}
 
 .bar-header.bar-dark {
 	.locations-toggle-wrap {
