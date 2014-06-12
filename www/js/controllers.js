@@ -94,8 +94,9 @@ angular.module('landmarkConnect.controllers', [])
   $scope.locations = LocationsService.all();
 
   $scope.closeSearch = function() {
-	  var iF = document.getElementById("searchBox");
-	  iF.blur();
+	  //var iF = document.getElementById("searchBox");
+    //iF.blur();
+	  cordova.plugins.Keyboard.close();
 	  $scope.modalSearch.hide();
   };
   $scope.clearSearch = function() {
@@ -150,8 +151,6 @@ angular.module('landmarkConnect.controllers', [])
 
   var adjustScroll = function() {
     var scrollView = $ionicScrollDelegate.getScrollView();
-    //console.log(scrollView.__contentHeight);
-    //console.log(scrollView.__clientHeight);
 
     if(scrollView.__contentHeight < scrollView.__clientHeight) {
       $scope.search.showSearch=false;
