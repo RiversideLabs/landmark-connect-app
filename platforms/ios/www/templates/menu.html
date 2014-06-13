@@ -16,8 +16,8 @@
           Visited
           <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
         </ion-item>
-      <ion-item item-divider></ion-item>
-      <ion-item class="item-icon-right" href="#/app/settings">
+      <ion-item item-divider ng-show="$storage.showDistance"></ion-item>
+      <ion-item class="item-icon-right" href="#/app/settings" ng-show="$storage.showDistance">
         Settings
         <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
       </ion-item>
