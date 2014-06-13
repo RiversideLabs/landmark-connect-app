@@ -29,7 +29,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "views/location";
 
 .platform-ios7.platform-cordova,
-.platform-ios8.platform-cordova {
+.platform-ios8.platform-cordova,
+.platform-ios7.platform-browser,
+.platform-ios8.platform-browser {
   // Duplicate this block from ionic/_platform.scss and modified for iOS8
   &:not(.fullscreen) {
     .bar-header:not(.bar-subheader) {
@@ -78,6 +80,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     .button.button-icon {
       margin-top: 0;
     }
+  }
+  .back-button:before {
+    margin-top: $ios7-statusbar-height;
   }
 }
 
