@@ -7834,6 +7834,15 @@ a.button {
 
 .bar .button {
   z-index: 2; }
+  .bar .button.clear-search {
+    line-height: 28px !important;
+    min-height: 28px !important;
+    border: 0 none; }
+  .bar .button.clear-search:before {
+    line-height: 28px !important;
+    padding: 0;
+    height: 24px;
+    overflow: hidden; }
 
 body, .pane, .view, .modal {
   background-color: #1c1c1c;
@@ -8204,9 +8213,12 @@ input[type="color"] {
   .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper,
   .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
     margin-top: 19px !important; }
-  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset #search-box .item-input-wrapper,
-  .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset #search-box .item-input-wrapper {
-    margin-top: -1px !important; }
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box,
+  .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box {
+    height: 44px !important; }
+    .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box .item-input-wrapper,
+    .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box .item-input-wrapper {
+      margin-top: -1px !important; }
   .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > *,
   .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
     margin-top: 20px; }

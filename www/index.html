@@ -64,17 +64,17 @@
           </div>
           <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input type="text" id="searchBox" placeholder="Search" ng-model="search.name" ng-focus="searchFocused = true" ng-blur="searchFocused = false" autocorrect="off">
-            <i ng-show="search.name.length" class="button button-clear clear-search icon ion-ios7-close-empty" ng-click="search.name = ''"></i>
+            <input type="text" id="searchBox" placeholder="Search" ng-model="search.commonName" ng-focus="searchFocused = true" ng-blur="searchFocused = false" autocorrect="off">
+            <i ng-show="search.commonName.length" class="button button-clear clear-search icon ion-ios7-close-empty" ng-click="search.commonName = ''"></i>
           </label>
         </ion-header-bar>
         <ion-content>
-          <ion-list class="search-results" ng-show="search.name.length">
+          <ion-list class="search-results" ng-show="search.commonName.length">
             <ion-item class="item-divider">
-              Search Results: {{search.name}}
+              Search Results: {{search.commonName}}
             </ion-item>
-            <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:name | filter: search" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail">
-              {{loc.name}}
+            <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:commonName | filter: search" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail">
+              {{loc.commonName}}
             </ion-item>
           </ion-list>
         </ion-content>

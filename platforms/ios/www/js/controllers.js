@@ -3,7 +3,7 @@ angular.module('landmarkConnect.controllers', [])
 
 .controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal) {
   $scope.$storage = $localStorage.$default({
-    sortLoc: "name",
+    sortLoc: "commonName",
     favorites: [],
     visited: []
   });
@@ -83,7 +83,7 @@ angular.module('landmarkConnect.controllers', [])
   console.log("vis: " + $scope.visited);
 
   $scope.sortLocList = [
-    { text: "Sort By Name", value: "name" },
+    { text: "Sort By Name", value: "commonName" },
     { text: "Sort By Distance", value: "distanceFromHere" }
   ];
 })
@@ -124,7 +124,7 @@ angular.module('landmarkConnect.controllers', [])
   $scope.search.showSearch = false;
 
   $scope.clearSearch = function() {
-    $scope.search.name = '';
+    $scope.search.commonName = '';
   };
 
   $scope.scrollTop = function() {
@@ -183,7 +183,7 @@ angular.module('landmarkConnect.controllers', [])
   };
   var errorHandler = function(position) {
     console.log("error with position");
-    $scope.$storage.sortLoc="name";
+    $scope.$storage.sortLoc="commonName";
     $scope.$storage.showDistance=false;
     console.log("showDistance: " + $scope.$storage.showDistance);
     $ionicLoading.hide();
@@ -272,7 +272,7 @@ angular.module('landmarkConnect.controllers', [])
       var marker = new google.maps.Marker({
         position: latLng,
         map: $scope.map,
-        title: location.name,
+        title: location.commonName,
         icon: pinImage
       });
 
@@ -537,7 +537,7 @@ angular.module('landmarkConnect.controllers', [])
     var marker = new google.maps.Marker({
       position: latLng,
       map: $scope.map,
-      title: $scope.location.name,
+      title: $scope.location.commonName,
       icon: pinImage
     });
     infowindow.open($scope.map, marker);

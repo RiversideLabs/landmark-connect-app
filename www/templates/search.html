@@ -7,7 +7,7 @@
     </div>
     <label class="item-input-wrapper">
       <i class="icon ion-ios7-search placeholder-icon"></i>
-      <input type="search" placeholder="Search" ng-model="search.name" autocorrect="off" focus-on="locSearch">
+      <input type="search" placeholder="Search" ng-model="search.commonName" autocorrect="off" focus-on="locSearch">
       <i class="clear-search icon ion-ios7-close-empty" style="font-size: 18px" ng-click="emptySearch()">
       </i>
     </label>
@@ -17,8 +17,8 @@
       <ion-item class="item-divider">
         Search Results:
       </ion-item>
-      <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:name" ng-show="([loc] | filter:search).length > 0" type="item-text-wrap" href="#/app/loc/{{loc._id}}/detail">
-        {{loc.name}}
+      <ion-item class="search-result-item" ng-repeat="loc in locations | orderBy:commonName" ng-show="([loc] | filter:search).length > 0" type="item-text-wrap" href="#/app/loc/{{loc._id}}/detail">
+        {{loc.commonName}}
       </ion-item>
       <p class="no-results" ng-hide="([loc] | filter:search).length">Nothing here!</p>
     </ion-list>
