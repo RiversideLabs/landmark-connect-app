@@ -10,6 +10,19 @@
     <content src="index.html" />
     <access origin="*" />
 
+    <feature name="StatusBar">
+      <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+    <feature name="Geolocation">
+      <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <feature name="Keyboard">
+      <param name="ios-package" value="IonicKeyboard" onload="true" />
+    </feature>
+    <feature name="Device">
+      <param name="ios-package" value="CDVDevice" />
+    </feature>
+
 
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
@@ -21,25 +34,13 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="true"/>
-
-    <feature name="StatusBar">
-      <param name="ios-package" value="CDVStatusBar" onload="true" />
-    </feature>
-    <feature name="Geolocation">
-      <param name="ios-package" value="CDVLocation" />
-    </feature>
-    <feature name="Keyboard">
-            <param name="ios-package" value="IonicKeyboard" onload="true" />
-        </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
+    
 
     <preference name="StatusBarOverlaysWebView" value="true" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarBackgroundColor" value="#1c1c1c" />
+    <preference name="StatusBarStyle" value="blackopaque" />
 
-    <preference name="BackgroundColor" value="0xff000000"/>
-    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="BackgroundColor" value="0xff1c1c1c"/>
     <preference name="prerendered-icon" value="true" />
     <preference name="target-device" value="handset" />
     <preference name="exit-on-suspend" value="true" />

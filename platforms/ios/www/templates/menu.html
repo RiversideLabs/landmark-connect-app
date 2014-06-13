@@ -1,0 +1,37 @@
+<ion-view hide-back-button='true'>
+  <ion-nav-buttons side="right">
+    <button class="button-clear no-padding">
+      <a class="button button-icon icon ion-ios7-arrow-forward" href="#/app/loc/all"></a>
+    </button>
+  </ion-nav-buttons>
+  <ion-content has-header="true">
+    <ion-list>
+      <ion-item class="item-icon-left item-icon-right" href="#/app/favorites">
+        <i class="icon ion-ios7-star-outline"></i>
+        Favorites
+        <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
+      </ion-item>
+        <ion-item class="item-icon-left item-icon-right" href="#/app/visited">
+          <i class="icon ion-ios7-checkmark-outline"></i>
+          Visited
+          <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
+        </ion-item>
+      <ion-item item-divider></ion-item>
+      <ion-item class="item-icon-right" href="#/app/settings">
+        Settings
+        <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    <div class="about-app padding">
+      <div class="about-logo">
+        <img src="assets/img/about-logo.svg" width="108" />
+      </div>
+      <p>Brought to you by:</p>
+      <p>{{aboutBroughtBy}}</p>
+
+      <div class="handcrafted-by-maven padding-vertical">
+        Handcrafted by <img src="assets/img/m-logo.svg" width="25" />
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

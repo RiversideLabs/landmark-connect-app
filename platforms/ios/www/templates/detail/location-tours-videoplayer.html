@@ -1,0 +1,9 @@
+<ion-view title="{{navTitle}}">
+  <ion-content has-header="true" scroll="false" padding="true" class="detail-view tour video-player" ng-class="{fade:fade}" on-scroll="checkScroll()">
+    <p style="color:#ffffff;">VIDEO PLAYER</p>
+    <p style="color:#ffffff;">Title: {{tour.title}}</p>
+    <div class="player-wrap">
+      <video ng-src="{{trustSrc(tour.url)}}" controls></video>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view hide-nav-bar='true' hide-back-button='true'>
+  <ng-include src="'templates/locations-header.html'"></ng-include>
+  <ion-content class="has-header" delegate-handle="locations-list" on-scroll="checkScrollTop()">
+    <div id="search-box" class="bar bar-header bar-dark item-input-inset" ng-show="search.showSearch">
+      <div class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="searchQuery.name" autocorrect="off">
+        <!-- <i ng-if="searchQuery.length" class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i> -->
+      </div>
+    </div>
+    <ion-list class="locations-list">
+      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc | filter: searchQuery" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail" style="background-image:url('{{loc.heroImage.url}}');">
+        <div class="location-title">
+          <p>{{loc.commonName}}</p>
+          <span class="distance-indicator" ng-show="$storage.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
+        </div>
+        <ion-option-button ng-click="makeFavorite(loc)" ng-hide="isFavorite(loc)" class="button-favorite"><i class="icon ion-ios7-star-outline"></i></ion-option-button>
+        <ion-option-button ng-click="unFavorite(loc)" ng-show="isFavorite(loc)" class="button-favorite active"><i class="icon ion-ios7-star"></i></ion-option-button>
+        <ion-option-button ng-click="makeVisited(loc)" ng-hide="isVisited(loc)" class="button-visited"><i class="icon ion-ios7-checkmark-outline"></i></ion-option-button>
+        <ion-option-button ng-click="unVisit(loc)" ng-show="isVisited(loc)" class="button-visited active"><i class="icon ion-ios7-checkmark"></i></ion-option-button>
+        <ion-option-button ng-click="getDirections(loc)">
+          Directions
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <div class="scrollToTop" ng-class="{showscrollbtn:showscrollbtn}" ng-click="scrollTop()"><i class="icon ion-ios7-arrow-up"></i></div>
+</ion-view>
