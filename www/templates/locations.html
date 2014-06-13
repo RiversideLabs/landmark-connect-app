@@ -16,7 +16,7 @@
       <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc" type="item-text-wrap" href="#/location/{{loc.id}}/details" style="background-image:url('{{loc.images.0.url}}');">
         <div class="location-title">
           <p>{{loc.name}}<br>(LocID: {{loc.id}})</p>
-          <span class="distance-indicator" ng-show="locations.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
+          <span class="distance-indicator" ng-show="$storage.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
         </div>
         <ion-option-button ng-click="share(item)">
           Favorite

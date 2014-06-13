@@ -105,11 +105,11 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationsCtrl', function($scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, cordovaGeolocationService, LocationsService, $localStorage, geomath) {
+.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, cordovaGeolocationService, LocationsService, $localStorage, Geolocation, geomath) {
   $scope.$storage = $localStorage;
   $scope.locations = [];
   $scope.locations = LocationsService.all();
-  $scope.locations.showDistance = false;
+  $scope.$storage.showDistance = false;
 
   // Method called on infinite scroll
   // Saving this for later
@@ -160,93 +160,57 @@ angular.module('landmarkConnect.controllers', [])
     }
   };
 
-  var watchID = null;
-
-  function onPositionSuccess(pos) {
-    console.log("successfully recieved position");
-    var coords = $scope.$storage.currentLocation = [
-      pos.coords.latitude,
-      pos.coords.longitude
-    ];
-    $scope.locations.showDistance=true;
-    $scope.locations = LocationsService.all();
+  $scope.getCurrentPosition = function() {
+    Geolocation.getCurrentPosition(successHandler, errorHandler);
+  };
+  $scope.startWatchingPosition = function() {
+    $scope.$storage.watchId = Geolocation.watchPosition(successHandler, errorHandler);
+  };
+  $scope.stopWatchingPosition = function() {
+    Geolocation.clearWatch($scope.watchId);
+    $scope.$storage.watchId = null;
+    $scope.$storage.currentPosition = null;
+  };
+  // Handlers
+  var successHandler = function(position) {
+    $scope.$storage.currentLocation = position;
+    console.log("successfully recieved position: " + $scope.$storage.currentLocation.coords.latitude + ", " + $scope.$storage.currentLocation.coords.longitude);
+    $scope.$storage.showDistance=true;
+    console.log("showDistance: " + $scope.$storage.showDistance);
     $ionicLoading.hide();
+    $scope.locations = LocationsService.all();
     adjustScroll();
-  }
-  function onPositionError(error) {
-    console.log("position error: " + error.message);
-    $ionicPopup.alert({
-      title: 'Unable to get location: ' + error.message
-    }).then(function(res) {
-      $scope.locations.showDistance=false;
-      $ionicLoading.hide();
-      adjustScroll();
-    });
-  }
-  ionic.Platform.ready(function(){
-    console.log("ready");
-    var watchOptions = { timeout: 30000 };
-    $ionicLoading.show({
-      content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
-      showBackdrop: false
-    });
-    watchID = navigator.geolocation.watchPosition(onPositionSuccess, onPositionError, watchOptions);
-  });
+  };
+  var errorHandler = function(position) {
+    console.log("error with position");
+    $scope.$storage.sortLoc="name";
+    $scope.$storage.showDistance=false;
+    console.log("showDistance: " + $scope.$storage.showDistance);
+    $ionicLoading.hide();
+    $scope.locations = LocationsService.all();
+    adjustScroll();
+  };
+  $scope.getCurrentPosition();
+  //$scope.startWatchingPosition();
 
-  // $timeout( function() {
-  //   console.log($scope.$storage.currentLocation);
-  //   if ($scope.$storage.currentLocation) {
-  //     $scope.locations.showDistance=true;
-  //     $scope.locations = LocationsService.all();
-  //     adjustScroll();
-  //   } else {
-  //     $ionicLoading.show({
-  //       content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
-  //       showBackdrop: false
-  //     });
-  //     cordovaGeolocationService.watchPosition(function(pos) {
-  //       var coords = $scope.$storage.currentLocation = [
-  //         pos.coords.latitude,
-  //         pos.coords.longitude
-  //       ];
-  //       $scope.locations.showDistance=true;
-  //       $scope.locations = LocationsService.all();
-  //       $ionicLoading.hide();
-  //       adjustScroll();
-  //     }, function(error) {
-  //       $ionicPopup.alert({
-  //         title: 'Unable to get location: ' + error.message
-  //       }).then(function(res) {
-  //         $scope.locations.showDistance=false;
-  //         $ionicLoading.hide();
-  //         adjustScroll();
-  //       });
-  //     });
-  //   }
-  //
-  //
-  //   $timeout( function() {
-  //     adjustScroll();
-  //   }, 700);
-  //
-  // }, 500);
+
 
 
   $scope.distanceFromHere = function (_location, _startPoint) {
     var start = [33.9833,-117.3728];
 
-    if ($scope.$storage.currentLocation) {
+    if ($scope.$storage.currentLocation != null) {
       start = {
-        latitude: $scope.$storage.currentLocation[0],
-        longitude: $scope.$storage.currentLocation[1]
+        latitude: $scope.$storage.currentLocation.coords.latitude,
+        longitude: $scope.$storage.currentLocation.coords.longitude
       };
     }
 
     start = _startPoint || start;
 
     var end = {
-      latitude: _location.location.lat,
-      longitude: _location.location.lng
+      latitude: _location.location.geo[1],
+      longitude: _location.location.geo[0]
     };
 
     var num = geomath.calculateDistance(start, end);
@@ -341,9 +305,9 @@ angular.module('landmarkConnect.controllers', [])
     };
 
 
-    if ($scope.$storage.currentLocation) {
-      console.log("already has it");
-      currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
+    if ($scope.$storage.currentLocation != null) {
+      console.log("already has location");
+      currentPos = new google.maps.LatLng($scope.$storage.currentLocation.coords.latitude, $scope.$storage.currentLocation.coords.longitude);
       $scope.map.setCenter(currentPos);
       $scope.bounds.extend(currentPos);
       var marker = new google.maps.Marker({
@@ -486,7 +450,7 @@ angular.module('landmarkConnect.controllers', [])
   // --- END IMAGES -----
 
   // ------- MAP -------
-  var latLng = new google.maps.LatLng($scope.location.location.lat, $scope.location.location.lng);
+  var latLng = new google.maps.LatLng($scope.location.location.geo[1], $scope.location.location.geo[0]);
 
   var currentLocImage = {
     url: 'assets/img/map-bluedot.png',

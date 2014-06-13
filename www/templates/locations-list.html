@@ -9,16 +9,10 @@
       </div>
     </div>
     <ion-list class="locations-list">
-      <div class="item item-divider">
-        CURRENT SORT: {{$storage.sortLoc}}
-      </div><!--href="#/location/{{loc.id}}/details"-->
-      <div class="item item-divider">
-        YOUR LOC: {{$storage.currentLocation}}
-      </div><!--href="#/location/{{loc.id}}/details"-->
       <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc | filter: searchQuery" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail" style="background-image:url('{{loc.heroImage.url}}');">
         <div class="location-title">
           <p>{{loc.commonName}}</p>
-          <span class="distance-indicator" ng-show="locations.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
+          <span class="distance-indicator" ng-show="$storage.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
         </div>
         <ion-option-button ng-click="makeFavorite(loc)" ng-hide="isFavorite(loc)" class="button-favorite"><i class="icon ion-ios7-star-outline"></i></ion-option-button>
         <ion-option-button ng-click="unFavorite(loc)" ng-show="isFavorite(loc)" class="button-favorite active"><i class="icon ion-ios7-star"></i></ion-option-button>
