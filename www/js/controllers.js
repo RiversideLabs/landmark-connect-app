@@ -20,25 +20,25 @@ angular.module('landmarkConnect.controllers', [])
 
   // --- Set / Unset / Check Visited & Favorites ---
   $scope.makeFavorite = function(loc) {
-    $scope.$storage.favorites.push(loc.id);
+    $scope.$storage.favorites.push(loc._id);
   }
   $scope.unFavorite = function(loc) {
-    var index = $scope.$storage.favorites.indexOf(loc.id);
+    var index = $scope.$storage.favorites.indexOf(loc._id);
     $scope.$storage.favorites.splice(index,1);
   }
   $scope.isFavorite = function(loc) {
-    return $scope.$storage.favorites.indexOf(loc.id) >= 0;
+    return $scope.$storage.favorites.indexOf(loc._id) >= 0;
   }
 
   $scope.makeVisited = function(loc) {
-    $scope.$storage.visited.push(loc.id);
+    $scope.$storage.visited.push(loc._id);
   }
   $scope.unVisit = function(loc) {
-    var index = $scope.$storage.visited.indexOf(loc.id);
+    var index = $scope.$storage.visited.indexOf(loc._id);
     $scope.$storage.visited.splice(index,1);
   }
   $scope.isVisited = function(loc) {
-    return $scope.$storage.visited.indexOf(loc.id) >= 0;
+    return $scope.$storage.visited.indexOf(loc._id) >= 0;
   }
   // --- END Set / Unset / Check Visited & Favorites ---
 
@@ -424,25 +424,25 @@ angular.module('landmarkConnect.controllers', [])
 
   // --- Set / Unset / Check Visited & Favorites ---
   $scope.makeFavorite = function(loc) {
-    $scope.$storage.favorites.push(loc.id);
+    $scope.$storage.favorites.push(loc._id);
   }
   $scope.unFavorite = function(loc) {
-    var index = $scope.$storage.favorites.indexOf(loc.id);
+    var index = $scope.$storage.favorites.indexOf(loc._id);
     $scope.$storage.favorites.splice(index,1);
   }
   $scope.isFavorite = function(loc) {
-    return $scope.$storage.favorites.indexOf(loc.id) >= 0;
+    return $scope.$storage.favorites.indexOf(loc._id) >= 0;
   }
 
   $scope.makeVisited = function(loc) {
-    $scope.$storage.visited.push(loc.id);
+    $scope.$storage.visited.push(loc._id);
   }
   $scope.unVisit = function(loc) {
-    var index = $scope.$storage.visited.indexOf(loc.id);
+    var index = $scope.$storage.visited.indexOf(loc._id);
     $scope.$storage.visited.splice(index,1);
   }
   $scope.isVisited = function(loc) {
-    return $scope.$storage.visited.indexOf(loc.id) >= 0;
+    return $scope.$storage.visited.indexOf(loc._id) >= 0;
   }
   // --- END Set / Unset / Check Visited & Favorites ---
 
