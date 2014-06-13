@@ -1,0 +1,40 @@
+<ion-view hide-nav-bar='false' hide-back-button='false'>
+  <ion-nav-bar class='nav-title-slide-ios7 bar-dark' ng-controller='MainCtrl'>
+    <!-- <ion-nav-back-button class='button-icon ion-ios7-arrow-left'>
+    </ion-nav-back-button> -->
+    <ion-nav-buttons side="left">
+      <button class="button-clear no-padding">
+        <a class="button button-icon icon ion-ios7-arrow-left" href="#/app/loc/all"></a>
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button ng-click="makeFavorite(location)" ng-hide="isFavorite(location)" class="button-clear no-padding button-favorite">
+        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-star-outline"></i>
+      </button>
+      <button ng-click="unFavorite(location)" ng-show="isFavorite(location)" class="button-clear no-padding button-favorite active">
+        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-star"></i>
+      </button>
+      <button ng-click="makeVisited(location)" ng-hide="isVisited(location)" class="button-clear no-padding button-visited">
+        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark-outline button-visited"></i>
+        <a ng-click="unVisit(location._id)" ng-show="isVisited(location)" class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark button-visited active" href="#"></a>
+      </button>
+      <button ng-click="unVisit(location)" ng-show="isVisited(location)" class="button-clear no-padding button-visited">
+        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark button-visited active"></i>
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-tabs class="tabs-icon-only tabs-dark">
+    <ion-tab title="Details" icon-on="ion-ios7-information" icon-off="ion-ios7-information-outline" href="#/app/loc/{{location._id}}/detail">
+      <ion-nav-view name="tab-loc-detail"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Tours" icon-on="ion-ios7-recording" icon-off="ion-ios7-recording-outline" href="#/app/loc/{{location._id}}/tour">
+      <ion-nav-view name="tab-loc-tour"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Gallery" icon-on="ion-ios7-photos" icon-off="ion-ios7-photos-outline" href="#/app/loc/{{location._id}}/image">
+      <ion-nav-view name="tab-loc-image"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Map" icon-on="ion-ios7-location" icon-off="ion-ios7-location-outline" href="#/app/loc/{{location._id}}/map">
+      <ion-nav-view name="tab-loc-map"></ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
