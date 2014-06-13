@@ -34,6 +34,18 @@
 
 .bar .button {
   z-index: 2;
+
+  &.clear-search {
+    line-height: 28px !important;
+    min-height: 28px !important;
+    border: 0 none;
+  }
+  &.clear-search:before {
+    line-height: 28px !important;
+    padding: 0;
+    height: 24px;
+    overflow: hidden;
+  }
 }
 
 body, .pane, .view, .modal {

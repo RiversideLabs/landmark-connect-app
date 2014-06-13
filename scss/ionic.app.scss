@@ -28,6 +28,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "views/home";
 @import "views/location";
 
+.platform-ios7.platform-cordova,
 .platform-ios8.platform-cordova {
   // Duplicate this block from ionic/_platform.scss and modified for iOS8
   &:not(.fullscreen) {
@@ -37,6 +38,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       &.item-input-inset .item-input-wrapper {
         margin-top: 19px !important;
       }
+      &.item-input-inset#search-box {
+        height: $bar-height !important;
+
+        .item-input-wrapper {
+          margin-top: -1px !important;
+        }
+      }
+
 
       > * {
         margin-top: $ios7-statusbar-height;
@@ -65,9 +74,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     // Cordova doesn't adjust the body height correctly, this makes up for it
     margin-bottom: 20px;
   }
+  .bar-header.bar-dark {
+    .button.button-icon {
+      margin-top: 0;
+    }
+  }
 }
 
 @media (orientation:landscape) {
+  .platform-ios7.platform-browser.platform-ipad,
   .platform-ios8.platform-browser.platform-ipad {
     position: fixed; // required for iPad 7 Safari
   }

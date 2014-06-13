@@ -7834,6 +7834,15 @@ a.button {
 
 .bar .button {
   z-index: 2; }
+  .bar .button.clear-search {
+    line-height: 28px !important;
+    min-height: 28px !important;
+    border: 0 none; }
+  .bar .button.clear-search:before {
+    line-height: 28px !important;
+    padding: 0;
+    height: 24px;
+    overflow: hidden; }
 
 body, .pane, .view, .modal {
   background-color: #1c1c1c;
@@ -8198,27 +8207,48 @@ input[type="color"] {
   -webkit-transform-origin: 50% 50%;
   /* Chrome, Safari, Opera */ }
 
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),
 .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
   height: 64px; }
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper,
   .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
     margin-top: 19px !important; }
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box,
+  .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box {
+    height: 44px !important; }
+    .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box .item-input-wrapper,
+    .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset#search-box .item-input-wrapper {
+      margin-top: -1px !important; }
+  .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > *,
   .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
     margin-top: 20px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .tabs-top > .tabs,
+.platform-ios7.platform-cordova:not(.fullscreen) .tabs.tabs-top,
 .platform-ios8.platform-cordova:not(.fullscreen) .tabs-top > .tabs,
 .platform-ios8.platform-cordova:not(.fullscreen) .tabs.tabs-top {
   top: 64px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .has-header,
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-subheader,
 .platform-ios8.platform-cordova:not(.fullscreen) .has-header,
 .platform-ios8.platform-cordova:not(.fullscreen) .bar-subheader {
   top: 64px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .has-subheader,
 .platform-ios8.platform-cordova:not(.fullscreen) .has-subheader {
   top: 108px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .has-tabs-top,
 .platform-ios8.platform-cordova:not(.fullscreen) .has-tabs-top {
   top: 113px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top,
 .platform-ios8.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
   top: 157px; }
+.platform-ios7.platform-cordova.status-bar-hide,
 .platform-ios8.platform-cordova.status-bar-hide {
   margin-bottom: 20px; }
+.platform-ios7.platform-cordova .bar-header.bar-dark .button.button-icon,
+.platform-ios8.platform-cordova .bar-header.bar-dark .button.button-icon {
+  margin-top: 0; }
 
 @media (orientation: landscape) {
+  .platform-ios7.platform-browser.platform-ipad,
   .platform-ios8.platform-browser.platform-ipad {
     position: fixed; } }
