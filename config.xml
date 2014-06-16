@@ -34,6 +34,8 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="true"/>
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="true" />
 
 
     <preference name="StatusBarOverlaysWebView" value="true" />
@@ -43,7 +45,6 @@
     <preference name="BackgroundColor" value="0xff1c1c1c"/>
     <preference name="prerendered-icon" value="true" />
     <preference name="target-device" value="handset" />
-    <preference name="exit-on-suspend" value="true" />
 
     <platform name="ios">
       <icon src="res/ios/icon-60.png" width="60" height="60" />

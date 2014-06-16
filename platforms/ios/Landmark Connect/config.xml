@@ -61,13 +61,14 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="true" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#1c1c1c" />
     <preference name="StatusBarStyle" value="blackopaque" />
     <preference name="BackgroundColor" value="0xff1c1c1c" />
     <preference name="prerendered-icon" value="true" />
     <preference name="target-device" value="handset" />
-    <preference name="exit-on-suspend" value="true" />
     <gap:splash gap:platform="ios" height="480" src="res/ios/Default~iphone.png" width="320" />
     <gap:splash gap:platform="ios" height="960" src="res/ios/Default@2x~iphone.png" width="640" />
     <gap:splash gap:platform="ios" height="1136" src="res/ios/Default-568h@2x~iphone.png" width="640" />
