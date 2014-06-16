@@ -9,7 +9,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.0-beta.8
+ * Ionic, v1.0.0-beta.7
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -26,7 +26,7 @@
 window.ionic = {
   controllers: {},
   views: {},
-  version: '1.0.0-beta.8'
+  version: '1.0.0-beta.7'
 };
 
 (function(ionic) {
@@ -176,6 +176,9 @@ window.ionic = {
     window.mozCancelAnimationFrame ||
     window.webkitCancelRequestAnimationFrame;
 
+  window.requestAnimationFrame = window._rAF;
+  window.cancelAnimationFrame = cancelAnimationFrame;
+
   /**
   * @ngdoc utility
   * @name ionic.DomUtil
@@ -192,11 +195,10 @@ window.ionic = {
      * happens.
      */
     requestAnimationFrame: function(cb) {
-      return window._rAF(cb);
+      window._rAF(cb);
     },
 
-    cancelAnimationFrame: function(requestId) {
-      cancelAnimationFrame(requestId);
+    cancelAnimationFrame: function(cb) {
     },
 
     /**
@@ -2945,7 +2947,7 @@ function tapActiveElement(ele) {
 }
 
 function tapHasPointerMoved(endEvent) {
-  if(!endEvent || endEvent.target.nodeType !== 1 || !tapPointerStart || ( tapPointerStart.x === 0 && tapPointerStart.y === 0 )) {
+  if(!endEvent || !tapPointerStart || ( tapPointerStart.x === 0 && tapPointerStart.y === 0 )) {
     return false;
   }
   var endCoordinates = getPointerCoordinates(endEvent);
@@ -6110,10 +6112,7 @@ ionic.scroll = {
 
           childSize = null;
           if(c.nodeType == 3) {
-            var bounds = ionic.DomUtil.getTextBounds(c);
-            if(bounds) {
-              childSize = bounds.width;
-            }
+            childSize = ionic.DomUtil.getTextBounds(c).width;
           } else if(c.nodeType == 1) {
             childSize = c.offsetWidth;
           }
@@ -36184,7 +36183,7 @@ angular.module('ui.router.compat')
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.0-beta.8
+ * Ionic, v1.0.0-beta.7
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -36273,10 +36272,10 @@ var IonicModule = angular.module('ionic', ['ngAnimate', 'ngSanitize', 'ui.router
  *  $scope.show = function() {
  *
  *    // Show the action sheet
- *    var hideSheet = $ionicActionSheet.show({
+ *    var hideSheet = $ionicActionSheet({
  *      buttons: [
  *        { text: '<b>Share</b> This' },
- *        { text: 'Move' }
+ *        { text: 'Move' },
  *      ],
  *      destructiveText: 'Delete',
  *      titleText: 'Modify your album',
@@ -40808,8 +40807,6 @@ function($timeout, $controller, $ionicBind) {
         innerElement = jqLite('<div class="scroll"></div>');
         innerElement.append(element.contents());
         element.append(innerElement);
-      } else {
-        element.addClass('scroll-content-false');
       }
 
       return { pre: prelink };
@@ -41603,9 +41600,11 @@ IonicModule
       if ( !input || !inputLabel ) return;
 
       var onInput = function() {
-        if ( input.value ) {
+        var hasInput = inputLabel.classList.contains('has-input');
+        if ( input.value && !hasInput ) {
           inputLabel.classList.add('has-input');
-        } else {
+        }
+        else if ( !input.value && hasInput ) {
           inputLabel.classList.remove('has-input');
         }
       };
@@ -41616,6 +41615,8 @@ IonicModule
       if ( ngModelCtrl ) {
         ngModelCtrl.$render = function() {
           input.value = ngModelCtrl.$viewValue || '';
+          if ( ngModelCtrl.$viewValue ) input.value = ngModelCtrl.$viewValue;
+          else input.value = '';
           onInput();
         };
       }

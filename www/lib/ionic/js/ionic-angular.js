@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.0.0-beta.8
+ * Ionic, v1.0.0-beta.7
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -91,10 +91,10 @@ var IonicModule = angular.module('ionic', ['ngAnimate', 'ngSanitize', 'ui.router
  *  $scope.show = function() {
  *
  *    // Show the action sheet
- *    var hideSheet = $ionicActionSheet.show({
+ *    var hideSheet = $ionicActionSheet({
  *      buttons: [
  *        { text: '<b>Share</b> This' },
- *        { text: 'Move' }
+ *        { text: 'Move' },
  *      ],
  *      destructiveText: 'Delete',
  *      titleText: 'Modify your album',
@@ -4626,8 +4626,6 @@ function($timeout, $controller, $ionicBind) {
         innerElement = jqLite('<div class="scroll"></div>');
         innerElement.append(element.contents());
         element.append(innerElement);
-      } else {
-        element.addClass('scroll-content-false');
       }
 
       return { pre: prelink };
@@ -5421,9 +5419,11 @@ IonicModule
       if ( !input || !inputLabel ) return;
 
       var onInput = function() {
-        if ( input.value ) {
+        var hasInput = inputLabel.classList.contains('has-input');
+        if ( input.value && !hasInput ) {
           inputLabel.classList.add('has-input');
-        } else {
+        }
+        else if ( !input.value && hasInput ) {
           inputLabel.classList.remove('has-input');
         }
       };
@@ -5434,6 +5434,8 @@ IonicModule
       if ( ngModelCtrl ) {
         ngModelCtrl.$render = function() {
           input.value = ngModelCtrl.$viewValue || '';
+          if ( ngModelCtrl.$viewValue ) input.value = ngModelCtrl.$viewValue;
+          else input.value = '';
           onInput();
         };
       }
