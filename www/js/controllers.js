@@ -40,6 +40,28 @@ angular.module('landmarkConnect.controllers', [])
   $scope.isVisited = function(loc) {
     return $scope.$storage.visited.indexOf(loc._id) >= 0;
   }
+  $scope.getDirections = function(loc) {
+    var locationString = loc.location.street1+'+'+loc.location.suburb+'+'+loc.location.state+'+'+loc.location.postcode;
+
+    if (ionic.Platform.isAndroid()) {
+      var url = 'geo:0,0?q=' + locationString;
+      url = encodeURI(url);
+      window.open(url,'_system','location=yes');
+    } else if (ionic.Platform.isIOS()) {
+      if ($scope.$storage.currentLocation != null) {
+        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation.coords.latitude + ',' + $scope.$storage.currentLocation.coords.longitude;
+      } else {
+        var url = 'http://maps.apple.com/?q=' + locationString;
+      }
+      url = encodeURI(url);
+      window.open(url,'_system','location=yes');
+    } else {
+      var url = 'http://maps.google.com/?q=' + locationString;
+      window.open(url,'_system','location=yes');
+    }
+  }
+
+
   // --- END Set / Unset / Check Visited & Favorites ---
 
   $ionicModal.fromTemplateUrl('search-modal.html', function(modal) {
