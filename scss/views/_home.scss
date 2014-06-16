@@ -145,6 +145,14 @@
 		}
 
 	}
+	.item-options {
+		.button {
+			line-height: 150px;
+			.icon {
+				vertical-align: middle;
+			}
+		}
+	}
 }
 
 .location-list li:active {
