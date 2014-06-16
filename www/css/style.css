@@ -8383,7 +8383,8 @@ input[type="color"] {
             font-size: 32px;
             font-weight: normal; }
   .locations-list .item-options .button {
-    line-height: 150px; }
+    line-height: 150px;
+    padding: 0 43px; }
     .locations-list .item-options .button .icon {
       vertical-align: middle; }
 
