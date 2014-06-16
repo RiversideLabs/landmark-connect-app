@@ -77,7 +77,7 @@ angular.module('landmarkConnect.services', ['cordovaGeolocationModule'])
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
       var m = parseInt(R * c);
       var mi = m * 0.000621371192;
-      return parseFloat(Math.round(mi * 100) / 100);
+      return parseFloat(Math.round(mi * 10) / 10);
     }
 
     /**
