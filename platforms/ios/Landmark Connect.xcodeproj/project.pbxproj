@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		1948E1C8113C4045BE3717BB /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = A3778928B54B44ECB20F62D7 /* CDVSplashScreen.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -41,6 +40,7 @@
 		F79E3C08F2604CFAAE0BF077 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7126D0D2BECF4A5F919B99D7 /* CDVStatusBar.m */; };
 		FEF1C49B599A40DE80B161A6 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6069B226370C4BD0A194130F /* IonicKeyboard.m */; };
 		FF485FC540F843A3A39B335E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE931EF8B544EBF86504542 /* CDVDevice.m */; };
+		ACF89E1922584C51A1E76EB9 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F78DC3E497064BE9A8C2F28C /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +113,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F46A2CB4ECC146A3896605E3 /* UIWebViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWebViewExtension.h; path = com.ionic.keyboard/UIWebViewExtension.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Landmark Connect/config.xml"; sourceTree = "<group>"; };
+		F78DC3E497064BE9A8C2F28C /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		BE5594F38F6B42DABE328940 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,8 @@
 				AD57C5F8B04845CFBD02795B /* CDVSplashScreen.h */,
 				7126D0D2BECF4A5F919B99D7 /* CDVStatusBar.m */,
 				06448B67192A4BF79FA5F7CE /* CDVStatusBar.h */,
+				F78DC3E497064BE9A8C2F28C /* CDVInAppBrowser.m */,
+				BE5594F38F6B42DABE328940 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "Landmark Connect/Plugins";
@@ -443,6 +447,7 @@
 				B59230187B0349F4AC796B76 /* CDVLocation.m in Sources */,
 				1948E1C8113C4045BE3717BB /* CDVSplashScreen.m in Sources */,
 				F79E3C08F2604CFAAE0BF077 /* CDVStatusBar.m in Sources */,
+				ACF89E1922584C51A1E76EB9 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
