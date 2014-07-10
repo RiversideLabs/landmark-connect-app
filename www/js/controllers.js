@@ -396,7 +396,7 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, TourService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
 
@@ -456,7 +456,7 @@ angular.module('landmarkConnect.controllers', [])
 
 
   // --- TOURS -----
-  //$scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
+  $scope.tour = TourService.getTour($stateParams.tourId);
   //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
