@@ -1,11 +1,11 @@
 <ion-view title="{{navTitle}}">
   <ion-content has-header="true" class="detail-view details" ng-class="{fade:fade}" on-scroll="checkScroll()">
-  <div class="location-details-header" style="background-image:url('{{location.heroImage.url}}');">
+  <div class="location-details-header" hero-img="{{location.heroImage.url}}">
     <div class="location-details-header-container">
-      <h1>{{location.name}}</h1>
+      <h1>{{location.commonName}}</h1>
     </div>
   </div>
-  <div class="location-details-description">
+  <div class="location-details-description" has-hero="{{location.heroImage.url}}">
     <h3>Details</h3>
     <span ng-bind-html="location.description.brief"></span>
     <span ng-bind-html="location.description.extended"></span>

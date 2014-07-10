@@ -35,7 +35,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   // Duplicate this block from ionic/_platform.scss and modified for iOS8
   &:not(.fullscreen) {
     .bar-header:not(.bar-subheader) {
-      height: $bar-height + $ios7-statusbar-height;
+      height: $bar-height + $ios-statusbar-height;
 
       &.item-input-inset .item-input-wrapper {
         margin-top: 19px !important;
@@ -50,26 +50,26 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
       > * {
-        margin-top: $ios7-statusbar-height;
+        margin-top: $ios-statusbar-height;
       }
     }
     .tabs-top > .tabs,
     .tabs.tabs-top {
-      top: $bar-height + $ios7-statusbar-height;
+      top: $bar-height + $ios-statusbar-height;
     }
 
     .has-header,
     .bar-subheader {
-      top: $bar-height + $ios7-statusbar-height;
+      top: $bar-height + $ios-statusbar-height;
     }
     .has-subheader {
-      top: (2 * $bar-height) + $ios7-statusbar-height;
+      top: (2 * $bar-height) + $ios-statusbar-height;
     }
     .has-tabs-top {
-      top: $bar-height + $tabs-height + $ios7-statusbar-height;
+      top: $bar-height + $tabs-height + $ios-statusbar-height;
     }
     .has-header.has-subheader.has-tabs-top {
-      top: 2 * $bar-height + $tabs-height + $ios7-statusbar-height;
+      top: 2 * $bar-height + $tabs-height + $ios-statusbar-height;
     }
   }
   &.status-bar-hide {
@@ -82,7 +82,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
   }
   .back-button:before {
-    margin-top: $ios7-statusbar-height;
+    margin-top: $ios-statusbar-height;
   }
 }
 
