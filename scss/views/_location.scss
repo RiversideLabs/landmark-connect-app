@@ -158,13 +158,8 @@
       left: 3px; right: 3px;
       top: 0; bottom: 6px;
       overflow: hidden;
-    }
-
-    img {
-      min-width: 100%;
-      min-height: 100%;
-      max-width: 150%;
-      max-height: 150%;
+      background-position: center center;
+      background-size: cover;
     }
 
     &:nth-child(-n+2) {

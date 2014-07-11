@@ -2,13 +2,7 @@
   <ion-content has-header="true" class="detail-view gallery" zooming="true" ng-class="{fade:fade}" on-scroll="checkScroll()">
     <div id="image-gallery" class="clearfix">
       <div class="image" ng-repeat="image in location.images">
-        <a class="image-spacing" href="#/app/loc/{{location._id}}/image/v/{{$index}}">
-          <div ng-if="image == image.thumbnail">
-            <img ng-src="{{ image.thumbnail }}">
-          </div>
-          <div ng-if="image != image.thumbnail">
-            <img ng-src="{{ image.url }}">
-          </div>
+        <a class="image-spacing" href="#/app/loc/{{location._id}}/image/v/{{$index}}" style="background-image:url({{ image.url }});">
         </a>
       </div>
     </div>

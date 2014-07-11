@@ -33,7 +33,7 @@
       </dl>
       <dl ng-show="location.plaqueText">
         <dt>Plaque Text:</dt>
-        <dd>{{location.plaqueText}}</dd>
+        <dd><span ng-bind-html="location.plaqueText"></span></dd>
       </dl>
       <dl ng-show="location.location.street1">
         <dt>Address:</dt>

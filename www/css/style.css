@@ -8700,12 +8700,9 @@ input[type="color"] {
       right: 3px;
       top: 0;
       bottom: 6px;
-      overflow: hidden; }
-    #image-gallery .image img {
-      min-width: 100%;
-      min-height: 100%;
-      max-width: 150%;
-      max-height: 150%; }
+      overflow: hidden;
+      background-position: center center;
+      background-size: cover; }
     #image-gallery .image:nth-child(-n+2) .image-spacing {
       top: 6px; }
     #image-gallery .image:nth-of-type(odd) .image-spacing {
