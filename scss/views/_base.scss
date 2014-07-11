@@ -134,6 +134,10 @@ input[type="color"] {
   color: $input-text-color;
 }
 
+.card, .list-inset {
+  background-color: $list-item-bg;
+}
+
 .item {
   background-color: transparent;
   border-color: $border-color;
