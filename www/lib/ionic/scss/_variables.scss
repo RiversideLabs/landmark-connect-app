@@ -276,6 +276,10 @@ $tabs-default-text:               $tabs-stable-text !default;
 
 $tab-item-max-width:              150px !default;
 
+$tabs-striped-off-color: #000;
+$tabs-striped-off-opacity: 0.4;
+$tabs-striped-border-width: 4px;
+
 
 // Items
 // -------------------------------
@@ -665,15 +669,19 @@ $z-index-item-reordering:         9 !default;
 $z-index-item-toggle:             3 !default;
 $z-index-loading:                 13 !default;
 $z-index-menu:                    0 !default;
+$z-index-menu-bar-header:         11 !default;
+$z-index-menu-scroll-content:     10 !default;
 $z-index-modal:                   10 !default;
 $z-index-pane:                    1 !default;
 $z-index-popup:                   12 !default;
 $z-index-scroll-bar:              9999 !default;
+$z-index-scroll-content-false:    10 !default;
 $z-index-slider-pager:            1 !default;
 $z-index-tabs:                    5 !default;
 $z-index-view:                    1 !default;
 
+
 // Platform
 // -------------------------------
 
-$ios7-statusbar-height:           20px !default;
+$ios-statusbar-height:           20px !default;

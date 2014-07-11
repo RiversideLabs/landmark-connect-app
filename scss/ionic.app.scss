@@ -27,3 +27,68 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "views/base";
 @import "views/home";
 @import "views/location";
+
+.platform-ios7.platform-cordova,
+.platform-ios8.platform-cordova,
+.platform-ios7.platform-browser,
+.platform-ios8.platform-browser {
+  // Duplicate this block from ionic/_platform.scss and modified for iOS8
+  &:not(.fullscreen) {
+    .bar-header:not(.bar-subheader) {
+      height: $bar-height + $ios-statusbar-height;
+
+      &.item-input-inset .item-input-wrapper {
+        margin-top: 19px !important;
+      }
+      &.item-input-inset#search-box {
+        height: $bar-height !important;
+
+        .item-input-wrapper {
+          margin-top: -1px !important;
+        }
+      }
+
+
+      > * {
+        margin-top: $ios-statusbar-height;
+      }
+    }
+    .tabs-top > .tabs,
+    .tabs.tabs-top {
+      top: $bar-height + $ios-statusbar-height;
+    }
+
+    .has-header,
+    .bar-subheader {
+      top: $bar-height + $ios-statusbar-height;
+    }
+    .has-subheader {
+      top: (2 * $bar-height) + $ios-statusbar-height;
+    }
+    .has-tabs-top {
+      top: $bar-height + $tabs-height + $ios-statusbar-height;
+    }
+    .has-header.has-subheader.has-tabs-top {
+      top: 2 * $bar-height + $tabs-height + $ios-statusbar-height;
+    }
+  }
+  &.status-bar-hide {
+    // Cordova doesn't adjust the body height correctly, this makes up for it
+    margin-bottom: 20px;
+  }
+  .bar-header.bar-dark {
+    .button.button-icon {
+      margin-top: 0;
+    }
+  }
+  .back-button:before {
+    margin-top: $ios-statusbar-height;
+  }
+}
+
+@media (orientation:landscape) {
+  .platform-ios7.platform-browser.platform-ipad,
+  .platform-ios8.platform-browser.platform-ipad {
+    position: fixed; // required for iPad 7 Safari
+  }
+}
