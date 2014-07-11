@@ -1163,6 +1163,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/www\/assets\/img\/pin.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1696,
+		"inputAbbreviatedPath": "\/www\/assets\/img\/pin.png",
+		"outputAbbreviatedPath": "\/www\/assets\/img\/pin.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/www\/bower_components\/angular\/angular-csp.css": {
 		"fileType": 16,
 		"ignore": 0,
