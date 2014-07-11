@@ -9,7 +9,7 @@
       </div>
     </div>
     <ion-list class="locations-list">
-      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc | filter: searchQuery" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail" style="background-image:url('{{loc.heroImage.url}}');">
+      <ion-item class="location-item" ng-repeat="loc in locations | orderBy:$storage.sortLoc | filter: searchQuery" type="item-text-wrap" ng-href="#/app/loc/{{loc._id}}/detail" back-img="{{loc.heroImage.url}}">
         <div class="location-title">
           <p>{{loc.commonName}}</p>
           <span class="distance-indicator" ng-show="$storage.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>

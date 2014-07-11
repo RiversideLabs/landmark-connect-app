@@ -252,11 +252,11 @@ angular.module('landmarkConnect.controllers', [])
   $scope.navTitle = "Map of Locations";
 
   var pinImage = {
-    url: 'assets/img/map-pin.png',
-    size: new google.maps.Size(27, 80),
-    scaledSize: new google.maps.Size(13.5, 40),
+    url: 'assets/img/pin.png',
+    size: new google.maps.Size(54, 60),
+    scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(0, 40)
+    anchor: new google.maps.Point(9, 30)
   };
 
   // Google Maps
@@ -396,7 +396,7 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, TourService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
 
@@ -456,7 +456,7 @@ angular.module('landmarkConnect.controllers', [])
 
 
   // --- TOURS -----
-  //$scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
+  $scope.tour = TourService.getTour($stateParams.tourId);
   //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
@@ -507,14 +507,11 @@ angular.module('landmarkConnect.controllers', [])
     anchor: new google.maps.Point(0, 22)
   };
   var pinImage = {
-    url: 'assets/img/map-pin.png',
-    // This marker is 27 pixels wide by 80 pixels tall.
-    size: new google.maps.Size(27, 80),
-    scaledSize: new google.maps.Size(13.5, 40),
-    // The origin for this image is 0,0.
+    url: 'assets/img/pin.png',
+    size: new google.maps.Size(54, 60),
+    scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
-    anchor: new google.maps.Point(0, 40)
+    anchor: new google.maps.Point(9, 30)
   };
 
   $scope.centerOnMe = function() {

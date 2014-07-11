@@ -1,14 +1,52 @@
 <ion-view title="{{navTitle}}">
   <ion-content has-header="true" class="detail-view details" ng-class="{fade:fade}" on-scroll="checkScroll()">
-  <div class="location-details-header" style="background-image:url('{{location.heroImage.url}}');">
+  <div class="location-details-header" hero-img="{{location.heroImage.url}}">
     <div class="location-details-header-container">
-      <h1>{{location.name}}</h1>
+      <h1>{{location.commonName}}</h1>
     </div>
   </div>
-  <div class="location-details-description">
+  <div class="location-details-description" has-hero="{{location.heroImage.url}}">
     <h3>Details</h3>
     <span ng-bind-html="location.description.brief"></span>
     <span ng-bind-html="location.description.extended"></span>
+
+    <div class="location-details-more">
+      <dl ng-show="{{location.historicName}}">
+        <dt>Historic Name:</dt>
+        <dd>{{location.historicName}}</dd>
+      </dl>
+      <dl ng-show="{{location.yearBuilt}}">
+        <dt>Year Built:</dt>
+        <dd>{{location.yearBuilt}}</dd>
+      </dl>
+      <dl ng-show="{{location.architecturalStyle}}">
+        <dt>Architectural Style:</dt>
+        <dd ng-repeat="style in location.architecturalStyle">{{style.name}}</dd>
+      </dl>
+      <dl ng-show="{{location.architect}}">
+        <dt>Architect:</dt>
+        <dd>{{location.architect}}</dd>
+      </dl>
+      <dl ng-show="{{location.builder}}">
+        <dt>Builder:</dt>
+        <dd>{{location.builder}}</dd>
+      </dl>
+      <dl ng-show="{{location.plaqueText}}">
+        <dt>Plaque Text:</dt>
+        <dd>{{location.plaqueText}}</dd>
+      </dl>
+      <dl ng-show="{{location.location.street1}}">
+        <dt>Address:</dt>
+        <dd>{{location.location.street1}}</dd>
+        <dd>{{location.location.street2}}</dd>
+        <dd>{{location.location.suburb}}, {{location.location.state}} {{location.location.postcode}}</dd>
+      </dl>
+      <dl ng-show="{{location.url}}">
+        <dt>Website:</dt>
+        <dd><a href="{{location.url}}" target="_blank">{{location.url}}</a></dd>
+      </dl>
+    </div>
+
   </div>
   </ion-content>
 </ion-view>

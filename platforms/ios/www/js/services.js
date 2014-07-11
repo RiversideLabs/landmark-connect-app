@@ -53,6 +53,28 @@ angular.module('landmarkConnect.services', ['cordovaGeolocationModule'])
 
 }])
 
+.factory('TourService', [ '$http', function($http) {
+  var tours = [];
+  $http.get('http://landmarkjs-demo.herokuapp.com/api/tour/list').success(function(data){
+    tours = data.tours;
+  });
+
+  return {
+    all: function() {
+      return tours;
+    },
+    getTour: function(tourId) {
+      // Simple index lookup
+      for(var i=0, l=tours.length; i < l; i++) {
+        if(tours[i]._id == tourId) {
+          return tours[i];
+        }
+      }
+    }
+  }
+
+}])
+
 .service('geomath', function() {
     var self = this;
     var R = 6378137; // earth's radius in meters

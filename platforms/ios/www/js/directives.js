@@ -61,6 +61,81 @@ angular.module('landmarkConnect.directives', [])
   };
 })
 
+.directive('backImg', function(){
+  return {
+    link: function(scope, element, attr) {
+      attr.$observe('backImg', function() {
+        if (!attr.backImg) {
+          // No attribute specified, do nothing
+          element.addClass("no-hero");
+        } else {
+          var content = element.find('a');
+          var image = new Image();
+          image.src = attr.backImg;
+          image.onload = function() {
+            //Image loaded- set the background image to it
+            element.css("background-image","url("+attr.backImg+")").addClass("has-hero");
+            content.css("background-image","url("+attr.backImg+")");
+          };
+          image.onerror = function() {
+            //Image failed to load, do nothing
+            element.addClass("no-hero hero-error");
+          };
+        }
+      });
+    }
+  };
+})
+
+.directive('heroImg', function(){
+  return {
+    link: function(scope, element, attr) {
+      attr.$observe('heroImg', function() {
+        if (!attr.heroImg) {
+          // No attribute specified, do nothing
+          element.addClass("no-hero");
+        } else {
+          var image = new Image();
+          image.src = attr.heroImg;
+          image.onload = function() {
+            //Image loaded- set the background image to it
+            element.css("background-image","url("+attr.heroImg+")").addClass("has-hero");
+          };
+          image.onerror = function() {
+            //Image failed to load, do nothing
+            element.addClass("no-hero");
+          };
+        }
+      });
+    }
+  };
+})
+
+// SAME DIRECTIVE AS ABOVE, BUT ADDS CLASS TO DESCRIPTION REGION
+.directive('hasHero', function(){
+  return {
+    link: function(scope, element, attr) {
+      attr.$observe('hasHero', function() {
+        if (!attr.hasHero) {
+          // No attribute specified, do nothing
+          element.addClass("no-hero");
+        } else {
+          var image = new Image();
+          image.src = attr.hasHero;
+          image.onload = function() {
+            //Image loaded- set the class
+            element.addClass("has-hero");
+          };
+          image.onerror = function() {
+            //Image failed to load, do nothing
+            element.addClass("no-hero");
+          };
+        }
+      });
+    }
+  };
+})
+
 .directive('videoLoader', function(){
   return function (scope, element, attrs){
     //console.log(scope.url);
