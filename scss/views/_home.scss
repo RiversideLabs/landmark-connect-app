@@ -1,11 +1,19 @@
 
-.map-wrapper .scroll {
-	height: 100%;
+.map-wrapper {
+	z-index: inherit;
+	.scroll {
+		height: 100%;
+	}
 }
 
 #map_all, #map_detail, .angular-google-map, .angular-google-map-container {
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
+	top: $bar-height + $ios-statusbar-height;
+	position: absolute !important;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .gm-style-iw {
