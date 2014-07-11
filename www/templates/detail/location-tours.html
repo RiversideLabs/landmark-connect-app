@@ -7,7 +7,7 @@
 <!--       <ion-item  ng-repeat="tour in location.tours | filter:{type:'video'}" type="item-text-wrap" href="#/app/loc/{{location._id}}/tour/v/{{tour._id}}">
         {{tour.title}}
       </ion-item> -->
-      <ion-item  ng-repeat="tour in location.tours | filter:{type:'video'}" type="item-text-wrap" href="{{trustSrc(tour.url)}}">
+      <ion-item ng-repeat="tour in location.tours | filter:{type:'video'}" type="item-text-wrap" href="{{trustSrc(tour.url)}}">
         {{tour.title}}
       </ion-item>
       <div class="item item-divider" ng-hide="(location.tours | filter:{type:'audio'}).length == 0">
