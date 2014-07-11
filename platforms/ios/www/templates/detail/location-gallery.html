@@ -5,6 +5,11 @@
         <a class="image-spacing" href="#/app/loc/{{location._id}}/image/v/{{$index}}" style="background-image:url({{ image.url }});">
         </a>
       </div>
+      <div class="card" ng-show="(location.images).length == 0">
+        <div class="item item-text-wrap">
+          Sorry, no images are available for this location.
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
