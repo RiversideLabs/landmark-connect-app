@@ -43,6 +43,14 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -53,6 +61,18 @@
                         {
                             "xml": "false",
                             "count": 2
+                        }
+                    ],
+                    "AssetsLibrary.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "MobileCoreServices.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
                         }
                     ]
                 }
@@ -77,7 +97,14 @@
         },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.maven20.landmarkconnect"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.maven20.landmarkconnect"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.maven20.landmarkconnect"
+        }
+    }
 }

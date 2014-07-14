@@ -35,7 +35,15 @@ angular.module('landmarkConnect.services', ['cordovaGeolocationModule'])
     },
     getTour: function(locationId, tourId) {
       // Simple index lookup
-      return locations[locationId].tours[tourId];
+      found_location = _.find(locations, function(location) {
+        return location._id == locationId;
+      });
+
+      found_tour = _.find(found_location.tours, function(tour) {
+        return tour._id == tourId;
+      });
+
+      return found_tour;
     },
     getImage: function(locationId, imageId) {
       // Simple index lookup
