@@ -5,6 +5,11 @@
         {{loc.commonName}}
         <ion-option-button ng-click="unVisit(loc)" ng-show="isVisited(loc)" class="button-assertive button-visited"><i class="icon ion-minus-circled"></i></ion-option-button>
       </ion-item>
+      <div class="card" ng-show="(visited).length == 0">
+        <div class="item item-text-wrap">
+          You currently have no locations marked as visited.
+        </div>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>
