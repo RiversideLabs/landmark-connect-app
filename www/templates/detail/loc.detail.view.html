@@ -9,18 +9,17 @@
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-      <button ng-click="makeFavorite(location)" ng-hide="isFavorite(location)" class="button-clear no-padding button-favorite">
-        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-star-outline"></i>
+      <button ng-click="makeFavorite(location)" ng-hide="isFavorite(location)" class="button-clear no-padding button-favorite button-toggle-deselected">
+        <i class="button button-icon button-smaller icon ion-ios7-star-outline"></i>
       </button>
-      <button ng-click="unFavorite(location)" ng-show="isFavorite(location)" class="button-clear no-padding button-favorite active">
-        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-star"></i>
+      <button ng-click="unFavorite(location)" ng-show="isFavorite(location)" class="button-clear no-padding button-favorite button-toggle-deselected">
+        <i class="button button-icon button-smaller icon ion-ios7-star"></i>
       </button>
-      <button ng-click="makeVisited(location)" ng-hide="isVisited(location)" class="button-clear no-padding button-visited">
-        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark-outline button-visited"></i>
-        <a ng-click="unVisit(location._id)" ng-show="isVisited(location)" class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark button-visited active" href="#"></a>
+      <button ng-click="makeVisited(location)" ng-hide="isVisited(location)" class="button-clear no-padding button-visited button-toggle-deselected">
+        <i class="button button-icon button-smaller icon ion-ios7-checkmark-outline button-visited"></i>
       </button>
-      <button ng-click="unVisit(location)" ng-show="isVisited(location)" class="button-clear no-padding button-visited">
-        <i class="button button-icon button-smaller button-toggle-deselected icon ion-ios7-checkmark button-visited active"></i>
+      <button ng-click="unVisit(location)" ng-show="isVisited(location)" class="button-clear no-padding button-visited button-toggle-deselected">
+        <i class="button button-icon button-smaller icon ion-ios7-checkmark button-visited"></i>
       </button>
     </ion-nav-buttons>
   </ion-nav-bar>
