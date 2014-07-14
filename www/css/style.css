@@ -8806,11 +8806,6 @@ input[type="color"] {
 .platform-ios7.platform-browser .bar-header.bar-dark .button.button-icon,
 .platform-ios8.platform-browser .bar-header.bar-dark .button.button-icon {
   margin-top: 0; }
-.platform-ios7.platform-cordova .back-button:before,
-.platform-ios8.platform-cordova .back-button:before,
-.platform-ios7.platform-browser .back-button:before,
-.platform-ios8.platform-browser .back-button:before {
-  margin-top: 20px; }
 
 @media (orientation: landscape) {
   .platform-ios7.platform-browser.platform-ipad,

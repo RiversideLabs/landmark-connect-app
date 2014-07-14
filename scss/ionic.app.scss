@@ -81,9 +81,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
       margin-top: 0;
     }
   }
-  .back-button:before {
-    margin-top: $ios-statusbar-height;
-  }
+  // .back-button:before {
+  //   margin-top: $ios-statusbar-height;
+  // }
 }
 
 @media (orientation:landscape) {
