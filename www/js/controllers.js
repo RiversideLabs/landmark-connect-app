@@ -396,7 +396,7 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, TourService, $ionicNavBarDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('LocationDetailCtrl', function($scope, $stateParams, LocationsService, TourService, $ionicNavBarDelegate, $ionicTabsDelegate, AudioService, $ionicLoading, $ionicPopup, $localStorage, $timeout, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
 
@@ -406,6 +406,10 @@ angular.module('landmarkConnect.controllers', [])
   //$ionicNavBarDelegate.showBackButton(show); // seems to produce a blank screen
   $scope.goBack = function() {
     $ionicNavBarDelegate.back();
+  };
+
+  $scope.selectTabWithIndex = function(index) {
+    $ionicTabsDelegate.select(index);
   };
 
   $scope.checkScroll = function() {
@@ -456,7 +460,8 @@ angular.module('landmarkConnect.controllers', [])
 
 
   // --- TOURS -----
-  $scope.tour = TourService.getTour($stateParams.tourId);
+  //$scope.tour = TourService.getTour($stateParams.tourId);
+  $scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
   //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
