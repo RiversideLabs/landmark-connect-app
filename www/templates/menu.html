@@ -1,23 +1,23 @@
 <ion-view hide-back-button='true'>
   <ion-nav-buttons side="right">
     <button class="button-clear no-padding">
-      <a class="button button-icon icon ion-ios7-arrow-forward" href="#/app/loc/all"></a>
+      <a class="button button-icon icon ion-ios7-arrow-forward" href="#/loc/all"></a>
     </button>
   </ion-nav-buttons>
   <ion-content has-header="true">
     <ion-list>
-      <ion-item class="item-icon-left item-icon-right" href="#/app/favorites">
+      <ion-item class="item-icon-left item-icon-right" href="#/favorites">
         <i class="icon ion-ios7-star-outline"></i>
         Favorites
         <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
       </ion-item>
-        <ion-item class="item-icon-left item-icon-right" href="#/app/visited">
+        <ion-item class="item-icon-left item-icon-right" href="#/visited">
           <i class="icon ion-ios7-checkmark-outline"></i>
           Visited
           <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
         </ion-item>
       <ion-item item-divider ng-show="$storage.showDistance"></ion-item>
-      <ion-item class="item-icon-right" href="#/app/settings" ng-show="$storage.showDistance">
+      <ion-item class="item-icon-right" href="#/settings" ng-show="$storage.showDistance">
         Settings
         <i class="icon ion-ios7-arrow-forward icon-accessory"></i>
       </ion-item>

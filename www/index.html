@@ -40,18 +40,15 @@
     }</script>
 
   </head>
-  <body ng-app="landmarkConnect" animation="slide-left-right-ios7">
+  <body ng-app="landmarkConnect" animation="slide-left-right">
     <div ng-controller="MainCtrl">
-      <ion-nav-view></ion-nav-view>
-    </div>
-
-    <script id="app.html" type="text/ng-template">
       <ion-nav-bar class='nav-title-slide-ios7 bar-dark'>
         <ion-nav-back-button class='button-icon ion-ios7-arrow-left'>
         </ion-nav-back-button>
       </ion-nav-bar>
       <ion-nav-view name='menuContent'></ion-nav-view>
-    </script>
+    </div>
+
     <script id="locations-wrap.html" type="text/ng-template">
       <ion-view>
         <ion-nav-view name='locContent' scroll="false"></ion-nav-view>
