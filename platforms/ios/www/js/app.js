@@ -23,13 +23,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    .state('app', {
-      url: "/app",
-      abstract: true,
-      templateUrl: "app.html"
-    })
-
-    .state('app.search', {
+    .state('search', {
       url: "/search",
       views: {
         'menuContent' :{
@@ -39,7 +33,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
       }
     })
 
-    .state('app.menu', {
+    .state('menu', {
       url: "/menu",
       views: {
         'menuContent' :{
@@ -51,7 +45,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
       }
     })
 
-    .state('app.favorites', {
+    .state('favorites', {
       url: "/favorites",
       views: {
         'menuContent' :{
@@ -61,7 +55,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
       }
     })
 
-    .state('app.visited', {
+    .state('visited', {
       url: "/visited",
       views: {
         'menuContent' :{
@@ -71,7 +65,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
       }
     })
 
-    .state('app.settings', {
+    .state('settings', {
       url: "/settings",
       views: {
         'menuContent' :{
@@ -83,7 +77,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
 
     // Each tab has its own nav history stack:
 
-    .state('app.loc', {
+    .state('loc', {
       url: "/loc",
       abstract: true,
       views: {
@@ -92,7 +86,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       }
     })
-    .state('app.loc.all', {
+    .state('loc.all', {
       url: '/all',
       views: {
         'locContent': {
@@ -102,7 +96,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
       }
     })
 
-    .state('app.loc.map', {
+    .state('loc.map', {
       url: '/map',
       views: {
         'locContent': {
@@ -115,7 +109,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
 
 
 
-    .state('app.loc.detail', {
+    .state('loc.detail', {
       url: "/:locationId",
       abstract: true,
       controller: 'LocationDetailCtrl',
@@ -126,7 +120,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       }
     })
-    .state('app.loc.detail.detail', {
+    .state('loc.detail.detail', {
       url: '/detail',
       views: {
         'tab-loc-detail': {
@@ -135,7 +129,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       }
     })
-    .state('app.loc.detail.tour', {
+    .state('loc.detail.tour', {
       url: '/tour',
       views: {
         'tab-loc-tour': {
@@ -144,7 +138,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       }
     })
-      .state('app.loc.detail.tour-video', {
+      .state('loc.detail.tour-video', {
         url: '/tour/v/:tourId',
         views: {
           'tab-loc-tour': {
@@ -154,7 +148,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       })
 
-      .state('app.loc.detail.tour-audio', {
+      .state('loc.detail.tour-audio', {
         url: '/tour/a/:tourId',
         views: {
           'tab-loc-tour': {
@@ -164,7 +158,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       })
 
-    .state('app.loc.detail.image', {
+    .state('loc.detail.image', {
       url: '/image',
       views: {
         'tab-loc-image': {
@@ -173,7 +167,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
         }
       }
     })
-      .state('app.loc.detail.image-view', {
+      .state('loc.detail.image-view', {
         url: '/image/v/:imageId',
         views: {
           'tab-loc-image': {
@@ -182,7 +176,7 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
           }
         }
       })
-    .state('app.loc.detail.map', {
+    .state('loc.detail.map', {
       url: '/map',
       views: {
         'tab-loc-map': {
@@ -193,6 +187,6 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/loc/all');
+  $urlRouterProvider.otherwise('/loc/all');
 
 });

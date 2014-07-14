@@ -8481,11 +8481,16 @@ input[type="color"] {
     height: 100%; }
 
 #map_all, #map_detail, .angular-google-map, .angular-google-map-container {
-  top: 64px;
   position: absolute !important;
   bottom: 0;
   left: 0;
   right: 0; }
+
+#map_detail, .angular-google-map, .angular-google-map-container {
+  top: 0; }
+
+#map_all {
+  top: 64px; }
 
 .gm-style-iw h1, .gm-style-iw h2, .gm-style-iw h3, .gm-style-iw h4, .gm-style-iw p {
   color: #1c1c1c; }
@@ -8738,6 +8743,9 @@ input[type="color"] {
   -webkit-transform-origin: 50% 50%;
   /* Chrome, Safari, Opera */ }
 
+.bar-header + .pane {
+  z-index: 100; }
+
 .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),
 .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),
 .platform-ios7.platform-browser:not(.fullscreen) .bar-header:not(.bar-subheader),
@@ -8806,11 +8814,6 @@ input[type="color"] {
 .platform-ios7.platform-browser .bar-header.bar-dark .button.button-icon,
 .platform-ios8.platform-browser .bar-header.bar-dark .button.button-icon {
   margin-top: 0; }
-.platform-ios7.platform-cordova .back-button:before,
-.platform-ios8.platform-cordova .back-button:before,
-.platform-ios7.platform-browser .back-button:before,
-.platform-ios8.platform-browser .back-button:before {
-  margin-top: 20px; }
 
 @media (orientation: landscape) {
   .platform-ios7.platform-browser.platform-ipad,
