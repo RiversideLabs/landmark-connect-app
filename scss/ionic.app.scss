@@ -28,6 +28,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "views/home";
 @import "views/location";
 
+
+//dirty hack for top nav traversing through favs/visited
+.bar-header + .pane {
+  z-index: 100
+}
+
 .platform-ios7.platform-cordova,
 .platform-ios8.platform-cordova,
 .platform-ios7.platform-browser,

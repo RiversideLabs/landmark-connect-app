@@ -23,12 +23,6 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGe
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    .state('app', {
-      url: "/app",
-      abstract: true,
-      templateUrl: "app.html"
-    })
-
     .state('search', {
       url: "/search",
       views: {
