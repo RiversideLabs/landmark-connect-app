@@ -4,12 +4,10 @@
     <p style="color:#ffffff;">Title: {{tour.title}}</p>
 
     <div class="player-wrap">
-      <video preload="metadata" controls webkit-playsinline>
-        <source ng-src="{{trustSrc(tour.url.url)}}"></source>
-      </video>
+      <video ng-src="{{trustSrc('http:' + tour.url.url)}}" preload="metadata" controls webkit-playsinline></video>
     </div>
 
     <a class="button button-dark" href="#/loc/{{location._id}}/tour">Back To Tours List</a>
-    
+
   </ion-content>
 </ion-view>

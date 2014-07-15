@@ -3,7 +3,7 @@ angular.module('landmarkConnect.controllers', [])
 
 .controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal) {
   $scope.$storage = $localStorage.$default({
-    sortLoc: "commonName",
+    sortLoc: "name",
     favorites: [],
     visited: []
   });
