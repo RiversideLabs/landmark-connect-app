@@ -40,6 +40,9 @@ angular.module('landmarkConnect.controllers', [])
   $scope.isVisited = function(loc) {
     return $scope.$storage.visited.indexOf(loc._id) >= 0;
   }
+  // --- END Set / Unset / Check Visited & Favorites ---
+
+
   $scope.getDirections = function(loc) {
     var locationString = loc.location.street1+'+'+loc.location.suburb+'+'+loc.location.state+'+'+loc.location.postcode;
 
@@ -60,9 +63,6 @@ angular.module('landmarkConnect.controllers', [])
       window.open(url,'_system','location=yes');
     }
   }
-
-
-  // --- END Set / Unset / Check Visited & Favorites ---
 
   $ionicModal.fromTemplateUrl('search-modal.html', function(modal) {
     $scope.modalSearch = modal;
@@ -149,14 +149,17 @@ angular.module('landmarkConnect.controllers', [])
     $scope.search.commonName = '';
   };
 
+
+
   $scope.scrollTop = function() {
     $ionicScrollDelegate.$getByHandle('locations-list').scrollTo(0, 44, true);
   };
   $scope.showscrollbtn = false;
   $scope.checkScrollTop = function() {
     $timeout( function() {
-      var scrollView = $ionicScrollDelegate.getScrollView();
-      var scrollPos = $ionicScrollDelegate.getScrollPosition();
+      //var scrollView = $ionicScrollDelegate.$getByHandle('locations-list');
+      var scrollView = $ionicScrollDelegate.$getByHandle('locations-list').getScrollView();
+      var scrollPos = $ionicScrollDelegate.$getByHandle('locations-list').getScrollPosition();
       var r = (scrollView.__clientHeight / 2);
 
       if(scrollPos.top > r) {
@@ -171,6 +174,7 @@ angular.module('landmarkConnect.controllers', [])
   };
 
 
+
   var adjustScroll = function() {
     var scrollView = $ionicScrollDelegate.getScrollView();
 
@@ -182,6 +186,7 @@ angular.module('landmarkConnect.controllers', [])
     }
   };
 
+  // --- START Get Current Location ---
   $scope.getCurrentPosition = function() {
     cordovaGeolocationService.getCurrentPosition(successHandler, errorHandler);
   };
@@ -212,13 +217,29 @@ angular.module('landmarkConnect.controllers', [])
     $scope.locations = LocationsService.all();
     adjustScroll();
   };
+
   ionic.Platform.ready(function(){
+    console.log("getting current position...");
     $scope.getCurrentPosition();
-    //$scope.startWatchingPosition();
+    // Add device specific stuff here
   });
+  // --- END Get Current Location ---
 
 
 
+
+  $scope.predicate = '';
+  $scope.reverse = false;
+  $scope.setPredicate = function(predicate)  {
+    console.log("Predicating!")
+    if(predicate == $scope.predicate) {
+      $scope.reverse = !$scope.reverse;
+    } else {
+      $scope.predicate = predicate;
+      $scope.reverse = false;
+    }
+
+  }
 
 
 
