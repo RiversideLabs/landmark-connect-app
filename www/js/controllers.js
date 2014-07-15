@@ -8,7 +8,7 @@ angular.module('landmarkConnect.controllers', [])
     visited: []
   });
 
-  console.log("mainload sort: " + $localStorage.sortLoc);
+  // console.log("mainload sort: " + $localStorage.sortLoc);
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -82,7 +82,6 @@ angular.module('landmarkConnect.controllers', [])
   $scope.navTitle = "About Landmark Connect";
 
   $scope.linkTo = function(link){
-    console.log("Link to " + link);
     var ref = window.open(link, '_blank', 'location=yes');
   }
 })
@@ -101,12 +100,12 @@ angular.module('landmarkConnect.controllers', [])
   $scope.favorites = $scope.$storage.favorites;
   $scope.visited = $scope.$storage.visited;
 
-  console.log("favs: " + $scope.favorites);
-  console.log("vis: " + $scope.visited);
+  // console.log("favs: " + $scope.favorites);
+  // console.log("vis: " + $scope.visited);
 
   $scope.sortLocList = [
-    { text: "Sort By Name", value: "commonName" },
-    { text: "Sort By Distance", value: "distanceFromHere" }
+    { text: "Sort By Name", value: "name" },
+    { text: "Sort By Distance", value: "distance" }
   ];
 })
 
@@ -164,10 +163,10 @@ angular.module('landmarkConnect.controllers', [])
 
       if(scrollPos.top > r) {
         $scope.showscrollbtn = true;
-        console.log("show scroll to top btn");
+        // console.log("show scroll to top btn");
       } else {
         $scope.showscrollbtn = false;
-        console.log("don't show scroll to top btn");
+        // console.log("don't show scroll to top btn");
       }
       $scope.$apply();
     });
@@ -227,22 +226,6 @@ angular.module('landmarkConnect.controllers', [])
 
 
 
-
-  $scope.predicate = '';
-  $scope.reverse = false;
-  $scope.setPredicate = function(predicate)  {
-    console.log("Predicating!")
-    if(predicate == $scope.predicate) {
-      $scope.reverse = !$scope.reverse;
-    } else {
-      $scope.predicate = predicate;
-      $scope.reverse = false;
-    }
-
-  }
-
-
-
   $scope.distanceFromHere = function (_location, _startPoint) {
     var start = [33.9833,-117.3728];
 
@@ -263,6 +246,15 @@ angular.module('landmarkConnect.controllers', [])
     var num = geomath.calculateDistance(start, end);
     return num;
   }
+
+  $scope.sortOpt = function(loc) {
+    if ($localStorage.sortLoc === 'distance') {
+      return $scope.distanceFromHere(loc);
+    } else if ($localStorage.sortLoc === 'name') {
+      return loc.commonName;
+    }
+  };
+
 })
 
 .controller('LocationsMapCtrl', function($scope, $ionicLoading, $ionicPopup, LocationsService, $localStorage, $compile, cordovaGeolocationService) {
@@ -441,14 +433,14 @@ angular.module('landmarkConnect.controllers', [])
 
       if(scrollView.__contentHeight < scrollView.__clientHeight) {
         $scope.fade = false;
-        console.log('Not enough content, no need for fade.');
+        // console.log('Not enough content, no need for fade.');
       } else {
         if(scrollPos.top > r) {
           $scope.fade = false;
-          console.log('Scrolled within 10 of bottom.');
+          // console.log('Scrolled within 10 of bottom.');
         } else {
           $scope.fade = true;
-          console.log('display the fade');
+          // console.log('display the fade');
         }
       }
       $scope.$apply();
