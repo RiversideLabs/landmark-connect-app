@@ -19,11 +19,13 @@ angular.module('ngCordova.plugins', [
   'ngCordova.plugins.ga',
   'ngCordova.plugins.push',
   'ngCordova.plugins.spinnerDialog',
+  'ngCordova.plugins.sms',
   'ngCordova.plugins.pinDialog',
   'ngCordova.plugins.localNotification',
   'ngCordova.plugins.toast',
   'ngCordova.plugins.flashlight',
   'ngCordova.plugins.capture',
   'ngCordova.plugins.appAvailability',
-  'ngCordova.plugins.prefs'  
+  'ngCordova.plugins.prefs',
+  'ngCordova.plugins.printer'
 ]);
