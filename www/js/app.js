@@ -1,4 +1,4 @@
-angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'cordovaGeolocationModule', 'landmarkConnect.controllers', 'landmarkConnect.directives', 'landmarkConnect.filters', 'landmarkConnect.services'])
+angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova', 'landmarkConnect.controllers', 'landmarkConnect.directives', 'landmarkConnect.filters', 'landmarkConnect.services'])
 
 .run(function($ionicPlatform, $localStorage) {
 

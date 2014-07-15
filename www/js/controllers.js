@@ -1,7 +1,7 @@
 angular.module('landmarkConnect.controllers', ['ngCordova'])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal, $cordovaGeolocation) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicPlatform, $ionicModal, $cordovaGeolocation) {
 
   // START SET APP DEFAULTS
   $scope.$storage = $localStorage.$default({
@@ -9,22 +9,20 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     visited: []
   });
 
-  ionic.Platform.ready(function(){
-    console.log("read");
+  $ionicPlatform.ready(function() {
+    console.log("ionic is ready");
     if ($cordovaGeolocation) {
-      console.log("sup");
       $scope.$storage = $localStorage.$default({
         sortLoc: 'distance'
       });
     } else {
-      console.log("els");
       $scope.$storage = $localStorage.$default({
         sortLoc: 'name'
       });
     }
   });
   // END SET APP DEFAULTS
-  
+
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -88,7 +86,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     animation: 'slide-in-up'
   });
 
-  ionic.Platform.ready(function(){
+  $ionicPlatform.ready(function() {
     console.log("Cordova is ready");
     // Add device specific stuff here
   });
@@ -142,7 +140,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 })
 
 
-.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, $cordovaGeolocation, LocationsService, $localStorage, geomath) {
+.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicPlatform, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, $cordovaGeolocation, LocationsService, $localStorage, geomath) {
   $scope.$storage = $localStorage;
   $scope.locations = [];
   $scope.locations = LocationsService.all();
@@ -257,7 +255,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     });
   };
 
-  ionic.Platform.ready(function(){
+  $ionicPlatform.ready(function() {
     console.log("ready");
     if ($cordovaGeolocation) {
       console.log("supports $cordovaGeolocation");
