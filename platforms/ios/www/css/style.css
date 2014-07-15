@@ -8744,7 +8744,10 @@ input[type="color"] {
   /* Chrome, Safari, Opera */ }
 
 .bar-header + .pane {
-  z-index: 100; }
+  z-index: 10; }
+
+.popup, .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6, .popup .h1, .popup .h2, .popup .h3, .popup .h4, .popup .h5, .popup .h6 {
+  color: #000; }
 
 .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),
 .platform-ios8.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),

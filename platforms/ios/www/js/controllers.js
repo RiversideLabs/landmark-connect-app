@@ -1,14 +1,30 @@
-angular.module('landmarkConnect.controllers', [])
+angular.module('landmarkConnect.controllers', ['ngCordova'])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal, $cordovaGeolocation) {
+
+  // START SET APP DEFAULTS
   $scope.$storage = $localStorage.$default({
-    sortLoc: "commonName",
     favorites: [],
     visited: []
   });
 
-  // console.log("mainload sort: " + $localStorage.sortLoc);
+  ionic.Platform.ready(function(){
+    console.log("read");
+    if ($cordovaGeolocation) {
+      console.log("sup");
+      $scope.$storage = $localStorage.$default({
+        sortLoc: 'distance'
+      });
+    } else {
+      console.log("els");
+      $scope.$storage = $localStorage.$default({
+        sortLoc: 'name'
+      });
+    }
+  });
+  // END SET APP DEFAULTS
+  
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -52,7 +68,7 @@ angular.module('landmarkConnect.controllers', [])
       window.open(url,'_system','location=yes');
     } else if (ionic.Platform.isIOS()) {
       if ($scope.$storage.currentLocation != null) {
-        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation.coords.latitude + ',' + $scope.$storage.currentLocation.coords.longitude;
+        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation[0] + ',' + $scope.$storage.currentLocation[1];
       } else {
         var url = 'http://maps.apple.com/?q=' + locationString;
       }
@@ -104,8 +120,8 @@ angular.module('landmarkConnect.controllers', [])
   // console.log("vis: " + $scope.visited);
 
   $scope.sortLocList = [
-    { text: "Sort By Name", value: "name" },
-    { text: "Sort By Distance", value: "distance" }
+    { text: 'Sort By Name', value: 'name' },
+    { text: 'Sort By Distance', value: 'distance' }
   ];
 })
 
@@ -115,10 +131,10 @@ angular.module('landmarkConnect.controllers', [])
   $scope.locations = LocationsService.all();
 
   $scope.closeSearch = function() {
-	  //var iF = document.getElementById("searchBox");
+    //var iF = document.getElementById("searchBox");
     //iF.blur();
-	  cordova.plugins.Keyboard.close();
-	  $scope.modalSearch.hide();
+    cordova.plugins.Keyboard.close();
+    $scope.modalSearch.hide();
   };
   $scope.clearSearch = function() {
     $scope.search = '';
@@ -126,11 +142,15 @@ angular.module('landmarkConnect.controllers', [])
 })
 
 
-.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, cordovaGeolocationService, LocationsService, $localStorage, geomath) {
+.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, $cordovaGeolocation, LocationsService, $localStorage, geomath) {
   $scope.$storage = $localStorage;
   $scope.locations = [];
   $scope.locations = LocationsService.all();
-  $scope.$storage.showDistance = false;
+  if ($scope.$storage.currentLocation != null) {
+    $scope.$storage.showDistance = true;
+  } else {
+    $scope.$storage.showDistance = false;
+  }
 
   // Method called on infinite scroll
   // Saving this for later
@@ -187,40 +207,75 @@ angular.module('landmarkConnect.controllers', [])
 
   // --- START Get Current Location ---
   $scope.getCurrentPosition = function() {
-    cordovaGeolocationService.getCurrentPosition(successHandler, errorHandler);
+    $cordovaGeolocation.getCurrentPosition().then(function(position) {
+      successHandler(position)
+    }, function(err) {
+      errorHandler(err)
+    });
   };
-  $scope.startWatchingPosition = function() {
-    $scope.$storage.watchId = cordovaGeolocationService.watchPosition(successHandler, errorHandler);
-  };
-  $scope.stopWatchingPosition = function() {
-    cordovaGeolocationService.clearWatch($scope.watchId);
-    $scope.$storage.watchId = null;
-    $scope.$storage.currentPosition = null;
-  };
-  // Handlers
+
+  var watch = $cordovaGeolocation.watchPosition({
+    maximumAge: 3000,
+    timeout: 10000,
+    enableHighAccuracy: true
+  });
   var successHandler = function(position) {
-    $scope.$storage.currentLocation = position;
-    console.log("successfully recieved position: " + $scope.$storage.currentLocation.coords.latitude + ", " + $scope.$storage.currentLocation.coords.longitude);
+    if ($scope.$storage.currentLocation != null) {
+      console.log("not null");
+    } else {
+      console.log("is null");
+    };
+    $scope.loading = $ionicLoading.show({
+      content: 'Getting current location...',
+      showBackdrop: false
+    });
+    $scope.$storage.currentLocation = [
+      position.coords.latitude,
+      position.coords.longitude
+    ];
     $scope.$storage.showDistance=true;
-    console.log("showDistance: " + $scope.$storage.showDistance);
     $ionicLoading.hide();
     $scope.locations = LocationsService.all();
     adjustScroll();
   };
-  var errorHandler = function(position) {
-    console.log("error with position");
-    $scope.$storage.sortLoc="commonName";
+  var errorHandler = function(err) {
+    $scope.showAlert();
+    $scope.$storage.sortLoc='name';
     $scope.$storage.showDistance=false;
-    console.log("showDistance: " + $scope.$storage.showDistance);
     $ionicLoading.hide();
     $scope.locations = LocationsService.all();
     adjustScroll();
   };
 
+  $scope.showAlert = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error Getting Location',
+      template: 'We are having trouble getting your location. Please try later. Please check that the app has permission in your settings.'
+    });
+    alertPopup.then(function(res) {
+      console.log('ok');
+    });
+  };
+
   ionic.Platform.ready(function(){
-    console.log("getting current position...");
-    $scope.getCurrentPosition();
-    // Add device specific stuff here
+    console.log("ready");
+    if ($cordovaGeolocation) {
+      console.log("supports $cordovaGeolocation");
+      $scope.getCurrentPosition();
+    } else {
+      console.log("no geo support");
+      $scope.showAlert();
+    }
+
+    // watch.promise.then(function() {
+    //     $scope.getCurrentPosition();
+    //   }, function(err) {
+    //     // An error occured. Show a message to the user
+    //     //errorHandler(err);
+    //     console.log(err)
+    //   }, function(position) {
+    //     successHandler(position);
+    // });
   });
   // --- END Get Current Location ---
 
@@ -231,8 +286,8 @@ angular.module('landmarkConnect.controllers', [])
 
     if ($scope.$storage.currentLocation != null) {
       start = {
-        latitude: $scope.$storage.currentLocation.coords.latitude,
-        longitude: $scope.$storage.currentLocation.coords.longitude
+        latitude: $scope.$storage.currentLocation[0],
+        longitude: $scope.$storage.currentLocation[1]
       };
     }
 
@@ -257,7 +312,7 @@ angular.module('landmarkConnect.controllers', [])
 
 })
 
-.controller('LocationsMapCtrl', function($scope, $ionicLoading, $ionicPopup, LocationsService, $localStorage, $compile, cordovaGeolocationService) {
+.controller('LocationsMapCtrl', function($scope, $ionicLoading, $ionicPopup, LocationsService, $localStorage, $compile, $cordovaGeolocation) {
   $scope.$storage = $localStorage;
   $scope.locations = [];
   $scope.locations = LocationsService.all();
@@ -308,7 +363,7 @@ angular.module('landmarkConnect.controllers', [])
         var contentString = '<div style="width:200px;"><h4>' + location.commonName + '</h4><p>' + location.location.street1 + '<br>'+location.location.suburb+', '+location.location.state+' '+location.location.postcode+'</p><p><a href="/#/loc/'+location._id+'/detail" class="button button-small button-positive">View Details</a> <a onClick="window.open(\''+url+'\',\'_system\',\'location=yes\');return false;" class="button button-small button-positive" target="_system">Get Directions</a></p></div>';
       } else if (ionic.Platform.isIOS()) {
         if ($scope.$storage.currentLocation != null) {
-          var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation.coords.latitude + ',' + $scope.$storage.currentLocation.coords.longitude;
+          var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation[0] + ',' + $scope.$storage.currentLocation[1];
         } else {
           var url = 'http://maps.apple.com/?q=' + locationString;
         }
@@ -348,62 +403,72 @@ angular.module('landmarkConnect.controllers', [])
     initializeMapAll();
   }
 
-  $scope.centerOnMe = function() {
-    if(!$scope.map) {
-      return;
-    }
-
-    var currentLocImage = {
-      url: 'assets/img/map-bluedot.png',
-      size: new google.maps.Size(44, 44),
-      scaledSize: new google.maps.Size(22, 22),
-      origin: new google.maps.Point(0,0),
-      anchor: new google.maps.Point(0, 22)
-    };
-
-
-    if ($scope.$storage.currentLocation != null) {
-      console.log("already has location");
-      currentPos = new google.maps.LatLng($scope.$storage.currentLocation.coords.latitude, $scope.$storage.currentLocation.coords.longitude);
-      $scope.map.setCenter(currentPos);
-      $scope.bounds.extend(currentPos);
-      var marker = new google.maps.Marker({
-          position: currentPos,
-          map: $scope.map,
-          icon: currentLocImage
-      });
-      $scope.map.fitBounds($scope.bounds);
-    } else {
-      $ionicLoading.show({
-        content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
-        showBackdrop: false
-      });
-
-      cordovaGeolocationService.watchPosition(function(pos) {
-        var coords = $scope.$storage.currentLocation = [
-          pos.coords.latitude,
-          pos.coords.longitude
-        ];
-        currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
-        $scope.map.setCenter(currentPos);
-        var marker = new google.maps.Marker({
-            position: currentPos,
-            map: $scope.map,
-            icon: currentLocImage
-        });
-        $scope.map.setZoom(18);
-        $ionicLoading.hide();
-      }, function(error) {
-        $ionicPopup.alert({
-          title: 'Unable to get location: ' + error.message
-        }).then(function(res) {
-          $ionicLoading.hide();
-          // reset the view to default
-          initializeMapAll();
-        });
-      });
-    }
-  };
+  // $scope.centerOnMe = function() {
+  //   if(!$scope.map) {
+  //     return;
+  //   }
+  //
+  //   var currentLocImage = {
+  //     url: 'assets/img/map-bluedot.png',
+  //     size: new google.maps.Size(44, 44),
+  //     scaledSize: new google.maps.Size(22, 22),
+  //     origin: new google.maps.Point(0,0),
+  //     anchor: new google.maps.Point(0, 22)
+  //   };
+  //
+  //
+  //   if ($scope.$storage.currentLocation != null) {
+  //     console.log("already has location");
+  //     currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
+  //     $scope.map.setCenter(currentPos);
+  //     $scope.bounds.extend(currentPos);
+  //     var marker = new google.maps.Marker({
+  //         position: currentPos,
+  //         map: $scope.map,
+  //         icon: currentLocImage
+  //     });
+  //     $scope.map.fitBounds($scope.bounds);
+  //   } else {
+  //     $ionicLoading.show({
+  //       content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
+  //       showBackdrop: false
+  //     });
+  //
+  //     var watch = $cordovaGeolocation.watchPosition({
+  //       frequency: 3000,
+  //       maximumAge: 3000,
+  //       timeout: 5000,
+  //       enableHighAccuracy: true
+  //     });
+  //
+  //     watch.promise.then(function() {
+  //         // Not currently used
+  //       }, function(err) {
+  //         // An error occured. Show a message to the user
+  //         $ionicPopup.alert({
+  //           title: 'Unable to get location: ' + err.message
+  //         }).then(function(res) {
+  //           $ionicLoading.hide();
+  //           // reset the view to default
+  //           initializeMapAll();
+  //         });
+  //       }, function(pos) {
+  //         var coords = $scope.$storage.currentLocation = [
+  //           position.coords.latitude,
+  //           position.coords.longitude
+  //         ];
+  //         currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
+  //         $scope.map.setCenter(currentPos);
+  //         var marker = new google.maps.Marker({
+  //             position: currentPos,
+  //             map: $scope.map,
+  //             icon: currentLocImage
+  //         });
+  //         $scope.map.setZoom(18);
+  //         $ionicLoading.hide();
+  //     });
+  //   }
+  // };
 
 
 })
@@ -542,7 +607,7 @@ angular.module('landmarkConnect.controllers', [])
       showBackdrop: false
     });
 
-    navigator.geolocation.getCurrentPosition(function(pos) {
+    $cordovaGeolocation.getCurrentPosition().then(function(pos) {
       var bounds = new google.maps.LatLngBounds();
       currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       var marker = new google.maps.Marker({
@@ -592,7 +657,7 @@ angular.module('landmarkConnect.controllers', [])
       var contentString = '<div style="width:200px;"><h4>' + $scope.location.commonName + '</h4><p>' + $scope.location.location.street1+'<br>'+$scope.location.location.suburb+', '+$scope.location.location.state+' '+$scope.location.location.postcode+'</p><p><a onClick="window.open(\''+url+'\',\'_system\',\'location=yes\');return false;" class="button button-small button-positive" target="_system">Get Directions</a></p></div>';
     } else if (ionic.Platform.isIOS()) {
       if ($scope.$storage.currentLocation != null) {
-        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation.coords.latitude + ',' + $scope.$storage.currentLocation.coords.longitude;
+        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation[0] + ',' + $scope.$storage.currentLocation[1];
       } else {
         var url = 'http://maps.apple.com/?q=' + locationString;
       }
