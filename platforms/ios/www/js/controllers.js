@@ -8,7 +8,7 @@ angular.module('landmarkConnect.controllers', [])
     visited: []
   });
 
-  console.log("mainload sort: " + $localStorage.sortLoc);
+  // console.log("mainload sort: " + $localStorage.sortLoc);
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -40,6 +40,9 @@ angular.module('landmarkConnect.controllers', [])
   $scope.isVisited = function(loc) {
     return $scope.$storage.visited.indexOf(loc._id) >= 0;
   }
+  // --- END Set / Unset / Check Visited & Favorites ---
+
+
   $scope.getDirections = function(loc) {
     var locationString = loc.location.street1+'+'+loc.location.suburb+'+'+loc.location.state+'+'+loc.location.postcode;
 
@@ -61,9 +64,6 @@ angular.module('landmarkConnect.controllers', [])
     }
   }
 
-
-  // --- END Set / Unset / Check Visited & Favorites ---
-
   $ionicModal.fromTemplateUrl('search-modal.html', function(modal) {
     $scope.modalSearch = modal;
   }, {
@@ -82,7 +82,6 @@ angular.module('landmarkConnect.controllers', [])
   $scope.navTitle = "About Landmark Connect";
 
   $scope.linkTo = function(link){
-    console.log("Link to " + link);
     var ref = window.open(link, '_blank', 'location=yes');
   }
 })
@@ -101,12 +100,12 @@ angular.module('landmarkConnect.controllers', [])
   $scope.favorites = $scope.$storage.favorites;
   $scope.visited = $scope.$storage.visited;
 
-  console.log("favs: " + $scope.favorites);
-  console.log("vis: " + $scope.visited);
+  // console.log("favs: " + $scope.favorites);
+  // console.log("vis: " + $scope.visited);
 
   $scope.sortLocList = [
-    { text: "Sort By Name", value: "commonName" },
-    { text: "Sort By Distance", value: "distanceFromHere" }
+    { text: "Sort By Name", value: "name" },
+    { text: "Sort By Distance", value: "distance" }
   ];
 })
 
@@ -149,26 +148,30 @@ angular.module('landmarkConnect.controllers', [])
     $scope.search.commonName = '';
   };
 
+
+
   $scope.scrollTop = function() {
     $ionicScrollDelegate.$getByHandle('locations-list').scrollTo(0, 44, true);
   };
   $scope.showscrollbtn = false;
   $scope.checkScrollTop = function() {
     $timeout( function() {
-      var scrollView = $ionicScrollDelegate.getScrollView();
-      var scrollPos = $ionicScrollDelegate.getScrollPosition();
+      //var scrollView = $ionicScrollDelegate.$getByHandle('locations-list');
+      var scrollView = $ionicScrollDelegate.$getByHandle('locations-list').getScrollView();
+      var scrollPos = $ionicScrollDelegate.$getByHandle('locations-list').getScrollPosition();
       var r = (scrollView.__clientHeight / 2);
 
       if(scrollPos.top > r) {
         $scope.showscrollbtn = true;
-        console.log("show scroll to top btn");
+        // console.log("show scroll to top btn");
       } else {
         $scope.showscrollbtn = false;
-        console.log("don't show scroll to top btn");
+        // console.log("don't show scroll to top btn");
       }
       $scope.$apply();
     });
   };
+
 
 
   var adjustScroll = function() {
@@ -182,6 +185,7 @@ angular.module('landmarkConnect.controllers', [])
     }
   };
 
+  // --- START Get Current Location ---
   $scope.getCurrentPosition = function() {
     cordovaGeolocationService.getCurrentPosition(successHandler, errorHandler);
   };
@@ -212,13 +216,13 @@ angular.module('landmarkConnect.controllers', [])
     $scope.locations = LocationsService.all();
     adjustScroll();
   };
+
   ionic.Platform.ready(function(){
+    console.log("getting current position...");
     $scope.getCurrentPosition();
-    //$scope.startWatchingPosition();
+    // Add device specific stuff here
   });
-
-
-
+  // --- END Get Current Location ---
 
 
 
@@ -242,6 +246,15 @@ angular.module('landmarkConnect.controllers', [])
     var num = geomath.calculateDistance(start, end);
     return num;
   }
+
+  $scope.sortOpt = function(loc) {
+    if ($localStorage.sortLoc === 'distance') {
+      return $scope.distanceFromHere(loc);
+    } else if ($localStorage.sortLoc === 'name') {
+      return loc.commonName;
+    }
+  };
+
 })
 
 .controller('LocationsMapCtrl', function($scope, $ionicLoading, $ionicPopup, LocationsService, $localStorage, $compile, cordovaGeolocationService) {
@@ -420,14 +433,14 @@ angular.module('landmarkConnect.controllers', [])
 
       if(scrollView.__contentHeight < scrollView.__clientHeight) {
         $scope.fade = false;
-        console.log('Not enough content, no need for fade.');
+        // console.log('Not enough content, no need for fade.');
       } else {
         if(scrollPos.top > r) {
           $scope.fade = false;
-          console.log('Scrolled within 10 of bottom.');
+          // console.log('Scrolled within 10 of bottom.');
         } else {
           $scope.fade = true;
-          console.log('display the fade');
+          // console.log('display the fade');
         }
       }
       $scope.$apply();
