@@ -1,7 +1,7 @@
-angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationModule'])
+angular.module('landmarkConnect.controllers', ['ngCordova'])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicPlatform, $ionicModal, cordovaGeolocationService) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicPlatform, $ionicModal, $cordovaGeolocation) {
 
   // START SET APP DEFAULTS
   $scope.$storage = $localStorage.$default({
@@ -11,7 +11,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationM
 
   $ionicPlatform.ready(function() {
     console.log("ionic is ready");
-    if (cordovaGeolocationService.checkGeolocationAvailability()) {
+    if ($cordovaGeolocation.checkGeolocationAvailability()) {
       $scope.$storage = $localStorage.$default({
         sortLoc: 'distance'
       });
@@ -140,7 +140,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationM
 })
 
 
-.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicPlatform, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, cordovaGeolocationService, LocationsService, $localStorage, geomath) {
+.controller('LocationsCtrl', function($rootScope, $scope, $location, $ionicPlatform, $ionicLoading, $ionicPopup, $timeout, $ionicScrollDelegate, $cordovaGeolocation, LocationsService, $localStorage, geomath) {
   $scope.$storage = $localStorage;
   $scope.locations = [];
   $scope.locations = LocationsService.all();
@@ -205,14 +205,14 @@ angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationM
 
   // --- START Get Current Location ---
   $scope.getCurrentPosition = function() {
-    cordovaGeolocationService.getCurrentPosition(function(position) {
+    $cordovaGeolocation.getCurrentPosition(function(position) {
       successHandler(position)
     }, function(err) {
       errorHandler(err)
     });
   };
 
-  // var watch = cordovaGeolocationService.watchPosition({
+  // var watch = $cordovaGeolocation.watchPosition({
   //   maximumAge: 3000,
   //   timeout: 10000,
   //   enableHighAccuracy: true
@@ -237,7 +237,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationM
     adjustScroll();
   };
   var errorHandler = function(err) {
-    //$scope.showAlert();
+    $scope.showAlert();
     $scope.$storage.sortLoc='name';
     $scope.$storage.showDistance=false;
     $ionicLoading.hide();
@@ -257,8 +257,8 @@ angular.module('landmarkConnect.controllers', ['ngCordova', 'cordovaGeolocationM
 
   $ionicPlatform.ready(function() {
     console.log("ready");
-    if (cordovaGeolocationService.checkGeolocationAvailability()) {
-      console.log("supports cordovaGeolocationService");
+    if ($cordovaGeolocation.checkGeolocationAvailability()) {
+      console.log("supports $cordovaGeolocation");
       $scope.getCurrentPosition();
     } else {
       console.log("no geo support");
