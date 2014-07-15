@@ -1,39 +1,55 @@
 angular.module('ngCordova.plugins.geolocation', [])
 
-.factory('$cordovaGeolocation', ['$q', function($q) {
+.factory('$cordovaGeolocation', ['$rootScope', function($rootScope) {
 
   return {
-    getCurrentPosition: function(options) {
-      var q = $q.defer();
-
-      navigator.geolocation.getCurrentPosition(function(result) {
-        // Do any magic you need
-        q.resolve(result);
-      }, function(err) {
-        q.reject(err);
-      }, options);
-
-      return q.promise;
+    checkGeolocationAvailability: function () {
+        if (!navigator.geolocation) {
+            return false;
+        }
+        return true;
     },
-    watchPosition: function(options) {
-      var q = $q.defer();
-
-      var watchId = navigator.geolocation.watchPosition(function(result) {
-        // Do any magic you need
-        q.notify(result);
-
-      }, function(err) {
-        q.reject(err);
-      }, options);
-
-      return {
-        watchId: watchId,
-        promise: q.promise
+    getCurrentPosition: function(successCallback, errorCallback, options) {
+      // Checking API availability
+      if (!this.checkGeolocationAvailability()) {
+          return;
       }
-    },
 
-    clearWatch: function(watchID) {
-      return navigator.geolocation.clearWatch(watchID);
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+            $rootScope.$apply(successCallback(position));
+        },
+        function (error) {
+            $rootScope.$apply(errorCallback(error));
+        },
+        options
+      );
+    },
+    watchPosition: function (successCallback, errorCallback, options) {
+        // Checking API availability
+        if (!this.checkGeolocationAvailability()) {
+            return;
+        }
+
+        // API call
+        return navigator.geolocation.watchPosition(
+            function (position) {
+                $rootScope.$apply(successCallback(position));
+            },
+            function (error) {
+                $rootScope.$apply(errorCallback(error));
+            },
+            options
+        );
+    },
+    clearWatch: function (watchID) {
+      // Checking API availability
+      if (!this.checkGeolocationAvailability()) {
+          return;
+      }
+
+      // API call
+      navigator.geolocation.clearWatch(watchID);
     }
   }
 }]);

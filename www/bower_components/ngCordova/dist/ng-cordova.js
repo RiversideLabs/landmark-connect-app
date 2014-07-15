@@ -97,7 +97,7 @@ angular.module('ngCordova.plugins.camera', [])
 
       return q.promise;
     }
-    
+
   }
 }]);
 
@@ -560,7 +560,7 @@ angular.module('ngCordova.plugins.file', [])
         var q = $q.defer();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI(source);
-        
+
         fileTransfer.onprogress = function(progressEvent) {
             q.notify(progressEvent);
         };
@@ -575,7 +575,7 @@ angular.module('ngCordova.plugins.file', [])
             q.reject(error);
           },
           trustAllHosts, options);
-          
+
           return q.promise;
       },
 
@@ -583,7 +583,7 @@ angular.module('ngCordova.plugins.file', [])
         var q = $q.defer();
         var fileTransfer = new FileTransfer();
         var uri = encodeURI(server);
-        
+
         fileTransfer.onprogress = function(progressEvent) {
             q.notify(progressEvent);
         };
@@ -598,7 +598,7 @@ angular.module('ngCordova.plugins.file', [])
             q.reject(error);
           },
           options)
-          
+
           return q.promise
       }
 
@@ -657,7 +657,7 @@ angular.module('ngCordova.plugins.ga', [])
     .factory('$cordovaGA', ['$q', function ($q) {
 
         return {
-            
+
             init: function (id, mingap) {
                 var q = $q.defer();
                 mingap = (mingap >= 0) ? mingap : 10;
@@ -666,7 +666,7 @@ angular.module('ngCordova.plugins.ga', [])
                                                     id, mingap);
                 return q.promise;
             },
-            
+
             trackEvent: function (success, fail, category, eventAction, eventLabel, eventValue) {
                 var q = $q.defer();
                 window.plugins.gaPlugin.trackEvent(function (result) {q.resolve(result); },
@@ -674,7 +674,7 @@ angular.module('ngCordova.plugins.ga', [])
                                                     category, eventAction, eventLabel, eventValue);
                 return q.promise;
             },
-            
+
             trackPage: function (success, fail, pageURL) {
                 var q = $q.defer();
                 window.plugins.gaPlugin.trackPage(function (result) {q.resolve(result); },
@@ -682,7 +682,7 @@ angular.module('ngCordova.plugins.ga', [])
                                                     pageURL);
                 return q.promise;
             },
-            
+
             setVariable: function (success, fail, index, value) {
                 var q = $q.defer();
                 window.plugins.gaPlugin.setVariable(function (result) {q.resolve(result); },
@@ -690,53 +690,69 @@ angular.module('ngCordova.plugins.ga', [])
                                                     index, value);
                 return q.promise;
             },
-            
+
             exit: function (success, fail) {
                 var q = $q.defer();
                 window.plugins.gaPlugin.exit(function (result) {q.resolve(result); },
                                                     function (error) {q.reject(error); });
                 return q.promise;
             }
-            
+
         };
 
     }]);
 angular.module('ngCordova.plugins.geolocation', [])
 
-.factory('$cordovaGeolocation', ['$q', function($q) {
+.factory('$cordovaGeolocation', ['$rootScope', function($rootScope) {
 
   return {
-    getCurrentPosition: function(options) {
-      var q = $q.defer();
-
-      navigator.geolocation.getCurrentPosition(function(result) {
-        // Do any magic you need
-        q.resolve(result);
-      }, function(err) {
-        q.reject(err);
-      }, options);
-
-      return q.promise;
+    checkGeolocationAvailability: function () {
+        if (!navigator.geolocation) {
+            return false;
+        }
+        return true;
     },
-    watchPosition: function(options) {
-      var q = $q.defer();
-
-      var watchId = navigator.geolocation.watchPosition(function(result) {
-        // Do any magic you need
-        q.notify(result);
-
-      }, function(err) {
-        q.reject(err);
-      }, options);
-
-      return {
-        watchId: watchId,
-        promise: q.promise
+    getCurrentPosition: function(successCallback, errorCallback, options) {
+      // Checking API availability
+      if (!this.checkGeolocationAvailability()) {
+          return;
       }
-    },
 
-    clearWatch: function(watchID) {
-      return navigator.geolocation.clearWatch(watchID);
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+            $rootScope.$apply(successCallback(position));
+        },
+        function (error) {
+            $rootScope.$apply(errorCallback(error));
+        },
+        options
+      );
+    },
+    watchPosition: function (successCallback, errorCallback, options) {
+        // Checking API availability
+        if (!this.checkGeolocationAvailability()) {
+            return;
+        }
+
+        // API call
+        return navigator.geolocation.watchPosition(
+            function (position) {
+                $rootScope.$apply(successCallback(position));
+            },
+            function (error) {
+                $rootScope.$apply(errorCallback(error));
+            },
+            options
+        );
+    },
+    clearWatch: function (watchID) {
+      // Checking API availability
+      if (!this.checkGeolocationAvailability()) {
+          return;
+      }
+
+      // API call
+      navigator.geolocation.clearWatch(watchID);
     }
   }
 }]);
@@ -1115,7 +1131,7 @@ angular.module('ngCordova.plugins.pinDialog', [])
 	    return window.plugins.pinDialog.prompt.apply(navigator.notification, arguments);
     }
   }
-  
+
 }]);
 angular.module('ngCordova.plugins.prefs', [])
 
@@ -1125,26 +1141,26 @@ angular.module('ngCordova.plugins.prefs', [])
 
       set: function (key, value) {
         var q = $q.defer();
-        
+
         $window.applicationPreferences.set(key, value, function(result) {
           q.resolve(result);
         }, function(err) {
           q.reject(err);
         });
-        
+
         return q.promise;
       },
-      
+
 
       get: function (key) {
         var q = $q.defer();
-        
+
         $window.applicationPreferences.get(key, function(value) {
           q.resolve(value);
         }, function(err) {
           q.reject(err);
         });
-        
+
         return q.promise;
       }
 
@@ -1182,10 +1198,10 @@ angular.module('ngCordova.plugins.push', [])
                 q.reject(error);
             },
             config);
-            
+
             return q.promise;
         },
-        
+
         unregister: function (options) {
             var q = $q.defer();
             window.plugins.pushNotification.unregister(
@@ -1196,10 +1212,10 @@ angular.module('ngCordova.plugins.push', [])
                 q.reject(error);
             },
             options);
-            
+
             return q.promise;
         },
-        
+
         // iOS only
         setBadgeNumber: function(number) {
         	var q = $q.defer();
@@ -1365,7 +1381,7 @@ angular.module('ngCordova.plugins.spinnerDialog', [])
 	    return window.plugins.spinnerDialog.hide();
     }
   }
-  
+
 }]);
 angular.module('ngCordova.plugins.splashscreen', [])
 
@@ -1470,7 +1486,7 @@ angular.module('ngCordova.plugins.statusbar', [])
     styleColor: function (color) {
       return StatusBar.backgroundColorByName(color);
     },
-    
+
     styleHex: function (colorHex) {
       return StatusBar.backgroundColorByHexString(colorHex);
     },
