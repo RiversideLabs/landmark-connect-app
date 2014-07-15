@@ -1,14 +1,30 @@
 angular.module('landmarkConnect.controllers', ['ngCordova'])
 
 
-.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal) {
+.controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicModal, $cordovaGeolocation) {
+
+  // START SET APP DEFAULTS
   $scope.$storage = $localStorage.$default({
-    sortLoc: 'name',
     favorites: [],
     visited: []
   });
 
-  // console.log("mainload sort: " + $localStorage.sortLoc);
+  ionic.Platform.ready(function(){
+    console.log("read");
+    if ($cordovaGeolocation) {
+      console.log("sup");
+      $scope.$storage = $localStorage.$default({
+        sortLoc: 'distance'
+      });
+    } else {
+      console.log("els");
+      $scope.$storage = $localStorage.$default({
+        sortLoc: 'name'
+      });
+    }
+  });
+  // END SET APP DEFAULTS
+  
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -223,7 +239,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     adjustScroll();
   };
   var errorHandler = function(err) {
-    console.log("error with position");
+    $scope.showAlert();
     $scope.$storage.sortLoc='name';
     $scope.$storage.showDistance=false;
     $ionicLoading.hide();
@@ -231,9 +247,26 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     adjustScroll();
   };
 
+  $scope.showAlert = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error Getting Location',
+      template: 'We are having trouble getting your location. Please try later. Please check that the app has permission in your settings.'
+    });
+    alertPopup.then(function(res) {
+      console.log('ok');
+    });
+  };
+
   ionic.Platform.ready(function(){
     console.log("ready");
-    $scope.getCurrentPosition();
+    if ($cordovaGeolocation) {
+      console.log("supports $cordovaGeolocation");
+      $scope.getCurrentPosition();
+    } else {
+      console.log("no geo support");
+      $scope.showAlert();
+    }
+
     // watch.promise.then(function() {
     //     $scope.getCurrentPosition();
     //   }, function(err) {

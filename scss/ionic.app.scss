@@ -31,7 +31,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 //dirty hack for top nav traversing through favs/visited
 .bar-header + .pane {
-  z-index: 100
+  z-index: 10;
+}
+
+.popup {
+  &, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #000;
+  }
 }
 
 .platform-ios7.platform-cordova,
