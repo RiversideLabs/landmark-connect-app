@@ -8682,6 +8682,11 @@ input[type="color"] {
     color: #fff !important;
     text-decoration: none; }
 
+.tour .length {
+  opacity: 0.5; }
+.tour .icon {
+  font-size: 24px; }
+
 .audio-player audio {
   width: 100%; }
 

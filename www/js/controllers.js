@@ -538,6 +538,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   // --- TOURS -----
   //$scope.tour = TourService.getTour($stateParams.tourId);
   $scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
+  $scope.sortTours = 'sortOrder';
   //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
