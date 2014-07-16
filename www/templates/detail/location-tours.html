@@ -14,7 +14,7 @@
         Audio Tours
       </div>
       <ion-item class="tour item-icon-right" ng-repeat="tour in location.tours | filter:{type:'audio'} | orderBy:sortTours:reverse" type="item-text-wrap" href="#/loc/{{location._id}}/tour/a/{{tour._id}}">
-        {{tour.title}} <span class="length">({{tour.length}})</span>
+        {{tour.title}} <span class="length" ng-hide="tour.length">({{tour.length}})</span>
         <i class="icon ion-ios7-arrow-forward"></i>
       </ion-item>
 

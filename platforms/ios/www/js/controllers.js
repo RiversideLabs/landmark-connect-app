@@ -538,6 +538,7 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   // --- TOURS -----
   //$scope.tour = TourService.getTour($stateParams.tourId);
   $scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
+  $scope.sortTours = 'sortOrder';
   //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
@@ -575,6 +576,29 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   // --- END IMAGES -----
 
   // ------- MAP -------
+
+  $scope.getDirections = function(loc) {
+    var locationString = loc.location.street1+'+'+loc.location.suburb+'+'+loc.location.state+'+'+loc.location.postcode;
+
+    if (ionic.Platform.isAndroid()) {
+      var url = 'geo:0,0?q=' + locationString;
+      url = encodeURI(url);
+      window.open(url,'_system','location=yes');
+    } else if (ionic.Platform.isIOS()) {
+      if ($scope.$storage.currentLocation != null) {
+        var url = 'http://maps.apple.com/?daddr=' + locationString + '&saddr=' + $scope.$storage.currentLocation[0] + ',' + $scope.$storage.currentLocation[1];
+      } else {
+        var url = 'http://maps.apple.com/?q=' + locationString;
+      }
+      url = encodeURI(url);
+      window.open(url,'_system','location=yes');
+    } else {
+      var url = 'http://maps.google.com/?q=' + locationString;
+      window.open(url,'_system','location=yes');
+    }
+  }
+
+
   var latLng = new google.maps.LatLng($scope.location.location.geo[1], $scope.location.location.geo[0]);
 
   var currentLocImage = {

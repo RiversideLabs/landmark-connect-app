@@ -8682,8 +8682,54 @@ input[type="color"] {
     color: #fff !important;
     text-decoration: none; }
 
-.audio-player audio {
-  width: 100%; }
+.tour.item .length {
+  opacity: 0.5; }
+.tour.item .icon {
+  font-size: 24px; }
+
+.tour-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: block;
+  opacity: 0.3;
+  background-size: cover;
+  background-position: center center;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); }
+
+.tour-details {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  padding-top: 15%;
+  text-align: center;
+  z-index: 10; }
+  .tour-details h1, .tour-details h2 {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: normal; }
+  .tour-details h1 {
+    color: #fff; }
+  .tour-details h2 {
+    color: #8e8e8e; }
+  .tour-details .button {
+    margin: 40px auto; }
+    .tour-details .button.icon-left:before {
+      line-height: 44px;
+      padding-right: 0.5em; }
+
+.audio-player .player-wrap {
+  margin: 70px auto; }
+  .audio-player .player-wrap audio {
+    width: 100%; }
 
 .video-player .player-wrap {
   position: relative;
@@ -8742,6 +8788,21 @@ input[type="color"] {
   transform-origin: 50% 50%;
   -webkit-transform-origin: 50% 50%;
   /* Chrome, Safari, Opera */ }
+
+.getDirections {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 37.5px;
+  height: 37.5px;
+  line-height: 37.5px;
+  text-align: center;
+  font-size: 24px;
+  z-index: 10;
+  background-color: #1c1c1c;
+  color: #fff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
 
 .bar-header + .pane {
   z-index: 10; }
