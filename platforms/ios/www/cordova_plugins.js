@@ -78,13 +78,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.testflightapp.cordova-plugin/www/testflight.js",
-        "id": "com.testflightapp.cordova-plugin.TestFlight",
-        "clobbers": [
-            "TestFlight"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -241,7 +234,6 @@ module.exports.metadata =
     "org.apache.cordova.statusbar": "0.1.6",
     "org.apache.cordova.inappbrowser": "0.5.1-dev",
     "org.apache.cordova.media": "0.2.11",
-    "com.testflightapp.cordova-plugin": "3.1.0",
     "org.apache.cordova.file": "1.2.0"
 }
 // BOTTOM OF METADATA

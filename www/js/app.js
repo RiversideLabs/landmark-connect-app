@@ -17,11 +17,6 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova
           navigator.splashscreen.hide();
       }, 100);
     }
-
-    // TestFlight
-    // TestFlight plugin required: cordova plugin add https://github.com/shazron/TestFlightPlugin.git
-    var tf = new TestFlight();
-    tf.takeOff(win, fail, "d0598e83-916e-43af-ae5d-2a1888ee0a27");
   });
 })
 
