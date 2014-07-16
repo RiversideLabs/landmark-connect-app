@@ -52,6 +52,12 @@
                             "xml": "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>",
                             "count": 1
                         }
+                    ],
+                    "/widget": [
+                        {
+                            "xml": "<feature name=\"TestFlightSDK\"><param name=\"ios-package\" value=\"CDVTestFlight\" /></feature>",
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -70,6 +76,12 @@
                         }
                     ],
                     "MobileCoreServices.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "libz.dylib": [
                         {
                             "xml": "false",
                             "count": 1
@@ -99,6 +111,9 @@
             "PACKAGE_NAME": "com.maven20.landmarkconnect"
         },
         "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.maven20.landmarkconnect"
+        },
+        "com.testflightapp.cordova-plugin": {
             "PACKAGE_NAME": "com.maven20.landmarkconnect"
         }
     },

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0688887097CA467BA46FAADC /* CDVSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 316C953B4FCE415FB18003BE /* CDVSound.m */; };
 		1948E1C8113C4045BE3717BB /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = A3778928B54B44ECB20F62D7 /* CDVSplashScreen.m */; };
@@ -46,6 +45,9 @@
 		F79E3C08F2604CFAAE0BF077 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7126D0D2BECF4A5F919B99D7 /* CDVStatusBar.m */; };
 		FEF1C49B599A40DE80B161A6 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6069B226370C4BD0A194130F /* IonicKeyboard.m */; };
 		FF485FC540F843A3A39B335E /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE931EF8B544EBF86504542 /* CDVDevice.m */; };
+		2D97FDF762374A5FA65FCF0A /* CDVTestFlight.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F9060E680F47A791EB4FAD /* CDVTestFlight.m */; };
+		A554CC286F514E2EA83E1F17 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F488537E54AB4083A8531118 /* libTestFlight.a */; };
+		101072676FEC49BAAE19FA9C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43661CCFF3BB48879FBC5999 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,13 @@
 		F46A2CB4ECC146A3896605E3 /* UIWebViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWebViewExtension.h; path = com.ionic.keyboard/UIWebViewExtension.h; sourceTree = "<group>"; };
 		F78DC3E497064BE9A8C2F28C /* CDVInAppBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowser.m; path = org.apache.cordova.inappbrowser/CDVInAppBrowser.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Landmark Connect/config.xml"; sourceTree = "<group>"; };
+		F3F9060E680F47A791EB4FAD /* CDVTestFlight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVTestFlight.m"; path = "com.testflightapp.cordova-plugin/CDVTestFlight.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		F488537E54AB4083A8531118 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libTestFlight.a"; path = "Landmark Connect/Plugins/com.testflightapp.cordova-plugin/libTestFlight.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		BFABE4890ED940F3A208C2C0 /* TestFlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TestFlight.h"; path = "com.testflightapp.cordova-plugin/TestFlight.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		57538215A63344AA93B1952A /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TestFlight+AsyncLogging.h"; path = "com.testflightapp.cordova-plugin/TestFlight+AsyncLogging.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8D332BD8BF5645CA8B82995B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TestFlight+ManualSessions.h"; path = "com.testflightapp.cordova-plugin/TestFlight+ManualSessions.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		15FF43FAC166456B9A40E812 /* CDVTestFlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVTestFlight.h"; path = "com.testflightapp.cordova-plugin/CDVTestFlight.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		43661CCFF3BB48879FBC5999 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +149,8 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
+				A554CC286F514E2EA83E1F17 /* libTestFlight.a in Frameworks */,
+				101072676FEC49BAAE19FA9C /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +244,8 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				F488537E54AB4083A8531118 /* libTestFlight.a */,
+				43661CCFF3BB48879FBC5999 /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +283,11 @@
 				EE34D3A2F90941EABF6DEC96 /* CDVAssetLibraryFilesystem.h */,
 				316C953B4FCE415FB18003BE /* CDVSound.m */,
 				BCAF26E1AB9D410BB5CE403A /* CDVSound.h */,
+				F3F9060E680F47A791EB4FAD /* CDVTestFlight.m */,
+				BFABE4890ED940F3A208C2C0 /* TestFlight.h */,
+				57538215A63344AA93B1952A /* TestFlight+AsyncLogging.h */,
+				8D332BD8BF5645CA8B82995B /* TestFlight+ManualSessions.h */,
+				15FF43FAC166456B9A40E812 /* CDVTestFlight.h */,
 			);
 			name = Plugins;
 			path = "Landmark Connect/Plugins";
@@ -473,6 +491,7 @@
 				B1C78C3CF10E499C8AB410A1 /* CDVLocalFilesystem.m in Sources */,
 				EA8F12F41A0B42AA9E8F5CD7 /* CDVAssetLibraryFilesystem.m in Sources */,
 				0688887097CA467BA46FAADC /* CDVSound.m in Sources */,
+				2D97FDF762374A5FA65FCF0A /* CDVTestFlight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +572,10 @@
 				);
 				PRODUCT_NAME = "Landmark Connect";
 				TARGETED_DEVICE_FAMILY = 1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Landmark Connect/Plugins/com.testflightapp.cordova-plugin\"",
+				);
 			};
 			name = Debug;
 		};
@@ -585,6 +608,10 @@
 				);
 				PRODUCT_NAME = "Landmark Connect";
 				TARGETED_DEVICE_FAMILY = 1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Landmark Connect/Plugins/com.testflightapp.cordova-plugin\"",
+				);
 			};
 			name = Release;
 		};
