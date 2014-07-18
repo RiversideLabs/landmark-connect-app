@@ -38,10 +38,20 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova
       }
     })
 
-    .state('menu', {
-      url: "/menu",
+    .state('m', {
+      url: "/m",
+      abstract: true,
       views: {
         'menuContent' :{
+          templateUrl: "menu-wrap.html"
+        }
+      }
+    })
+
+    .state('m.menu', {
+      url: "/menu",
+      views: {
+        'menuContent2' :{
           templateUrl: "templates/menu.html",
           controller: function($scope){
             $scope.aboutBroughtBy = "The City of Riverside's Historic Preservation, Neighborhoods and Urban Design Division, and Economic Development Department";
@@ -50,30 +60,31 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova
       }
     })
 
-    .state('favorites', {
+
+    .state('m.favorites', {
       url: "/favorites",
       views: {
-        'menuContent' :{
+        'menuContent2' :{
           templateUrl: "templates/favorites.html",
           controller: "SettingsCtrl"
         }
       }
     })
 
-    .state('visited', {
+    .state('m.visited', {
       url: "/visited",
       views: {
-        'menuContent' :{
+        'menuContent2' :{
           templateUrl: "templates/visited.html",
           controller: "SettingsCtrl"
         }
       }
     })
 
-    .state('settings', {
+    .state('m.settings', {
       url: "/settings",
       views: {
-        'menuContent' :{
+        'menuContent2' :{
           templateUrl: "templates/settings.html",
           controller: "SettingsCtrl"
         }
