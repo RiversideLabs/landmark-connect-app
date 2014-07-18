@@ -23,6 +23,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   });
   // END SET APP DEFAULTS
 
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
+
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -95,6 +101,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 .controller('AboutCtrl', function ($scope) {
   $scope.navTitle = "About Landmark Connect";
 
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
+
   $scope.linkTo = function(link){
     var ref = window.open(link, '_blank', 'location=yes');
   }
@@ -103,6 +115,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 .controller('SettingsCtrl', function ($scope, $localStorage, $ionicNavBarDelegate, LocationsService) {
   $scope.navTitle = "Settings";
   $scope.$storage = $localStorage;
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   $scope.goBack = function() {
     $ionicNavBarDelegate.back();
@@ -149,6 +167,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   } else {
     $scope.$storage.showDistance = false;
   }
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   // Method called on infinite scroll
   // Saving this for later
@@ -319,10 +343,10 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   var pinImage = {
     url: 'assets/img/pin.png',
-    size: new google.maps.Size(54, 60),
+    size: new google.maps.Size(27, 30),
     scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(9, 30)
+    anchor: new google.maps.Point(7, 30)
   };
 
   // Google Maps
@@ -476,8 +500,13 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
 
-  $scope.fade = true;
   $scope.$storage = $localStorage;
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   //$ionicNavBarDelegate.showBackButton(show); // seems to produce a blank screen
   $scope.goBack = function() {
@@ -486,28 +515,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   $scope.selectTabWithIndex = function(index) {
     $ionicTabsDelegate.select(index);
-  };
-
-  $scope.checkScroll = function() {
-    $timeout( function() {
-      var scrollView = $ionicScrollDelegate.getScrollView();
-      var scrollPos = $ionicScrollDelegate.getScrollPosition();
-      var r = (scrollView.__contentHeight - scrollView.__clientHeight - 10);
-
-      if(scrollView.__contentHeight < scrollView.__clientHeight) {
-        $scope.fade = false;
-        // console.log('Not enough content, no need for fade.');
-      } else {
-        if(scrollPos.top > r) {
-          $scope.fade = false;
-          // console.log('Scrolled within 10 of bottom.');
-        } else {
-          $scope.fade = true;
-          // console.log('display the fade');
-        }
-      }
-      $scope.$apply();
-    });
   };
 
   // --- Set / Unset / Check Visited & Favorites ---
@@ -603,20 +610,17 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   var currentLocImage = {
     url: 'assets/img/map-bluedot.png',
-    // This marker is 27 pixels wide by 80 pixels tall.
     size: new google.maps.Size(44, 44),
     scaledSize: new google.maps.Size(22, 22),
-    // The origin for this image is 0,0.
     origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
     anchor: new google.maps.Point(0, 22)
   };
   var pinImage = {
     url: 'assets/img/pin.png',
-    size: new google.maps.Size(54, 60),
+    size: new google.maps.Size(27, 30),
     scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(9, 30)
+    anchor: new google.maps.Point(7, 30)
   };
 
   $scope.centerOnMe = function() {

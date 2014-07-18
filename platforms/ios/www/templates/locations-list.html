@@ -1,6 +1,6 @@
 <ion-view hide-nav-bar='true' hide-back-button='true'>
   <ng-include src="'templates/locations-header.html'"></ng-include>
-  <ion-content class="has-header" delegate-handle="locations-list" on-scroll="checkScrollTop()">
+  <ion-content class="has-header" delegate-handle="locations-list" on-scroll="checkScrollTop()" overflow-scroll="{{scroll}}">
     <div id="search-box" class="bar bar-header bar-dark item-input-inset" ng-show="search.showSearch">
       <div class="item-input-wrapper">
         <i class="icon ion-ios7-search placeholder-icon"></i>

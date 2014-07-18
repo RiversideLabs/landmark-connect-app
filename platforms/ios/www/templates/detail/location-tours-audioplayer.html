@@ -1,5 +1,5 @@
 <ion-view title="{{navTitle}}">
-  <ion-content has-header="true" scroll="false" padding="true" class="detail-view tour tour-player audio-player" ng-class="{fade:fade}" on-scroll="checkScroll()">
+  <ion-content has-header="true" overflow-scroll="{{scroll}}" padding="true" class="detail-view tour tour-player audio-player">
     <div class="tour-background" hero-img="{{location.heroDetail}}"></div>
     <div class="tour-details">
       <h1>{{tour.title}}</h1>

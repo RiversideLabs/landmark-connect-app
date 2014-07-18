@@ -8611,25 +8611,6 @@ input[type="color"] {
     .locations-list .item-options .button .icon {
       vertical-align: middle; }
 
-.detail-view:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #1c1c1c), color-stop(1, rgba(28, 28, 28, 0)));
-  background-image: -o-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -moz-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -webkit-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: -ms-linear-gradient(top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  background-image: linear-gradient(to top, #1c1c1c 0%, rgba(28, 28, 28, 0) 100%);
-  opacity: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease; }
-.detail-view.fade:after {
-  opacity: 1; }
-
 .details .location-details-header h1 {
   text-align: left;
   padding: 0 20px;
