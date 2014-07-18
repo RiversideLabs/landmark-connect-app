@@ -3,7 +3,7 @@
 // WRAPPER FOR ALL DETAIL VIEW TABS
 .detail-view {
 
-  
+
 }
 
 
@@ -84,6 +84,22 @@
 
 }
 
+.tour-details {
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+}
+
 .tour.item {
   .length {
     opacity: 0.5;
@@ -113,10 +129,10 @@
   filter: blur(5px);
 }
 
+
 .tour-details {
-  position: absolute;
-  left: 15px; right: 15px;
-  padding-top: 15%;
+  padding-top: 15px;
+
   text-align: center;
   z-index:10;
 
