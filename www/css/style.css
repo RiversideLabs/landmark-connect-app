@@ -8761,6 +8761,21 @@ input[type="color"] {
     #image-gallery .image:nth-of-type(even) .image-spacing {
       right: 6px; }
 
+.slider-go-back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0; }
+  .slider-go-back a {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+
 .slider, .scroll-view, .image {
   height: 100%; }
 
