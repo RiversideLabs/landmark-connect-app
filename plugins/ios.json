@@ -74,7 +74,9 @@
                             "xml": "false",
                             "count": 1
                         }
-                    ]
+                    ],
+                    "CoreData.framework": [],
+                    "SystemConfiguration.framework": []
                 }
             }
         }
