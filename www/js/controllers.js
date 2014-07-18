@@ -476,7 +476,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   $scope.location = LocationsService.getLocation($stateParams.locationId);
   $scope.navTitle = $scope.location.commonName;
 
-  $scope.fade = true;
   $scope.$storage = $localStorage;
 
   //$ionicNavBarDelegate.showBackButton(show); // seems to produce a blank screen
@@ -486,28 +485,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   $scope.selectTabWithIndex = function(index) {
     $ionicTabsDelegate.select(index);
-  };
-
-  $scope.checkScroll = function() {
-    $timeout( function() {
-      var scrollView = $ionicScrollDelegate.getScrollView();
-      var scrollPos = $ionicScrollDelegate.getScrollPosition();
-      var r = (scrollView.__contentHeight - scrollView.__clientHeight - 10);
-
-      if(scrollView.__contentHeight < scrollView.__clientHeight) {
-        $scope.fade = false;
-        // console.log('Not enough content, no need for fade.');
-      } else {
-        if(scrollPos.top > r) {
-          $scope.fade = false;
-          // console.log('Scrolled within 10 of bottom.');
-        } else {
-          $scope.fade = true;
-          // console.log('display the fade');
-        }
-      }
-      $scope.$apply();
-    });
   };
 
   // --- Set / Unset / Check Visited & Favorites ---
