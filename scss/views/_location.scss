@@ -3,35 +3,7 @@
 // WRAPPER FOR ALL DETAIL VIEW TABS
 .detail-view {
 
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0; right: 0;
-    height: 120px;
-
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      color-stop(0, rgba($bg, 1)),
-      color-stop(1, rgba($bg, 0))
-    );
-    background-image: -o-linear-gradient(top, rgba($bg, 1) 0%, rgba($bg, 0) 100%);
-    background-image: -moz-linear-gradient(top, rgba($bg, 1) 0%, rgba($bg, 0) 100%);
-    background-image: -webkit-linear-gradient(top, rgba($bg, 1) 0%, rgba($bg, 0) 100%);
-    background-image: -ms-linear-gradient(top, rgba($bg, 1) 0%, rgba($bg, 0) 100%);
-    background-image: linear-gradient(to top, rgba($bg, 1) 0%, rgba($bg, 0) 100%);
-
-
-    opacity: 0;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-
-  &.fade:after {
-    opacity: 1;
-  }
+  
 }
 
 
