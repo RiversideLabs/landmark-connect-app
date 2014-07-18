@@ -319,10 +319,10 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   var pinImage = {
     url: 'assets/img/pin.png',
-    size: new google.maps.Size(54, 60),
+    size: new google.maps.Size(27, 30),
     scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(9, 30)
+    anchor: new google.maps.Point(7, 30)
   };
 
   // Google Maps
@@ -603,20 +603,17 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
   var currentLocImage = {
     url: 'assets/img/map-bluedot.png',
-    // This marker is 27 pixels wide by 80 pixels tall.
     size: new google.maps.Size(44, 44),
     scaledSize: new google.maps.Size(22, 22),
-    // The origin for this image is 0,0.
     origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
     anchor: new google.maps.Point(0, 22)
   };
   var pinImage = {
     url: 'assets/img/pin.png',
-    size: new google.maps.Size(54, 60),
+    size: new google.maps.Size(27, 30),
     scaledSize: new google.maps.Size(27, 30),
     origin: new google.maps.Point(0,0),
-    anchor: new google.maps.Point(9, 30)
+    anchor: new google.maps.Point(7, 30)
   };
 
   $scope.centerOnMe = function() {
