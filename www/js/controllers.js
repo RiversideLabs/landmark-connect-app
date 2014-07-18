@@ -23,6 +23,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   });
   // END SET APP DEFAULTS
 
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
+
 
   $scope.isActive = function(route) {
     return route === $location.path();
@@ -95,6 +101,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 .controller('AboutCtrl', function ($scope) {
   $scope.navTitle = "About Landmark Connect";
 
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
+
   $scope.linkTo = function(link){
     var ref = window.open(link, '_blank', 'location=yes');
   }
@@ -103,6 +115,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 .controller('SettingsCtrl', function ($scope, $localStorage, $ionicNavBarDelegate, LocationsService) {
   $scope.navTitle = "Settings";
   $scope.$storage = $localStorage;
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   $scope.goBack = function() {
     $ionicNavBarDelegate.back();
@@ -149,6 +167,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   } else {
     $scope.$storage.showDistance = false;
   }
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   // Method called on infinite scroll
   // Saving this for later
@@ -477,6 +501,12 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   $scope.navTitle = $scope.location.commonName;
 
   $scope.$storage = $localStorage;
+
+  if (ionic.Platform.isAndroid){
+    $scope.scroll = false;
+  } else if (ionic.Platform.isIOS){
+    $scope.scroll = true;
+  };
 
   //$ionicNavBarDelegate.showBackButton(show); // seems to produce a blank screen
   $scope.goBack = function() {

@@ -5,7 +5,7 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content has-header="true">
+  <ion-content has-header="true" overflow-scroll="{{scroll}}">
     <ion-list class="visited-list" delegate-handle="locations-list">
       <ion-item class="visited-result-item" ng-repeat="loc in locations" type="item-text-wrap" ng-show="isVisited(loc)" ng-href="#/loc/{{loc._id}}/detail">
         {{loc.commonName}}
