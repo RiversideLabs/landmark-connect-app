@@ -96,6 +96,11 @@ body, .pane, .view, .modal {
   }
 }
 
+.button-favorite.ng-animate,
+.button-visited.ng-animate {
+  transition:0s linear all !important;
+}
+
 .tabs-dark > .tabs, .tabs.tabs-dark {
   border-top-width: 1px !important;
   border-top-style: solid !important;
