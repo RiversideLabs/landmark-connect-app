@@ -8380,6 +8380,10 @@ body, .pane, .view, .modal {
   .bar.bar-dark .button-toggle-deselected {
     opacity: 0.5; }
 
+.button-favorite.ng-animate,
+.button-visited.ng-animate {
+  transition: 0s linear all !important; }
+
 .tabs-dark > .tabs, .tabs.tabs-dark {
   border-top-width: 1px !important;
   border-top-style: solid !important;
@@ -8760,6 +8764,21 @@ input[type="color"] {
       left: 6px; }
     #image-gallery .image:nth-of-type(even) .image-spacing {
       right: 6px; }
+
+.slider-go-back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0; }
+  .slider-go-back a {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
 
 .slider, .scroll-view, .image {
   height: 100%; }
