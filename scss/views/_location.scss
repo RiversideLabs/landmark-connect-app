@@ -82,6 +82,24 @@
     }
 	}
 
+	.location-details-more {
+		.item {
+			&, & .item-note {
+				font-size: 14px;
+				white-space: normal;
+			}
+			.item-note {
+				max-width: 50%;
+				text-align: right;
+				p {
+					color: #aaa;
+					white-space: normal;
+					text-align: right;
+				}
+			}
+		}
+	}
+
 }
 
 .tour-details {

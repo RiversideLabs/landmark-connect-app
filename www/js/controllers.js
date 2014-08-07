@@ -1,4 +1,4 @@
-angular.module('landmarkConnect.controllers', ['ngCordova'])
+angular.module('landmarkConnect.controllers', ['ngCordova', 'pasvaz.bindonce'])
 
 
 .controller('MainCtrl', function($scope, $localStorage, $location, $sce, LocationsService, $ionicPlatform, $ionicModal, cordovaGeolocationService) {
@@ -236,11 +236,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     });
   };
 
-  // var watch = cordovaGeolocationService.watchPosition({
-  //   maximumAge: 3000,
-  //   timeout: 10000,
-  //   enableHighAccuracy: true
-  // });
   var successHandler = function(position) {
     if ($scope.$storage.currentLocation != null) {
       console.log("not null");
@@ -288,16 +283,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
       console.log("no geo support");
       $scope.showAlert();
     }
-
-    // watch.promise.then(function() {
-    //     $scope.getCurrentPosition();
-    //   }, function(err) {
-    //     // An error occured. Show a message to the user
-    //     //errorHandler(err);
-    //     console.log(err)
-    //   }, function(position) {
-    //     successHandler(position);
-    // });
   });
   // --- END Get Current Location ---
 
@@ -410,7 +395,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
     }
 
     $scope.map.fitBounds(bounds);
-    //$scope.centerOnMe();
   }
   function bindInfoWindow(marker, map, infowindow, contentString) {
     google.maps.event.addListener(marker, 'click', function(event) {
@@ -424,74 +408,6 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
   if (document.getElementById('map_all')) {
     initializeMapAll();
   }
-
-  // $scope.centerOnMe = function() {
-  //   if(!$scope.map) {
-  //     return;
-  //   }
-  //
-  //   var currentLocImage = {
-  //     url: 'assets/img/map-bluedot.png',
-  //     size: new google.maps.Size(44, 44),
-  //     scaledSize: new google.maps.Size(22, 22),
-  //     origin: new google.maps.Point(0,0),
-  //     anchor: new google.maps.Point(0, 22)
-  //   };
-  //
-  //
-  //   if ($scope.$storage.currentLocation != null) {
-  //     console.log("already has location");
-  //     currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
-  //     $scope.map.setCenter(currentPos);
-  //     $scope.bounds.extend(currentPos);
-  //     var marker = new google.maps.Marker({
-  //         position: currentPos,
-  //         map: $scope.map,
-  //         icon: currentLocImage
-  //     });
-  //     $scope.map.fitBounds($scope.bounds);
-  //   } else {
-  //     $ionicLoading.show({
-  //       content: '<i class=\'ion-ios7-reloading\'></i><br/>Getting current location...',
-  //       showBackdrop: false
-  //     });
-  //
-  //     var watch = cordovaGeolocationService.watchPosition({
-  //       frequency: 3000,
-  //       maximumAge: 3000,
-  //       timeout: 5000,
-  //       enableHighAccuracy: true
-  //     });
-  //
-  //     watch.promise.then(function() {
-  //         // Not currently used
-  //       }, function(err) {
-  //         // An error occured. Show a message to the user
-  //         $ionicPopup.alert({
-  //           title: 'Unable to get location: ' + err.message
-  //         }).then(function(res) {
-  //           $ionicLoading.hide();
-  //           // reset the view to default
-  //           initializeMapAll();
-  //         });
-  //       }, function(pos) {
-  //         var coords = $scope.$storage.currentLocation = [
-  //           position.coords.latitude,
-  //           position.coords.longitude
-  //         ];
-  //         currentPos = new google.maps.LatLng($scope.$storage.currentLocation[0], $scope.$storage.currentLocation[1]);
-  //         $scope.map.setCenter(currentPos);
-  //         var marker = new google.maps.Marker({
-  //             position: currentPos,
-  //             map: $scope.map,
-  //             icon: currentLocImage
-  //         });
-  //         $scope.map.setZoom(18);
-  //         $ionicLoading.hide();
-  //     });
-  //   }
-  // };
-
 
 })
 
@@ -543,10 +459,8 @@ angular.module('landmarkConnect.controllers', ['ngCordova'])
 
 
   // --- TOURS -----
-  //$scope.tour = TourService.getTour($stateParams.tourId);
   $scope.tour = LocationsService.getTour($stateParams.locationId, $stateParams.tourId);
   $scope.sortTours = 'sortOrder';
-  //$scope.aPlayer = AudioService;
   // --- END TOURS -----
 
   // --- IMAGES -----

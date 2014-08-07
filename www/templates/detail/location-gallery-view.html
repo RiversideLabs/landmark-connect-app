@@ -14,13 +14,13 @@
 
   <ion-content overflow-scroll="true" class="detail-view image-view">
     <ion-slide-box show-pager="false" on-slide-changed="slideChanged()">
-      <ion-slide ng-repeat="image in location.images">
+      <ion-slide bindonce ng-repeat="image in location.images">
         <ion-scroll delegate-handle="image-gallery" direction="xy" zooming="true">
           <div id="container" ng-style="containerStyle" class="image">
             <div class="slider-go-back">
-              <a href="#/loc/{{location._id}}/image"></a>
+              <a bo-href="'#/loc/' + location._id + '/image'"></a>
             </div>
-            <img id="image-scrollable" zoomable ng-src="{{ image.url }}" class="scaled">
+            <img id="image-scrollable" zoomable bo-src="image.url" class="scaled">
           </div>
         </ion-scroll>
       </ion-slide>

@@ -64,25 +64,25 @@ angular.module('landmarkConnect.directives', [])
 .directive('backImg', function(){
   return {
     link: function(scope, element, attr) {
-      attr.$observe('backImg', function() {
-        if (!attr.backImg) {
-          // No attribute specified, do nothing
-          element.addClass("no-hero");
-        } else {
-          var content = element.find('a');
-          var image = new Image();
-          image.src = attr.backImg;
-          image.onload = function() {
-            //Image loaded- set the background image to it
-            element.css("background-image","url("+attr.backImg+")").addClass("has-hero");
-            content.css("background-image","url("+attr.backImg+")");
-          };
-          image.onerror = function() {
-            //Image failed to load, do nothing
-            element.addClass("no-hero hero-error");
-          };
-        }
-      });
+      var backImg = scope.$eval(attr.backImg);
+      if (!backImg) {
+        // No attribute specified, do nothing
+        element.addClass("no-hero");
+      } else {
+        var content = element.find('a');
+        var image = new Image();
+        image.src = backImg;
+        image.onload = function() {
+          //Image loaded- set the background image to it
+          //element.css("background-image","url("+attr.backImg+")").addClass("has-hero");
+          element.addClass("has-hero");
+          content.css("background-image","url("+backImg+")");
+        };
+        image.onerror = function() {
+          //Image failed to load, do nothing
+          element.addClass("no-hero hero-error");
+        };
+      }
     }
   };
 })

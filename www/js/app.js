@@ -1,4 +1,4 @@
-angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova', 'angulartics', 'angulartics.google.analytics.cordova', 'landmarkConnect.controllers', 'landmarkConnect.directives', 'landmarkConnect.filters', 'landmarkConnect.services'])
+angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova', 'pasvaz.bindonce', 'landmarkConnect.controllers', 'landmarkConnect.directives', 'landmarkConnect.filters', 'landmarkConnect.services'])
 
 .run(function($ionicPlatform, $localStorage) {
 
@@ -19,19 +19,6 @@ angular.module('landmarkConnect', ['ionic', 'ngAnimate', 'ngStorage', 'ngCordova
     }
   });
 })
-
-// .config('googleAnalyticsCordovaProvider', function (googleAnalyticsCordovaProvider) {
-// // .config('googleAnalyticsCordovaProvider', function (googleAnalyticsCordovaProvider) {
-// //   googleAnalyticsCordovaProvider.trackingId = 'UA-52998912-2';
-// //   googleAnalyticsCordovaProvider.period = 20; // default: 10 (in seconds)
-// //   googleAnalyticsCordovaProvider.debug = true; // default: false
-// // })
-// })
-.config(['$analyticsProvider', 'googleAnalyticsCordovaProvider', function ($analyticsProvider, googleAnalyticsCordovaProvider) {
-  googleAnalyticsCordovaProvider.trackingId = 'UA-52998912-2';
-  googleAnalyticsCordovaProvider.period = 20; // default: 10 (in seconds)
-  googleAnalyticsCordovaProvider.debug = true; // default: false
-}])
 
 .config(function($stateProvider, $urlRouterProvider) {
 

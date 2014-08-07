@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0688887097CA467BA46FAADC /* CDVSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 316C953B4FCE415FB18003BE /* CDVSound.m */; };
 		1948E1C8113C4045BE3717BB /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = A3778928B54B44ECB20F62D7 /* CDVSplashScreen.m */; };
@@ -232,8 +233,6 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
-				A4101FBBBF3E4B42A8C097BC /* GoogleAnalytics.a */,
-				CBB98DBAA69B48C1BE95953C /* GoogleAnalytics.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -537,7 +536,8 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Landmark Connect/Landmark Connect-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -554,9 +554,6 @@
 				);
 				PRODUCT_NAME = "Landmark Connect";
 				TARGETED_DEVICE_FAMILY = 1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
 			};
 			name = Debug;
 		};
@@ -572,7 +569,8 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "Landmark Connect/Landmark Connect-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -589,9 +587,6 @@
 				);
 				PRODUCT_NAME = "Landmark Connect";
 				TARGETED_DEVICE_FAMILY = 1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
 			};
 			name = Release;
 		};

@@ -1,52 +1,61 @@
 <ion-view title="{{navTitle}}">
-  <ion-content has-header="true" class="detail-view details" delegate-handle="locations-list" overflow-scroll="{{scroll}}">
+  <ion-content bindonce="location" has-header="true" class="detail-view details" delegate-handle="locations-list" overflow-scroll="{{scroll}}">
   <div class="location-details-header" hero-img="{{location.heroDetail}}">
     <div class="location-details-header-container">
-      <h1>{{location.commonName}}</h1>
+      <h1 bo-text="location.commonName"></h1>
     </div>
   </div>
   <div class="location-details-description" has-hero="{{location.heroImage.url}}">
     <h3>Details</h3>
-    <span ng-bind-html="location.description.brief"></span>
-    <span ng-bind-html="location.description.extended"></span>
+    <span bo-html="location.description.brief"></span>
+    <span bo-html="location.description.extended"></span>
 
-    <div class="location-details-more">
-      <dl ng-show="location.historicName">
-        <dt>Historic Name:</dt>
-        <dd>{{location.historicName}}</dd>
-      </dl>
-      <dl ng-show="location.yearBuilt">
-        <dt>Year Built:</dt>
-        <dd>{{location.yearBuilt}}</dd>
-      </dl>
-      <dl ng-show="location.architecturalStyle">
-        <dt>Architectural Style:</dt>
-        <dd ng-repeat="style in location.architecturalStyle">{{style.name}}</dd>
-      </dl>
-      <dl ng-show="location.architect">
-        <dt>Architect:</dt>
-        <dd>{{location.architect}}</dd>
-      </dl>
-      <dl ng-show="location.builder">
-        <dt>Builder:</dt>
-        <dd>{{location.builder}}</dd>
-      </dl>
-      <dl ng-show="location.plaqueText">
-        <dt>Plaque Text:</dt>
-        <dd><span ng-bind-html="location.plaqueText"></span></dd>
-      </dl>
-      <dl ng-show="location.location.street1">
-        <dt>Address:</dt>
-        <dd>{{location.location.street1}}</dd>
-        <dd>{{location.location.street2}}</dd>
-        <dd>{{location.location.suburb}}, {{location.location.state}} {{location.location.postcode}}</dd>
-      </dl>
-      <dl ng-show="location.url">
-        <dt>Website:</dt>
-        <dd><a href="{{trustSrc(location.url)}}" target="_blank">{{trustSrc(location.url)}}</a></dd>
-      </dl>
+    <div ng-show="location.plaqueText">
+      <h3>Plaque Text:</h3>
+      <span ng-bind-html="location.plaqueText"></span>
     </div>
-
   </div>
+
+  <div class="location-details-more list">
+    <div class="item" ng-show="location.historicName">
+      Historic Name:
+      <span class="item-note" bo-text="location.historicName"></span>
+    </div>
+    <div class="item" ng-show="location.yearBuilt">
+      Year Built:
+      <span class="item-note" bo-text="location.yearBuilt"></span>
+    </div>
+    <div class="item" ng-show="location.architecturalStyle">
+      Architectural Style:
+      <span class="item-note" bindonce="style" ng-repeat="style in location.architecturalStyle">
+        <p bo-text="style.name"></p>
+      </span>
+    </div>
+    <div class="item" ng-show="location.architect">
+      Architect:
+      <span class="item-note" bo-text="location.architect"></span>
+    </div>
+    <div class="item" ng-show="location.builder">
+      Builder:
+      <span class="item-note" bo-text="location.builder"></span>
+    </div>
+    <div class="item" ng-show="location.location.street1">
+      Address:
+      <span class="item-note">
+        <span bo-text="location.location.street1"></span><br>
+        <span bo-text="location.location.street2"></span><br ng-show="location.location.street2">
+        <span bo-text="location.location.suburb"></span>, <span bo-text="location.location.state"></span> <span bo-text="location.location.postcode"></span>
+      </span>
+    </div>
+    <div class="item" ng-show="location.url">
+      Website:
+      <span class="item-note">
+        <a href="{{trustSrc(location.url)}}" target="_blank">
+          <span bo-text="trustSrc(location.url)"></span>
+        </a>
+      </span>
+    </div>
+  </div>
+
   </ion-content>
 </ion-view>

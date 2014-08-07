@@ -8,19 +8,21 @@
         <!-- <i ng-if="searchQuery.length" class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i> -->
       </div>
     </div>
-    <ion-list class="locations-list">
-      <ion-item class="location-item" ng-repeat="loc in locations | filter: searchQuery | orderBy:sortOpt:reverse" type="item-text-wrap" ng-href="#/loc/{{loc._id}}/detail" back-img="{{loc.heroThumb}}">
-        <div class="location-title">
-          <p>{{loc.commonName}}</p>
-          <span class="distance-indicator" ng-show="$storage.showDistance"><span class="digit">{{distanceFromHere(loc)}}</span><span class="unit">mi</span></span>
-        </div>
-        <ion-option-button ng-click="makeFavorite(loc)" ng-hide="isFavorite(loc)" class="button-favorite"><i class="icon ion-ios7-star-outline"></i></ion-option-button>
-        <ion-option-button ng-click="unFavorite(loc)" ng-show="isFavorite(loc)" class="button-favorite active"><i class="icon ion-ios7-star"></i></ion-option-button>
-        <ion-option-button ng-click="makeVisited(loc)" ng-hide="isVisited(loc)" class="button-visited"><i class="icon ion-ios7-checkmark-outline"></i></ion-option-button>
-        <ion-option-button ng-click="unVisit(loc)" ng-show="isVisited(loc)" class="button-visited active"><i class="icon ion-ios7-checkmark"></i></ion-option-button>
-        <ion-option-button ng-click="getDirections(loc)"><i class="icon ion-ios7-navigate-outline"></i></ion-option-button>
-      </ion-item>
-    </ion-list>
+
+    <div class="list locations-list">
+      <div bindonce
+        class="location-item"
+        ng-repeat="loc in locations | filter: searchQuery | orderBy:sortOpt:reverse"
+        type="item-text-wrap"
+        back-img="loc.heroThumb">
+        <a class="item-content" bo-href="'#/loc/' + loc._id + '/detail'">
+          <div class="location-title">
+            <p bo-text="loc.commonName"></p>
+            <span class="distance-indicator" bo-show="$storage.showDistance"><span class="digit" bo-text="distanceFromHere(loc)"></span><span class="unit">mi</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
   </ion-content>
   <div class="scrollToTop" ng-class="{showscrollbtn:showscrollbtn}" ng-click="scrollTop()"><i class="icon ion-ios7-arrow-up"></i></div>
 </ion-view>
