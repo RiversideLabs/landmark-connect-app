@@ -60,7 +60,7 @@
 	}
 	.location-details-description {
 		padding: 15px 20px;
-		color: #fff;
+		color: $base-color;
 		font-size: 12px;
 		font-weight: normal;
 		line-height: 17px;
@@ -73,11 +73,11 @@
 		h3 {
 		  font-size: 17px;
 		  font-weight: 400;
-		  color: #fff;
+		  color: $base-color;
 			margin-bottom: 16px;
 		}
     a {
-      color: #fff !important;
+      color: $base-color !important;
       text-decoration: none;
     }
 	}
@@ -161,10 +161,10 @@
     line-height: normal;
   }
   h1 {
-    color: #fff;
+    color: $base-color;
   }
   h2 {
-    color: #8e8e8e;
+    color: darken($base-color, 44%);
   }
   .player-wrap {
 

@@ -65,7 +65,7 @@
 	font-size: 24px;
 	z-index:10;
 	background-color: $bg;
-	color: #fff;
+	color: $base-color;
 
 
 	opacity: 0;
@@ -99,7 +99,7 @@
 
 		.item-options .button {
 			background-color: rgba(0, 0, 0, 0.75);
-			color: #fff;
+			color: $base-color;
 		}
 
 		&.no-hero, &.no-hero a {

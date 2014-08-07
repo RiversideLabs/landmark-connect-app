@@ -20,10 +20,6 @@
   z-index: 1;
 }
 
-.bar-frosted {
-  background-color: $bg; // was #f7f7f7
-}
-
 .caps {
   text-transform: uppercase;
 }
@@ -191,7 +187,7 @@ input[type="color"] {
 
 .about-app {
 	text-align: center;
-	color: #fff;
+	color: $base-color;
 	font-size: 13px;
 }
 .about-logo {
@@ -200,12 +196,12 @@ input[type="color"] {
 .handcrafted-by-maven {
 	line-height: 25px;
 	opacity: 0.5;
-	border-top: 1px solid rgba(255, 255, 255, 0.4);
+	border-top: 1px solid rgba($base-color, 0.4);
 	margin: 15px 35px;
 
 	hr {
 		opacity: 0.4;
-		border-color: #fff;
+		border-color: $base-color;
 		margin: 0;
 	}
 	img {

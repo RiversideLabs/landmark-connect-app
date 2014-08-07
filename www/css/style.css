@@ -8342,9 +8342,6 @@ a.button {
   opacity: .25;
   z-index: 1; }
 
-.bar-frosted {
-  background-color: #1c1c1c; }
-
 .caps, .item-divider {
   text-transform: uppercase; }
 
@@ -8483,7 +8480,7 @@ input[type="color"] {
 
 .about-app {
   text-align: center;
-  color: #fff;
+  color: white;
   font-size: 13px; }
 
 .about-logo {
@@ -8496,7 +8493,7 @@ input[type="color"] {
   margin: 15px 35px; }
   .handcrafted-by-maven hr {
     opacity: 0.4;
-    border-color: #fff;
+    border-color: white;
     margin: 0; }
   .handcrafted-by-maven img {
     margin-left: 2px;
@@ -8552,7 +8549,7 @@ input[type="color"] {
   font-size: 24px;
   z-index: 10;
   background-color: #1c1c1c;
-  color: #fff;
+  color: white;
   opacity: 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease; }
@@ -8572,7 +8569,7 @@ input[type="color"] {
     background-size: cover; }
     .locations-list .location-item .item-options .button {
       background-color: rgba(0, 0, 0, 0.75);
-      color: #fff; }
+      color: white; }
     .locations-list .location-item.no-hero, .locations-list .location-item.no-hero a {
       background-image: url("../assets/img/landmark_filler.png"); }
     .locations-list .location-item a:before {
@@ -8674,7 +8671,7 @@ input[type="color"] {
       margin: 0; }
 .details .location-details-description {
   padding: 15px 20px;
-  color: #fff;
+  color: white;
   font-size: 12px;
   font-weight: normal;
   line-height: 17px;
@@ -8684,11 +8681,21 @@ input[type="color"] {
   .details .location-details-description h3 {
     font-size: 17px;
     font-weight: 400;
-    color: #fff;
+    color: white;
     margin-bottom: 16px; }
   .details .location-details-description a {
-    color: #fff !important;
+    color: white !important;
     text-decoration: none; }
+.details .location-details-more .item, .details .location-details-more .item .item-note {
+  font-size: 14px;
+  white-space: normal; }
+.details .location-details-more .item .item-note {
+  max-width: 50%;
+  text-align: right; }
+  .details .location-details-more .item .item-note p {
+    color: #aaa;
+    white-space: normal;
+    text-align: right; }
 
 .tour-details {
   -webkit-box-ordinal-group: 1;
@@ -8737,9 +8744,9 @@ input[type="color"] {
     font-weight: 400;
     line-height: normal; }
   .tour-details h1 {
-    color: #fff; }
+    color: white; }
   .tour-details h2 {
-    color: #8e8e8e; }
+    color: #8f8f8f; }
   .tour-details .button {
     margin: 40px auto; }
     .tour-details .button.icon-left:before {
@@ -8842,7 +8849,8 @@ input[type="color"] {
 .bar-header + .pane {
   z-index: 10; }
 
-.popup, .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6, .popup .h1, .popup .h2, .popup .h3, .popup .h4, .popup .h5, .popup .h6 {
+.popup, .popup h1, .popup h2, .popup h3, .popup h4, .popup h5, .popup h6,
+.popup .h1, .popup .h2, .popup .h3, .popup .h4, .popup .h5, .popup .h6 {
   color: #000; }
 
 .platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader),
