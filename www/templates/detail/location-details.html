@@ -27,8 +27,10 @@
     </div>
     <div class="item" ng-show="location.architecturalStyle">
       Architectural Style:
-      <span class="item-note" bindonce="style" ng-repeat="style in location.architecturalStyle">
-        <p bo-text="style.name"></p>
+      <span class="item-note">
+        <p bindonce="style" ng-repeat="style in location.architecturalStyle">
+          <span bo-text="style.name"></span>
+        </p>
       </span>
     </div>
     <div class="item" ng-show="location.architect">

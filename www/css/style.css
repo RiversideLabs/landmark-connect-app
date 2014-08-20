@@ -8695,7 +8695,8 @@ input[type="color"] {
   .details .location-details-more .item .item-note p {
     color: #aaa;
     white-space: normal;
-    text-align: right; }
+    text-align: right;
+    margin: 0; }
 
 .tour-details {
   -webkit-box-ordinal-group: 1;
